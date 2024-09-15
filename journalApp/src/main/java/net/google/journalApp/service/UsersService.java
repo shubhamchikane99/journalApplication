@@ -28,8 +28,6 @@ public class UsersService {
 	public ErrorMessageForUser saveUsers(Users users) {
 		// Save Journal Entry
 
-		System.err.println("Users " + users);
-		System.err.println("users.getPassword() " + users.getPassword());
 		users.setPassword(passwordEncoder.encode(users.getPassword()));
 		ErrorMessageForUser errorMessage = new ErrorMessageForUser();
 		Users saveUsers = new Users();
