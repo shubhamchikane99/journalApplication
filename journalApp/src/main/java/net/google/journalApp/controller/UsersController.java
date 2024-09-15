@@ -21,10 +21,10 @@ public class UsersController {
 	@Autowired
 	private UsersService usersService;
 
-	@PostMapping
-	public ServiceResponse saveUsers(@RequestBody Users users) {
+	@PostMapping("/update")
+	public ServiceResponse updateUser(@RequestBody Users users) {
 
-		return ServiceResponse.asSuccess(usersService.saveUsers(users));
+		return ServiceResponse.asSuccess(usersService.updateUser(users));
 	}
 
 	@GetMapping
@@ -43,5 +43,5 @@ public class UsersController {
 
 		return ServiceResponse.asSuccess(usersService.DeleteUsersById(id));
 	}
-	
+
 }

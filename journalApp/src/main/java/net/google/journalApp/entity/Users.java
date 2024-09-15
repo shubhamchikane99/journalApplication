@@ -38,6 +38,9 @@ public class Users {
 	@Column(name = "journal_entry_ids")
 	private String journalEntryIds;
 
+	@Column(name = "role")
+	private String role;
+
 	@Column(name = "is_active")
 	private int isActive;
 

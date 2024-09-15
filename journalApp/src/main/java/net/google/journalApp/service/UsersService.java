@@ -5,6 +5,9 @@ import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import net.google.journalApp.entity.ErrorMessage;
@@ -19,9 +22,15 @@ public class UsersService {
 	@Autowired
 	private UsersRepository userRepository;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	public ErrorMessageForUser saveUsers(Users users) {
 		// Save Journal Entry
 
+		System.err.println("Users " + users);
+		System.err.println("users.getPassword() " + users.getPassword());
+		users.setPassword(passwordEncoder.encode(users.getPassword()));
 		ErrorMessageForUser errorMessage = new ErrorMessageForUser();
 		Users saveUsers = new Users();
 
@@ -43,6 +52,20 @@ public class UsersService {
 		}
 
 		return errorMessage;
+	}
+
+	public Users updateUser(Users users) {
+		// Update UserName And Password
+
+		Users saveUsers = new Users();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String userName = authentication.getName();
+		Users findUserName = userRepository.findUserByUserName(userName);
+		findUserName.setUserName(users.getUserName());
+		findUserName.setPassword(passwordEncoder.encode(users.getPassword()));
+		saveUsers = userRepository.save(findUserName);
+
+		return saveUsers;
 	}
 
 	public List<Users> getAllUsers() {

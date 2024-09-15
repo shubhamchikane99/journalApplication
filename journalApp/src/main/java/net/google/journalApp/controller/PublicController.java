@@ -18,7 +18,7 @@ public class PublicController {
 	@Autowired
 	private UsersService usersService;
 
-	@PostMapping
+	@PostMapping("/create-user")
 	public ServiceResponse saveUsers(@RequestBody Users users) {
 
 		return ServiceResponse.asSuccess(usersService.saveUsers(users));
