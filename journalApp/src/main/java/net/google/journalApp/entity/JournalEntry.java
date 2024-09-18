@@ -23,14 +23,14 @@ public class JournalEntry {
 	@Column(name = "id")
 	private String id = UUID.randomUUID().toString();
 
-	@Column(name = "name")
-	private String name;
+	@Column(name = "title")
+	private String title;
 
-	@Column(name = "mobile_no")
-	private String mobileNo;
+	@Column(name = "content")
+	private String content;
 
-	@Column(name = "city")
-	private String city;
+	@Column(name = "user_id")
+	private String userId;
 
 	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy hh:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
