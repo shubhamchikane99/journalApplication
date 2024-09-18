@@ -35,9 +35,6 @@ public class Users {
 	@Column(name = "email")
 	private String email;
 
-	@Column(name = "journal_entry_ids")
-	private String journalEntryIds;
-
 	@Column(name = "role")
 	private String role;
 
