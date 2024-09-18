@@ -3,25 +3,25 @@
 journalApplication is a Spring Boot project designed for learning purposes. The project focuses on implementing the core concepts of Spring Boot such as dependency injection, REST APIs, database integration, and security. It also incorporates connection to a MySQL database using XAMPP and demonstrates basic user authentication with Spring Security.
 
 # Features
-RESTful API for managing journal entries.
-CRUD operations for journal entries stored in a MySQL database.
-Basic authentication with Spring Security.
-Error handling with custom exceptions.
-MySQL database connection with XAMPP.
-Date formatting and validation.
+1. RESTful API for managing journal entries.
+2. CRUD operations for journal entries stored in a MySQL database.
+3. Basic authentication with Spring Security.
+4. Error handling with custom exceptions.
+5. MySQL database connection with XAMPP.
+6. Date formatting and validation.
 
 # Technologies
-Java 17
-Spring Boot 3.x
-MySQL
-XAMPP
-Spring Data JPA
-Spring Security (Basic Authentication)
-Postman (for testing APIs)
+1. Java 17
+2. Spring Boot 3.x
+3. MySQL
+4. XAMPP
+5. Spring Data JPA
+6. Spring Security (Basic Authentication)
+7. Postman (for testing APIs)
 
 # Prerequisites
-Java Development Kit (JDK) 17
-Spring Tool Suite (STS) or any preferred IDE
-MySQL Server and XAMPP
-Maven
-Postman (optional, for API testing)
+1. Java Development Kit (JDK) 17
+2. Spring Tool Suite (STS) or any preferred IDE
+3. MySQL Server and XAMPP
+4. Maven
+5. Postman (optional, for API testing)
