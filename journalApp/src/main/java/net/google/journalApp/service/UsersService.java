@@ -1,6 +1,5 @@
 package net.google.journalApp.service;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -50,7 +49,7 @@ public class UsersService {
 		}
 
 		return errorMessage;
-	} 
+	}
 
 	public Users updateUser(Users users) {
 		// Update UserName And Password
@@ -64,12 +63,6 @@ public class UsersService {
 		saveUsers = userRepository.save(findUserName);
 
 		return saveUsers;
-	}
-
-	public List<Users> getAllUsers() {
-		// get All Journal Entry
-
-		return userRepository.findAll();
 	}
 
 	public Users findUsersById(String id) throws ResourceNotFoundException {

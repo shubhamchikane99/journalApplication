@@ -27,12 +27,6 @@ public class UsersController {
 		return ServiceResponse.asSuccess(usersService.updateUser(users));
 	}
 
-	@GetMapping
-	public ServiceResponse getAllUsers() {
-
-		return ServiceResponse.asSuccess(usersService.getAllUsers());
-	}
-
 	@GetMapping("/{id}")
 	public ServiceResponse findUsersById(@PathVariable("id") String id) throws ResourceNotFoundException {
 		return ServiceResponse.asSuccess(usersService.findUsersById(id));
