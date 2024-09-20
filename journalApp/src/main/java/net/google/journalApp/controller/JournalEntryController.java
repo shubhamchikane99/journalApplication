@@ -47,5 +47,5 @@ public class JournalEntryController {
 		return ServiceResponse.asSuccess(journalEntryService.deleteJournalEntryById(id));
 
 	}
-
+ 
 }
