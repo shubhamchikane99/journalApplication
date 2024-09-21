@@ -1,5 +1,6 @@
 package net.google.journalApp.service;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -99,6 +100,13 @@ public class UsersService {
 		// Find User By User Name
 
 		return userRepository.findUserByUserName(userName);
+	}
+	
+	
+	public List<Users> getAllUsers() {
+		//Get All User For Admin
+
+		return userRepository.getAllUsers();
 	}
 
 }
