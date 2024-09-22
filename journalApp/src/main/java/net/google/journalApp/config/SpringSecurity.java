@@ -25,7 +25,8 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests()
 		.antMatchers("/v1/**").authenticated()
-		.anyRequest().permitAll()
+		.antMatchers("/admin/**").hasRole("ADMIN")
+		.anyRequest().permitAll() 
 		.and()
 		.httpBasic();
 		 http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable();
