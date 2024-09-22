@@ -7,9 +7,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import net.google.journalApp.entity.DTOJournalEntry;
 import net.google.journalApp.entity.ErrorMessage;
 import net.google.journalApp.entity.JournalEntry;
 import net.google.journalApp.entity.Users;
+import net.google.journalApp.repository.DTOJournalEntryRepository;
 import net.google.journalApp.repository.JournalEntryRepository;
 import net.google.journalApp.repository.UsersRepository;
 
@@ -21,6 +23,9 @@ public class JournalEntryService {
 
 	@Autowired
 	private UsersRepository userRepository;
+
+	@Autowired
+	private DTOJournalEntryRepository dTOJournalEntryRepository;
 
 	public JournalEntry saveJournalEntry(JournalEntry journalEntry) {
 		// Save Journal Entry
@@ -34,14 +39,14 @@ public class JournalEntryService {
 		return journalEntryRepository.save(journalEntry);
 	}
 
-	public List<JournalEntry> getAllJournalEntryByUser() {
+	public List<DTOJournalEntry> getAllJournalEntryByUser() {
 		// Get All Journal Entry By User
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
 		Users findUserName = userRepository.findUserByUserName(userName);
 
-		return journalEntryRepository.journalEntryByUserId(findUserName.getId());
+		return dTOJournalEntryRepository.journalEntryByUserId(findUserName.getId());
 	}
 
 	public JournalEntry journalEntryById(String id) {
