@@ -1,7 +1,6 @@
 package net.google.journalApp.entity;
 
 import java.util.Date;
-import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +18,7 @@ public class DTOJournalEntry {
 
 	@Id
 	@Column(name = "id")
-	private String id = UUID.randomUUID().toString();
+	private String id;
 
 	@Column(name = "title")
 	private String title;
@@ -36,5 +35,5 @@ public class DTOJournalEntry {
 	private Date insertDateTime;
 
 	@Column(name = "user_name")
-	private String userName;
+	private String userName; 
 }
