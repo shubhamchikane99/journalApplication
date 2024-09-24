@@ -14,5 +14,4 @@ public interface DTOJournalEntryRepository extends JpaRepository<DTOJournalEntry
 
 	@Query(value = "  SELECT je.*, u.user_name FROM journal_entry je, users u WHERE je.user_id = u.id AND je.user_id =:userId ", nativeQuery = true)
 	List<DTOJournalEntry> journalEntryByUserId(@Param("userId") String userId);
-
 }
