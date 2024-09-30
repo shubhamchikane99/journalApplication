@@ -20,7 +20,7 @@ public class AdminService {
 	}
 
 	public List<Users> getAllUsers() {
-		// Get All User For Admin
+		// Get All User For Admin 
 
 		return userService.getAllUsers();
 	}
