@@ -1,16 +1,20 @@
 package net.google.journalApp.service;
 
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import net.google.journalApp.entity.Users;
 import net.google.journalApp.repository.UsersRepository;
-import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentMatchers;
+
 
 @SpringBootTest
 public class UsersDetailsServiceImplTest {
@@ -20,11 +24,14 @@ public class UsersDetailsServiceImplTest {
 	@Mock
 	private UsersRepository userRepository;
 
-	@Test 
+	@Test
 	void loadUserNameTest() {
 
-		//when(userRepository.findUserByUserName(ArgumentMatchers.anyString()))
-				//.thenReturn(new Users("ajay_zalte", "klkl"));
-		UserDetails user = usersDetailsService.loadUserByUsername("ajay_zalte");
+		when(userRepository.findUserByUserName(ArgumentMatchers.anyString()))
+				.thenReturn(Users.builder().userName("ram").password("ram").accessRole(new ArrayList<>()).build());
+		UserDetails user = usersDetailsService.loadUserByUsername("ram");
+		Assertions.assertNotNull(user);
+		
 	}
+	
 }
