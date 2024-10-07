@@ -24,7 +24,7 @@ public class UsersDetailsServiceImplTest {
 	@Mock
 	private UsersRepository userRepository;
 
-	@Test
+	@Test 
 	void loadUserNameTest() {
 
 		when(userRepository.findUserByUserName(ArgumentMatchers.anyString()))
