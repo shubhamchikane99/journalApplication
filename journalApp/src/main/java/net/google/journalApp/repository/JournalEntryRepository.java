@@ -25,4 +25,8 @@ public interface JournalEntryRepository extends JpaRepository<JournalEntry, Stri
 	@Query(value = " SELECT je.* FROM journal_entry je WHERE je.id =:id ", nativeQuery = true)
 	JournalEntry journalEntryById(@Param("id") String id);
 
+	
+	@Query(value = " SELECT je.* FROM journal_entry je ORDER BY je.insert_date_time DESC  ", nativeQuery = true)
+	List<JournalEntry> getAllJournalEntry();
+
 }
