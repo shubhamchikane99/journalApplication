@@ -75,5 +75,11 @@ public class JournalEntryService {
 
 		return errorMessage;
 	}
+	
+	public List<JournalEntry> getAllJournalEntry() {
+		  //Get All Journal Entry
+	
+		return journalEntryRepository.getAllJournalEntry();
+	}
 
 }
