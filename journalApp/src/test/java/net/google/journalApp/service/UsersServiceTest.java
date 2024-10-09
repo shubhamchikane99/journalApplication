@@ -43,9 +43,9 @@ public class UsersServiceTest {
 	public void testFindByUserName() {
 		assertEquals(4, 2 + 2);
 
-		assertNotNull(usersRepository.findUserByUserName("ajay_zalte"));
+		assertNotNull(usersRepository.findByUserName("ajay_zalte"));
 
-		Users user = usersRepository.findUserByUserName("ajay_zalte");
+		Users user = usersRepository.findByUserName("ajay_zalte");
 
 		assertTrue(user.getMobileNo().isEmpty());
 
@@ -65,14 +65,14 @@ public class UsersServiceTest {
 	@ValueSource(strings = { "ajay_zalte", "mr_stark", "mr_tony", "mr_tony1" })
 	public void userNamePresentOrNot(String name) {
 
-		assertNotNull(usersRepository.findUserByUserName(name), "failed for: " + name);
+		assertNotNull(usersRepository.findByUserName(name), "failed for: " + name);
 	}
 
 	@ParameterizedTest
 	@ArgumentsSource(UserArgumentsProvider.class)
 	public void testFindByUserName(Users users) {
 
-		assertNotNull(usersRepository.findUserByUserName(null));
+		assertNotNull(usersRepository.findByUserName(null));
 	}
 
 }
