@@ -33,7 +33,7 @@ public class UsersDetailsServiceImplTest {
 	@Test 
 	void loadUserNameTest() {
 
-		when(userRepository.findUserByUserName(ArgumentMatchers.anyString()))
+		when(userRepository.findByUserName(ArgumentMatchers.anyString()))
 				.thenReturn(Users.builder().userName("ram").password("ram").accessRole(new ArrayList<>()).build());
 		UserDetails user = usersDetailsService.loadUserByUsername("ram");
 		Assertions.assertNotNull(user);

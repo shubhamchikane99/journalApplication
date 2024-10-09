@@ -23,7 +23,7 @@ public class UsersDetailsServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String userName) {
 
 		System.err.println("userName");
-		Users users = usersRepository.findUserByUserName(userName);
+		Users users = usersRepository.findByUserName(userName);
 
 		if (users != null) {
 			

@@ -21,7 +21,7 @@ public interface UsersRepository extends JpaRepository<Users, String>, JpaSpecif
 	int deleteByIdUsers(@Param("id") String id);
 
 	@Query(value = "SELECT u.* FROM users u WHERE u.user_name =:userName", nativeQuery = true)
-	Users findUserByUserName(@Param("userName") String userName);
+	Users findByUserName(@Param("userName") String userName);
 
 	
 	@Query(value = " SELECT u.* FROM users u ORDER BY u.insert_date_time DESC", nativeQuery = true)

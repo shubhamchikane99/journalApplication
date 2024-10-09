@@ -32,7 +32,7 @@ public class JournalEntryService {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
-		Users findUserName = userRepository.findUserByUserName(userName);
+		Users findUserName = userRepository.findByUserName(userName);
 
 		journalEntry.setUserId(findUserName.getId());
 
@@ -44,7 +44,7 @@ public class JournalEntryService {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
-		Users findUserName = userRepository.findUserByUserName(userName);
+		Users findUserName = userRepository.findByUserName(userName);
 
 		return dTOJournalEntryRepository.journalEntryByUserId(findUserName.getId());
 	}
