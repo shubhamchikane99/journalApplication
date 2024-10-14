@@ -20,7 +20,7 @@ import net.google.journalApp.repository.UsersRepository;
 public class UsersService {
 
 	@Autowired
-	private UsersRepository userRepository; 
+	private UsersRepository userRepository;  
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
