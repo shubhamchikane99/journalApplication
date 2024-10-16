@@ -20,7 +20,7 @@ import net.google.journalApp.repository.UsersRepository;
 public class UsersService {
 
 	@Autowired
-	private UsersRepository userRepository;
+	private UsersRepository userRepository;  
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -37,7 +37,7 @@ public class UsersService {
 		errorMessage.setErrorMessage("User Name Already Exist.");
 		errorMessage.setUsers(users);
 
-		Users findUserName = userRepository.findUserByUserName(users.getUserName());
+		Users findUserName = userRepository.findByUserName(users.getUserName());
 
 		if (Objects.isNull(findUserName)) {
 
@@ -58,7 +58,7 @@ public class UsersService {
 		Users saveUsers = new Users();
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
-		Users findUserName = userRepository.findUserByUserName(userName);
+		Users findUserName = userRepository.findByUserName(userName);
 		findUserName.setUserName(users.getUserName());
 		findUserName.setPassword(passwordEncoder.encode(users.getPassword()));
 		saveUsers = userRepository.save(findUserName);
@@ -99,7 +99,7 @@ public class UsersService {
 	public Users findUsersByUserName(String userName) {
 		// Find User By User Name
 
-		return userRepository.findUserByUserName(userName);
+		return userRepository.findByUserName(userName);
 	}
 	
 	

@@ -13,7 +13,7 @@ public class UserArgumentsProvider implements ArgumentsProvider {
 	public Stream<? extends Arguments> provideArguments(ExtensionContext context) throws Exception {
 		// TODO Auto-generated method stub
 		return Stream.of(Arguments.of(User.builder().username("shyam").password("shyam")));
-	}
+	}  
 
 	
 }
