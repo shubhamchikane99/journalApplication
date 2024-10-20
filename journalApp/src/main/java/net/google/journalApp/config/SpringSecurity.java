@@ -16,7 +16,6 @@ import net.google.journalApp.service.UsersDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
-@Profile("prod")
 public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
 	@Autowired
