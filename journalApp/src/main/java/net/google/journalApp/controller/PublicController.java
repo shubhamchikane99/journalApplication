@@ -24,9 +24,15 @@ public class PublicController {
 		return ServiceResponse.asSuccess(usersService.saveUsers(users));
 	}
 
-	@GetMapping("health-check")
+	@GetMapping("/health-check")
 	public String healthCheck() {
 
 		return "OK";
+	}
+
+	@GetMapping("/check")
+	public ServiceResponse Check() {
+
+		return ServiceResponse.asSuccess("Hello");
 	}
 }
