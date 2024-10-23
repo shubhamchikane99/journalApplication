@@ -25,6 +25,7 @@ public class PublicController {
 	}
 
 	@GetMapping("/health-check")
+	
 	public String healthCheck() {
 
 		return "OK";
