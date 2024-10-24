@@ -31,9 +31,4 @@ public class PublicController {
 		return "OK";
 	}
 
-	@GetMapping("/check")
-	public ServiceResponse Check() {
-
-		return ServiceResponse.asSuccess("Hello");
-	}
 }
