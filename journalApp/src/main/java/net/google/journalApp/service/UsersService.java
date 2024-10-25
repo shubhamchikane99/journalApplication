@@ -20,7 +20,7 @@ import net.google.journalApp.repository.UsersRepository;
 public class UsersService {
 
 	@Autowired
-	private UsersRepository userRepository;  
+	private UsersRepository userRepository;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -75,7 +75,7 @@ public class UsersService {
 		return Users;
 	}
 
-	public ErrorMessage DeleteUsersById(String id) {
+	public ErrorMessage deleteUsersById(String id) {
 		// Delete by Id
 
 		ErrorMessage errorMessage = new ErrorMessage();
@@ -101,10 +101,9 @@ public class UsersService {
 
 		return userRepository.findByUserName(userName);
 	}
-	
-	
+
 	public List<Users> getAllUsers() {
-		//Get All User For Admin
+		// Get All User For Admin
 
 		return userRepository.getAllUsers();
 	}
