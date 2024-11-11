@@ -35,7 +35,7 @@ public class UsersController {
 	@DeleteMapping("/{id}")
 	public ServiceResponse DeleteUsersById(@PathVariable("id") String id) {
 
-		return ServiceResponse.asSuccess(usersService.DeleteUsersById(id));
+		return ServiceResponse.asSuccess(usersService.deleteUsersById(id));
 	}
 
 }
