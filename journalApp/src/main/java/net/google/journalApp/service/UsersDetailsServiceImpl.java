@@ -24,6 +24,8 @@ public class UsersDetailsServiceImpl implements UserDetailsService {
 
 		System.err.println("userName");
 		Users users = usersRepository.findByUserName(userName);
+		
+		System.err.println("users " + users);
 
 		if (users != null) {
 			
