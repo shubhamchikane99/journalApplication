@@ -58,10 +58,11 @@ public class UsersService {
 		Users saveUsers = new Users();
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
-		Users findUserName = userRepository.findByUserName(userName);
-		findUserName.setUserName(users.getUserName());
-		findUserName.setPassword(passwordEncoder.encode(users.getPassword()));
-		saveUsers = userRepository.save(findUserName);
+//		Users findUserName = userRepository.findByUserName(userName);
+//		findUserName.setUserName(users.getUserName());
+//		findUserName.setPassword(passwordEncoder.encode(users.getPassword()));
+		users.setPassword(passwordEncoder.encode(users.getPassword()));
+		saveUsers = userRepository.save(users);
 
 		return saveUsers;
 	}
