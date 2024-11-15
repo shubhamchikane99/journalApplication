@@ -44,7 +44,7 @@ public class JournalEntryController {
 	@DeleteMapping("/{id}")
 	public ServiceResponse deleteJournalEntryById(@PathVariable("id") String id) {
 
-		return ServiceResponse.asSuccess(journalEntryService.deleteJournalEntryById(id));
+		return ServiceResponse.asSuccess(journalEntryService.deleteJournalEntryById(id)); 
 
 	}
  
