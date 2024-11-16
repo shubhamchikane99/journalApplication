@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import net.google.journalApp.entity.ErrorMessage;
 import net.google.journalApp.entity.ErrorMessageForUser;
 import net.google.journalApp.entity.Users;
@@ -17,6 +18,7 @@ import net.google.journalApp.exception.ResourceNotFoundException;
 import net.google.journalApp.repository.UsersRepository;
 
 @Service
+@Slf4j
 public class UsersService {
 
 	@Autowired
@@ -24,6 +26,9 @@ public class UsersService {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+
+	//Used When Not Configured in pom file
+	//private static final Logger logger = LoggerFactory.getLogger(JournalEntryService.class);
 
 	public ErrorMessageForUser saveUsers(Users users) {
 		// Save Journal Entry
@@ -48,7 +53,13 @@ public class UsersService {
 			errorMessage.setErrorMessage("User Register Successfully.");
 			errorMessage.setUsers(saveUsers);
 		}
-
+		
+		log.error("error occurred");
+		log.info("hahahhahhahhahahahhahahahhah");
+		log.warn("hahahhahhahhahahahhahahahhah");
+		log.debug("hahahhahhahhahahahhahahahhah");
+		log.trace("hahahhahhahhahahahhahahahhah");
+		
 		return errorMessage;
 	}
 

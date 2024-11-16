@@ -2,6 +2,8 @@ package net.google.journalApp.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,6 +28,8 @@ public class JournalEntryService {
 
 	@Autowired
 	private DTOJournalEntryRepository dTOJournalEntryRepository;
+	
+	private static final Logger logger = LoggerFactory.getLogger(JournalEntryService.class);
 
 	public JournalEntry saveJournalEntry(JournalEntry journalEntry) {
 		// Save Journal Entry
@@ -35,6 +39,8 @@ public class JournalEntryService {
 		Users findUserName = userRepository.findByUserName(userName);
 
 		journalEntry.setUserId(findUserName.getId());
+		
+		logger.info("hahahhahhahhahahahhahahahhah");
 
 		return journalEntryRepository.save(journalEntry);
 	}
