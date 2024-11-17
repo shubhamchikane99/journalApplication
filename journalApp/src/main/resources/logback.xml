@@ -1,0 +1,23 @@
+<configuration>
+<!-- Appender And Logger Configurations go here -->
+<!-- Type Of Appender Like FileAppender Console Appender RollingFileAppender SocketAppender ETC -->
+
+<appender name = "myConsoleAppender" class = "ch.qos.logback.core.ConsoleAppender">
+
+
+</appender>
+
+<appender name = "myFileAppender" class = "ch.qos.logback.core.FileAppender">
+  <file>
+    journalApp.log
+  </file>
+
+</appender>
+
+<root level = "INFO">
+  <appender-ref ref = "myConsoleAppender" />
+
+</root>
+
+
+</configuration>
