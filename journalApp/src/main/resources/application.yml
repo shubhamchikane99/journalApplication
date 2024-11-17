@@ -3,16 +3,29 @@ server:
   # servlet:
   #   context-path: /v1
 
-logging:
-  level: 
-    net.google.journalApp: DEBUG
+#logging: used for stop excuting log on console for UsersService File 
+#  level:
+#    net:google:journalApp:
+#      journalApp:service:
+#        UsersService: OFF
+
+logging: 
+  level:
+    net:google:journalApp:
+      journalApp:service:
+        UsersService: OFF
+    
     org:
       springframework:
         security: DEBUG
-        jdbc.core: TRACE
+        jdbc:
+          core: TRACE
       hibernate:
         SQL: DEBUG
-        type.descriptor.sql.BasicBinder: TRACE
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
 
 spring:
   application:
@@ -21,7 +34,7 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/journal_php_db
     username: root
-    password: 
+    password:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
