@@ -1,0 +1,232 @@
+20:59:17.497 [restartedMain] INFO  n.g.journalApp.JournalApplication - Starting JournalApplication using Java 21.0.4 on DESKTOP-EN00QNP with PID 6620 (C:\Users\Legend\git\journalApplication\journalApp\target\classes started by Legend in C:\Users\Legend\git\journalApplication\journalApp)
+20:59:17.505 [restartedMain] INFO  n.g.journalApp.JournalApplication - No active profile set, falling back to 1 default profile: "default"
+20:59:17.558 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+20:59:17.558 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+20:59:18.453 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+20:59:18.518 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 56 ms. Found 3 JPA repository interfaces.
+20:59:19.199 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+20:59:19.208 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+20:59:19.211 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+20:59:19.211 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+20:59:19.294 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+20:59:19.294 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1735 ms
+20:59:19.325 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+20:59:19.520 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+20:59:19.528 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1:3306/journal_php_db'
+20:59:19.716 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+20:59:19.785 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+20:59:19.994 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+20:59:20.134 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+20:59:20.749 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+20:59:20.759 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+20:59:20.807 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+20:59:21.300 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [authenticated] for Ant [pattern='/v1/**']
+20:59:21.316 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [hasRole('ROLE_ADMIN')] for Ant [pattern='/admin/**']
+20:59:21.319 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for any request
+20:59:21.326 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3dcb05ef, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7d84f114, org.springframework.security.web.context.SecurityContextPersistenceFilter@441b60d9, org.springframework.security.web.header.HeaderWriterFilter@2ea07a40, org.springframework.security.web.authentication.logout.LogoutFilter@433450f4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1ba39098, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@253ea76d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1827ef83, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@53f9b185, org.springframework.security.web.session.SessionManagementFilter@6042d289, org.springframework.security.web.access.ExceptionTranslationFilter@6627d0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@53838cc7]
+20:59:21.658 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+20:59:21.674 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+20:59:21.691 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+20:59:21.702 [restartedMain] INFO  n.g.journalApp.JournalApplication - Started JournalApplication in 4.654 seconds (JVM running for 7.816)
+20:59:39.084 [http-nio-8088-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+20:59:39.085 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+20:59:39.086 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+20:59:39.095 [http-nio-8088-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /public/create-user
+20:59:39.098 [http-nio-8088-exec-1] DEBUG o.s.s.w.c.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+20:59:39.102 [http-nio-8088-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+20:59:39.108 [http-nio-8088-exec-1] DEBUG o.s.s.w.a.i.FilterSecurityInterceptor - Authorized filter invocation [POST /public/create-user] with attributes [permitAll]
+20:59:39.108 [http-nio-8088-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /public/create-user
+20:59:39.335 [http-nio-8088-exec-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        u.* 
+    FROM
+        users u 
+    WHERE
+        u.user_name =?
+20:59:39.351 [http-nio-8088-exec-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [admin]
+20:59:39.439 [http-nio-8088-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        accessrole0_.users_id as users_id4_0_0_,
+        accessrole0_.id as id1_0_0_,
+        accessrole0_.id as id1_0_1_,
+        accessrole0_.access_role_name as access_r2_0_1_,
+        accessrole0_.insert_date_time as insert_d3_0_1_ 
+    from
+        access_role accessrole0_ 
+    where
+        accessrole0_.users_id=?
+20:59:39.439 [http-nio-8088-exec-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [1ed29e88-d3b0-4498-8897-4b1fcc8da811]
+20:59:39.456 [http-nio-8088-exec-1] ERROR n.g.journalApp.service.UsersService - error occurred
+20:59:39.456 [http-nio-8088-exec-1] INFO  n.g.journalApp.service.UsersService - hahahhahhahhahahahhahahahhah
+20:59:39.456 [http-nio-8088-exec-1] WARN  n.g.journalApp.service.UsersService - hahahhahhahhahahahhahahahhah
+20:59:39.486 [http-nio-8088-exec-1] DEBUG o.s.s.w.c.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+21:00:34.772 [http-nio-8088-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing POST /public/create-user
+21:00:34.772 [http-nio-8088-exec-3] DEBUG o.s.s.w.c.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+21:00:34.773 [http-nio-8088-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+21:00:34.774 [http-nio-8088-exec-3] DEBUG o.s.s.w.a.i.FilterSecurityInterceptor - Authorized filter invocation [POST /public/create-user] with attributes [permitAll]
+21:00:34.774 [http-nio-8088-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured POST /public/create-user
+21:00:34.861 [http-nio-8088-exec-3] DEBUG org.hibernate.SQL - 
+    SELECT
+        u.* 
+    FROM
+        users u 
+    WHERE
+        u.user_name =?
+21:00:34.863 [http-nio-8088-exec-3] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [admin]
+21:00:34.865 [http-nio-8088-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        accessrole0_.users_id as users_id4_0_0_,
+        accessrole0_.id as id1_0_0_,
+        accessrole0_.id as id1_0_1_,
+        accessrole0_.access_role_name as access_r2_0_1_,
+        accessrole0_.insert_date_time as insert_d3_0_1_ 
+    from
+        access_role accessrole0_ 
+    where
+        accessrole0_.users_id=?
+21:00:34.866 [http-nio-8088-exec-3] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [1ed29e88-d3b0-4498-8897-4b1fcc8da811]
+21:00:34.868 [http-nio-8088-exec-3] ERROR n.g.journalApp.service.UsersService - error occurred
+21:00:34.868 [http-nio-8088-exec-3] INFO  n.g.journalApp.service.UsersService - hahahhahhahhahahahhahahahhah
+21:00:34.868 [http-nio-8088-exec-3] WARN  n.g.journalApp.service.UsersService - hahahhahhahhahahahhahahahhah
+21:00:34.870 [http-nio-8088-exec-3] DEBUG o.s.s.w.c.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+21:00:50.638 [RMI TCP Connection(11)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+21:00:50.642 [RMI TCP Connection(11)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8088"]
+21:00:50.643 [RMI TCP Connection(11)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+21:00:50.644 [RMI TCP Connection(11)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+21:00:50.648 [RMI TCP Connection(11)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8088"]
+21:00:50.650 [RMI TCP Connection(11)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8088"]
+21:00:50.654 [RMI TCP Connection(11)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:00:50.656 [RMI TCP Connection(11)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+21:00:50.669 [RMI TCP Connection(11)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+21:00:57.678 [restartedMain] INFO  n.g.journalApp.JournalApplication - Starting JournalApplication using Java 21.0.4 on DESKTOP-EN00QNP with PID 11152 (C:\Users\Legend\git\journalApplication\journalApp\target\classes started by Legend in C:\Users\Legend\git\journalApplication\journalApp)
+21:00:57.681 [restartedMain] INFO  n.g.journalApp.JournalApplication - No active profile set, falling back to 1 default profile: "default"
+21:00:57.731 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:00:57.731 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:00:58.316 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:00:58.374 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 49 ms. Found 3 JPA repository interfaces.
+21:00:58.922 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+21:00:58.930 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+21:00:58.932 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+21:00:58.932 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+21:00:59.006 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+21:00:59.006 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1274 ms
+21:00:59.043 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+21:00:59.215 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+21:00:59.226 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1:3306/journal_php_db'
+21:00:59.424 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+21:00:59.469 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+21:00:59.609 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+21:00:59.699 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+21:01:00.247 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21:01:00.257 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:01:00.306 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+21:01:00.734 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [authenticated] for Ant [pattern='/v1/**']
+21:01:00.747 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [hasRole('ROLE_ADMIN')] for Ant [pattern='/admin/**']
+21:01:00.749 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for any request
+21:01:00.757 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@39cde63, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@59e7da23, org.springframework.security.web.context.SecurityContextPersistenceFilter@54a16221, org.springframework.security.web.header.HeaderWriterFilter@3e450641, org.springframework.security.web.authentication.logout.LogoutFilter@323b3449, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6d17cac7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5245bd6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4b84b254, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3ffc192a, org.springframework.security.web.session.SessionManagementFilter@4bf4c84f, org.springframework.security.web.access.ExceptionTranslationFilter@14967d34, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@20749579]
+21:01:01.064 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:01:01.086 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+21:01:01.117 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+21:01:01.130 [restartedMain] INFO  n.g.journalApp.JournalApplication - Started JournalApplication in 3.845 seconds (JVM running for 4.75)
+21:01:37.861 [http-nio-8088-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+21:01:37.862 [http-nio-8088-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:01:37.865 [http-nio-8088-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+21:01:37.876 [http-nio-8088-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing POST /public/create-user
+21:01:37.882 [http-nio-8088-exec-2] DEBUG o.s.s.w.c.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+21:01:37.886 [http-nio-8088-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+21:01:37.891 [http-nio-8088-exec-2] DEBUG o.s.s.w.a.i.FilterSecurityInterceptor - Authorized filter invocation [POST /public/create-user] with attributes [permitAll]
+21:01:37.892 [http-nio-8088-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured POST /public/create-user
+21:01:38.116 [http-nio-8088-exec-2] DEBUG org.hibernate.SQL - 
+    SELECT
+        u.* 
+    FROM
+        users u 
+    WHERE
+        u.user_name =?
+21:01:38.132 [http-nio-8088-exec-2] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [admin]
+21:01:38.161 [http-nio-8088-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        accessrole0_.users_id as users_id4_0_0_,
+        accessrole0_.id as id1_0_0_,
+        accessrole0_.id as id1_0_1_,
+        accessrole0_.access_role_name as access_r2_0_1_,
+        accessrole0_.insert_date_time as insert_d3_0_1_ 
+    from
+        access_role accessrole0_ 
+    where
+        accessrole0_.users_id=?
+21:01:38.163 [http-nio-8088-exec-2] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [1ed29e88-d3b0-4498-8897-4b1fcc8da811]
+21:01:38.178 [http-nio-8088-exec-2] ERROR n.g.journalApp.service.UsersService - error occurred
+21:01:38.178 [http-nio-8088-exec-2] INFO  n.g.journalApp.service.UsersService - hahahhahhahhahahahhahahahhah
+21:01:38.178 [http-nio-8088-exec-2] WARN  n.g.journalApp.service.UsersService - hahahhahhahhahahahhahahahhah
+21:01:38.251 [http-nio-8088-exec-2] DEBUG o.s.s.w.c.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+21:01:53.636 [RMI TCP Connection(8)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+21:01:53.641 [RMI TCP Connection(8)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8088"]
+21:01:53.641 [RMI TCP Connection(8)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+21:01:53.643 [RMI TCP Connection(8)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+21:01:53.646 [RMI TCP Connection(8)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8088"]
+21:01:53.651 [RMI TCP Connection(8)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:01:53.654 [RMI TCP Connection(8)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+21:01:53.660 [RMI TCP Connection(8)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+21:02:01.143 [restartedMain] INFO  n.g.journalApp.JournalApplication - Starting JournalApplication using Java 21.0.4 on DESKTOP-EN00QNP with PID 4492 (C:\Users\Legend\git\journalApplication\journalApp\target\classes started by Legend in C:\Users\Legend\git\journalApplication\journalApp)
+21:02:01.146 [restartedMain] INFO  n.g.journalApp.JournalApplication - No active profile set, falling back to 1 default profile: "default"
+21:02:01.197 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:02:01.197 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:02:01.799 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:02:01.868 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 61 ms. Found 3 JPA repository interfaces.
+21:02:02.464 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+21:02:02.472 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+21:02:02.474 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+21:02:02.474 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+21:02:02.559 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+21:02:02.559 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1361 ms
+21:02:02.588 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+21:02:02.774 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+21:02:02.782 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1:3306/journal_php_db'
+21:02:02.974 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+21:02:03.026 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+21:02:03.182 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+21:02:03.284 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+21:02:03.849 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21:02:03.858 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:02:03.903 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+21:02:04.357 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [authenticated] for Ant [pattern='/v1/**']
+21:02:04.373 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [hasRole('ROLE_ADMIN')] for Ant [pattern='/admin/**']
+21:02:04.374 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for any request
+21:02:04.385 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@110d89c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@60e764e, org.springframework.security.web.context.SecurityContextPersistenceFilter@6f34af47, org.springframework.security.web.header.HeaderWriterFilter@4bf4c84f, org.springframework.security.web.authentication.logout.LogoutFilter@4e97010d, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@53838cc7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@791ad936, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@57eef22d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7cd7ad1a, org.springframework.security.web.session.SessionManagementFilter@343b60d9, org.springframework.security.web.access.ExceptionTranslationFilter@1016079a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@676f5758]
+21:02:04.692 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:02:04.708 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+21:02:04.725 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+21:02:04.734 [restartedMain] INFO  n.g.journalApp.JournalApplication - Started JournalApplication in 3.959 seconds (JVM running for 4.796)
+21:02:44.304 [http-nio-8088-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+21:02:44.304 [http-nio-8088-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:02:44.305 [http-nio-8088-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+21:02:44.358 [http-nio-8088-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing POST /public/create-user
+21:02:44.363 [http-nio-8088-exec-2] DEBUG o.s.s.w.c.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+21:02:44.375 [http-nio-8088-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+21:02:44.389 [http-nio-8088-exec-2] DEBUG o.s.s.w.a.i.FilterSecurityInterceptor - Authorized filter invocation [POST /public/create-user] with attributes [permitAll]
+21:02:44.391 [http-nio-8088-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured POST /public/create-user
+21:02:44.622 [http-nio-8088-exec-2] DEBUG org.hibernate.SQL - 
+    SELECT
+        u.* 
+    FROM
+        users u 
+    WHERE
+        u.user_name =?
+21:02:44.639 [http-nio-8088-exec-2] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [admin]
+21:02:44.671 [http-nio-8088-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        accessrole0_.users_id as users_id4_0_0_,
+        accessrole0_.id as id1_0_0_,
+        accessrole0_.id as id1_0_1_,
+        accessrole0_.access_role_name as access_r2_0_1_,
+        accessrole0_.insert_date_time as insert_d3_0_1_ 
+    from
+        access_role accessrole0_ 
+    where
+        accessrole0_.users_id=?
+21:02:44.671 [http-nio-8088-exec-2] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [1ed29e88-d3b0-4498-8897-4b1fcc8da811]
+21:02:44.686 [http-nio-8088-exec-2] ERROR n.g.journalApp.service.UsersService - error occurred
+21:02:44.686 [http-nio-8088-exec-2] INFO  n.g.journalApp.service.UsersService - hahahhahhahhahahahhahahahhah
+21:02:44.686 [http-nio-8088-exec-2] WARN  n.g.journalApp.service.UsersService - hahahhahhahhahahahhahahahhah
+21:02:44.718 [http-nio-8088-exec-2] DEBUG o.s.s.w.c.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
