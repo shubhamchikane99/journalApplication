@@ -230,3 +230,383 @@
 21:02:44.686 [http-nio-8088-exec-2] INFO  n.g.journalApp.service.UsersService - hahahhahhahhahahahhahahahhah
 21:02:44.686 [http-nio-8088-exec-2] WARN  n.g.journalApp.service.UsersService - hahahhahhahhahahahhahahahhah
 21:02:44.718 [http-nio-8088-exec-2] DEBUG o.s.s.w.c.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+22:00:16.608 [RMI TCP Connection(68)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+22:00:16.615 [RMI TCP Connection(68)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8088"]
+22:00:16.615 [RMI TCP Connection(68)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+22:00:16.618 [RMI TCP Connection(68)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+22:00:16.622 [RMI TCP Connection(68)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8088"]
+22:00:16.625 [RMI TCP Connection(68)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8088"]
+22:00:16.628 [RMI TCP Connection(68)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+22:00:16.634 [RMI TCP Connection(68)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+22:00:16.639 [RMI TCP Connection(68)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+22:00:39.557 [restartedMain] INFO  n.g.journalApp.JournalApplication - Starting JournalApplication using Java 21.0.4 on DESKTOP-EN00QNP with PID 2292 (C:\Users\Legend\git\journalApplication\journalApp\target\classes started by Legend in C:\Users\Legend\git\journalApplication\journalApp)
+22:00:39.560 [restartedMain] INFO  n.g.journalApp.JournalApplication - No active profile set, falling back to 1 default profile: "default"
+22:00:39.613 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+22:00:39.613 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+22:00:40.265 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+22:00:40.323 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 50 ms. Found 3 JPA repository interfaces.
+22:00:40.866 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+22:00:40.874 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+22:00:40.875 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+22:00:40.876 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+22:00:40.953 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+22:00:40.953 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1339 ms
+22:00:40.983 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+22:00:41.123 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+22:00:41.131 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1:3306/journal_php_db'
+22:00:41.296 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+22:00:41.340 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+22:00:41.485 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+22:00:41.578 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+22:00:42.148 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+22:00:42.159 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+22:00:42.204 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+22:00:42.641 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [authenticated] for Ant [pattern='/v1/**']
+22:00:42.655 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [hasRole('ROLE_ADMIN')] for Ant [pattern='/admin/**']
+22:00:42.656 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for any request
+22:00:42.664 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@79a307ed, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1ca2914b, org.springframework.security.web.context.SecurityContextPersistenceFilter@45078f60, org.springframework.security.web.header.HeaderWriterFilter@7a31e551, org.springframework.security.web.authentication.logout.LogoutFilter@37f598b3, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3d72642d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3177dcc4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@158bda4f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4674df9a, org.springframework.security.web.session.SessionManagementFilter@441b60d9, org.springframework.security.web.access.ExceptionTranslationFilter@64a4b644, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7ea0906d]
+22:00:43.010 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+22:00:43.026 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+22:00:43.044 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+22:00:43.051 [restartedMain] INFO  n.g.journalApp.JournalApplication - Started JournalApplication in 3.878 seconds (JVM running for 4.873)
+20:55:08.430 [restartedMain] INFO  n.g.journalApp.JournalApplication - Starting JournalApplication using Java 21.0.4 on DESKTOP-EN00QNP with PID 1364 (C:\Users\Legend\git\journalApplication\journalApp\target\classes started by Legend in C:\Users\Legend\git\journalApplication\journalApp)
+20:55:08.434 [restartedMain] INFO  n.g.journalApp.JournalApplication - No active profile set, falling back to 1 default profile: "default"
+20:55:08.493 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+20:55:08.493 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+20:55:09.902 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+20:55:09.972 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 58 ms. Found 3 JPA repository interfaces.
+20:55:10.772 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+20:55:10.784 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+20:55:10.787 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+20:55:10.787 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+20:55:10.886 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+20:55:10.887 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2393 ms
+20:55:10.924 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+20:55:11.133 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+20:55:11.142 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1:3306/journal_php_db'
+20:55:11.356 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+20:55:11.426 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+20:55:11.651 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+20:55:11.830 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+20:55:12.575 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+20:55:12.590 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+20:55:12.659 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+20:55:13.666 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [authenticated] for Ant [pattern='/v1/**']
+20:55:13.687 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [hasRole('ROLE_ADMIN')] for Ant [pattern='/admin/**']
+20:55:13.689 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for any request
+20:55:13.698 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3258cb27, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6e46dcf7, org.springframework.security.web.context.SecurityContextPersistenceFilter@e86b237, org.springframework.security.web.header.HeaderWriterFilter@2d01485a, org.springframework.security.web.authentication.logout.LogoutFilter@31fcb2c5, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6db44ee9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@116556f4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7a27e8a2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@52d86bd7, org.springframework.security.web.session.SessionManagementFilter@182b7e20, org.springframework.security.web.access.ExceptionTranslationFilter@9936526, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7291f4df]
+20:55:14.119 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+20:55:14.138 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+20:55:14.163 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+20:55:14.174 [restartedMain] INFO  n.g.journalApp.JournalApplication - Started JournalApplication in 6.234 seconds (JVM running for 10.798)
+21:08:56.540 [RMI TCP Connection(19)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+21:08:56.545 [RMI TCP Connection(19)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8088"]
+21:08:56.545 [RMI TCP Connection(19)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+21:08:56.550 [RMI TCP Connection(19)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8088"]
+21:08:56.552 [RMI TCP Connection(19)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8088"]
+21:08:56.556 [RMI TCP Connection(19)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:08:56.559 [RMI TCP Connection(19)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+21:08:56.566 [RMI TCP Connection(19)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+21:09:04.068 [restartedMain] INFO  n.g.journalApp.JournalApplication - Starting JournalApplication using Java 21.0.4 on DESKTOP-EN00QNP with PID 4788 (C:\Users\Legend\git\journalApplication\journalApp\target\classes started by Legend in C:\Users\Legend\git\journalApplication\journalApp)
+21:09:04.072 [restartedMain] INFO  n.g.journalApp.JournalApplication - No active profile set, falling back to 1 default profile: "default"
+21:09:04.138 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:09:04.138 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:09:04.732 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:09:04.788 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 48 ms. Found 3 JPA repository interfaces.
+21:09:05.367 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+21:09:05.374 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+21:09:05.376 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+21:09:05.376 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+21:09:05.471 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+21:09:05.471 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1332 ms
+21:09:05.499 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+21:09:05.635 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+21:09:05.643 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1:3306/journal_php_db'
+21:09:05.811 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+21:09:05.856 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+21:09:06.008 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+21:09:06.099 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+21:09:06.624 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21:09:06.633 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:09:06.678 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+21:09:07.109 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [authenticated] for Ant [pattern='/v1/**']
+21:09:07.123 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [hasRole('ROLE_ADMIN')] for Ant [pattern='/admin/**']
+21:09:07.125 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for any request
+21:09:07.133 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7a6b6e34, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1dba8598, org.springframework.security.web.context.SecurityContextPersistenceFilter@1114ebfb, org.springframework.security.web.header.HeaderWriterFilter@2c5d2d78, org.springframework.security.web.authentication.logout.LogoutFilter@3177dcc4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@18c71f5f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c2b41ee, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5c616194, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4250fa4c, org.springframework.security.web.session.SessionManagementFilter@39fa6e4a, org.springframework.security.web.access.ExceptionTranslationFilter@2591c2eb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7908bb3]
+21:09:07.424 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:09:07.440 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+21:09:07.458 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+21:09:07.466 [restartedMain] INFO  n.g.journalApp.JournalApplication - Started JournalApplication in 3.773 seconds (JVM running for 4.704)
+21:12:44.098 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+21:12:44.104 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8088"]
+21:12:44.104 [Thread-5] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+21:12:44.109 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8088"]
+21:12:44.113 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8088"]
+21:12:44.117 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:12:44.121 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+21:12:44.132 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+21:16:18.263 [restartedMain] INFO  n.g.journalApp.JournalApplication - Starting JournalApplication using Java 21.0.4 on DESKTOP-EN00QNP with PID 4788 (C:\Users\Legend\git\journalApplication\journalApp\target\classes started by Legend in C:\Users\Legend\git\journalApplication\journalApp)
+21:16:18.265 [restartedMain] INFO  n.g.journalApp.JournalApplication - No active profile set, falling back to 1 default profile: "default"
+21:16:18.524 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:16:18.539 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 3 JPA repository interfaces.
+21:16:18.637 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+21:16:18.638 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+21:16:18.639 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+21:16:18.639 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+21:16:18.653 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+21:16:18.653 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 381 ms
+21:16:18.665 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+21:16:18.668 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+21:16:18.668 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://127.0.0.1:3306/journal_php_db'
+21:16:18.696 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+21:16:18.700 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+21:16:18.757 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21:16:18.758 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:16:18.786 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+21:16:18.928 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [authenticated] for Ant [pattern='/v1/**']
+21:16:18.928 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [hasRole('ROLE_ADMIN')] for Ant [pattern='/admin/**']
+21:16:18.929 [restartedMain] DEBUG o.s.s.w.a.e.ExpressionBasedFilterInvocationSecurityMetadataSource - Adding web access control expression [permitAll] for any request
+21:16:18.931 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@53b374d6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@63f7bb7f, org.springframework.security.web.context.SecurityContextPersistenceFilter@57267040, org.springframework.security.web.header.HeaderWriterFilter@74919742, org.springframework.security.web.authentication.logout.LogoutFilter@5a4cbd3a, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1d0d7ea2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6ca025fb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@14f394aa, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@40105c1f, org.springframework.security.web.session.SessionManagementFilter@4b41836b, org.springframework.security.web.access.ExceptionTranslationFilter@7f689aad, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4efda731]
+21:16:19.022 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:16:19.031 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+21:16:19.034 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+21:16:19.041 [restartedMain] INFO  n.g.journalApp.JournalApplication - Started JournalApplication in 0.859 seconds (JVM running for 436.279)
+21:16:19.046 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+21:18:02.237 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+21:18:02.253 [Thread-7] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8088"]
+21:18:02.254 [Thread-7] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+21:18:02.259 [Thread-7] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8088"]
+21:18:02.262 [Thread-7] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8088"]
+21:18:02.265 [Thread-7] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:18:02.267 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+21:18:02.271 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+21:18:02.337 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
+org.yaml.snakeyaml.parser.ParserException: while parsing a block mapping
+ in 'reader', line 2, column 3:
+      port: 8088
+      ^
+expected <block end>, but found '<block mapping start>'
+ in 'reader', line 18, column 5:
+        org:
+        ^
+
+	at org.yaml.snakeyaml.parser.ParserImpl$ParseBlockMappingKey.produce(ParserImpl.java:644)
+	at org.yaml.snakeyaml.parser.ParserImpl.peekEvent(ParserImpl.java:166)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector$1.peek(CommentEventsCollector.java:59)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector$1.peek(CommentEventsCollector.java:45)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector.collectEvents(CommentEventsCollector.java:140)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector.collectEvents(CommentEventsCollector.java:119)
+	at org.yaml.snakeyaml.composer.Composer.composeScalarNode(Composer.java:214)
+	at org.yaml.snakeyaml.composer.Composer.composeNode(Composer.java:184)
+	at org.yaml.snakeyaml.composer.Composer.composeValueNode(Composer.java:314)
+	at org.yaml.snakeyaml.composer.Composer.composeMappingChildren(Composer.java:305)
+	at org.yaml.snakeyaml.composer.Composer.composeMappingNode(Composer.java:286)
+	at org.yaml.snakeyaml.composer.Composer.composeNode(Composer.java:188)
+	at org.yaml.snakeyaml.composer.Composer.composeValueNode(Composer.java:314)
+	at org.yaml.snakeyaml.composer.Composer.composeMappingChildren(Composer.java:305)
+	at org.yaml.snakeyaml.composer.Composer.composeMappingNode(Composer.java:286)
+	at org.yaml.snakeyaml.composer.Composer.composeNode(Composer.java:188)
+	at org.yaml.snakeyaml.composer.Composer.getNode(Composer.java:115)
+	at org.yaml.snakeyaml.constructor.BaseConstructor.getData(BaseConstructor.java:135)
+	at org.springframework.boot.env.OriginTrackedYamlLoader$OriginTrackingConstructor.getData(OriginTrackedYamlLoader.java:103)
+	at org.yaml.snakeyaml.Yaml$1.next(Yaml.java:514)
+	at org.springframework.beans.factory.config.YamlProcessor.process(YamlProcessor.java:199)
+	at org.springframework.beans.factory.config.YamlProcessor.process(YamlProcessor.java:166)
+	at org.springframework.boot.env.OriginTrackedYamlLoader.load(OriginTrackedYamlLoader.java:88)
+	at org.springframework.boot.env.YamlPropertySourceLoader.load(YamlPropertySourceLoader.java:50)
+	at org.springframework.boot.context.config.StandardConfigDataLoader.load(StandardConfigDataLoader.java:54)
+	at org.springframework.boot.context.config.StandardConfigDataLoader.load(StandardConfigDataLoader.java:36)
+	at org.springframework.boot.context.config.ConfigDataLoaders.load(ConfigDataLoaders.java:108)
+	at org.springframework.boot.context.config.ConfigDataImporter.load(ConfigDataImporter.java:132)
+	at org.springframework.boot.context.config.ConfigDataImporter.resolveAndLoad(ConfigDataImporter.java:87)
+	at org.springframework.boot.context.config.ConfigDataEnvironmentContributors.withProcessedImports(ConfigDataEnvironmentContributors.java:116)
+	at org.springframework.boot.context.config.ConfigDataEnvironment.processInitial(ConfigDataEnvironment.java:240)
+	at org.springframework.boot.context.config.ConfigDataEnvironment.processAndApply(ConfigDataEnvironment.java:227)
+	at org.springframework.boot.context.config.ConfigDataEnvironmentPostProcessor.postProcessEnvironment(ConfigDataEnvironmentPostProcessor.java:102)
+	at org.springframework.boot.context.config.ConfigDataEnvironmentPostProcessor.postProcessEnvironment(ConfigDataEnvironmentPostProcessor.java:94)
+	at org.springframework.boot.env.EnvironmentPostProcessorApplicationListener.onApplicationEnvironmentPreparedEvent(EnvironmentPostProcessorApplicationListener.java:102)
+	at org.springframework.boot.env.EnvironmentPostProcessorApplicationListener.onApplicationEvent(EnvironmentPostProcessorApplicationListener.java:87)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:178)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:171)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:145)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:133)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:66)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:65)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:343)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at net.google.journalApp.JournalApplication.main(JournalApplication.java:10)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+21:23:02.002 [restartedMain] INFO  n.g.journalApp.JournalApplication - Starting JournalApplication using Java 21.0.4 on DESKTOP-EN00QNP with PID 1016 (C:\Users\Legend\git\journalApplication\journalApp\target\classes started by Legend in C:\Users\Legend\git\journalApplication\journalApp)
+21:23:02.005 [restartedMain] INFO  n.g.journalApp.JournalApplication - No active profile set, falling back to 1 default profile: "default"
+21:23:02.055 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:23:02.055 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:23:02.640 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:23:02.696 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 48 ms. Found 3 JPA repository interfaces.
+21:23:03.262 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+21:23:03.269 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+21:23:03.271 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+21:23:03.271 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+21:23:03.348 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+21:23:03.349 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1291 ms
+21:23:03.374 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+21:23:03.618 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+21:23:03.629 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:e423e8d3-9f8f-4f34-b9cd-4bc0bf0b1191'
+21:23:03.777 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+21:23:03.825 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+21:23:03.961 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+21:23:04.074 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+21:23:04.655 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21:23:04.665 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:23:04.709 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+21:23:05.155 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5b2b7a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@86251e8, org.springframework.security.web.context.SecurityContextPersistenceFilter@2e3cdf0e, org.springframework.security.web.header.HeaderWriterFilter@42372a4, org.springframework.security.web.authentication.logout.LogoutFilter@3aaf993f, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5ab5cea, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@701b4632, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5e0611a5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@543b24ac, org.springframework.security.web.session.SessionManagementFilter@57b42f29, org.springframework.security.web.access.ExceptionTranslationFilter@7b321214, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3ad0f8a7]
+21:23:05.446 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:23:05.462 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+21:23:05.480 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+21:23:05.489 [restartedMain] INFO  n.g.journalApp.JournalApplication - Started JournalApplication in 3.832 seconds (JVM running for 6.851)
+21:25:04.521 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 36 class path changes (0 additions, 0 deletions, 36 modifications)
+21:25:04.533 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8088"]
+21:25:04.533 [Thread-5] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+21:25:04.536 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8088"]
+21:25:04.538 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8088"]
+21:25:04.541 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:25:04.541 [Thread-5] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+21:25:04.760 [Thread-5] WARN  o.s.b.f.s.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+21:25:04.761 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+21:25:04.764 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+21:25:04.860 [restartedMain] INFO  n.g.journalApp.JournalApplication - Starting JournalApplication using Java 21.0.4 on DESKTOP-EN00QNP with PID 1016 (C:\Users\Legend\git\journalApplication\journalApp\target\classes started by Legend in C:\Users\Legend\git\journalApplication\journalApp)
+21:25:04.861 [restartedMain] INFO  n.g.journalApp.JournalApplication - No active profile set, falling back to 1 default profile: "default"
+21:25:05.047 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:25:05.061 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 3 JPA repository interfaces.
+21:25:05.163 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+21:25:05.164 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+21:25:05.165 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+21:25:05.166 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+21:25:05.179 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+21:25:05.180 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 316 ms
+21:25:05.194 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+21:25:05.197 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+21:25:05.198 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:63843b1f-a55e-43f2-a1be-0b9ad3a91070'
+21:25:05.218 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+21:25:05.223 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+21:25:05.273 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21:25:05.274 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:25:05.292 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+21:25:05.413 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@79a55ed4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@20b9d76c, org.springframework.security.web.context.SecurityContextPersistenceFilter@94c38b8, org.springframework.security.web.header.HeaderWriterFilter@76aee611, org.springframework.security.web.authentication.logout.LogoutFilter@200c1ecc, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5272fd9f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7c84ddd8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7d1b2237, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@575bee0f, org.springframework.security.web.session.SessionManagementFilter@a47f08d, org.springframework.security.web.access.ExceptionTranslationFilter@7b71c980, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6dd348dc]
+21:25:05.487 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:25:05.497 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+21:25:05.501 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+21:25:05.509 [restartedMain] INFO  n.g.journalApp.JournalApplication - Started JournalApplication in 0.677 seconds (JVM running for 126.871)
+21:25:05.517 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+21:33:57.771 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+21:33:57.781 [Thread-7] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8088"]
+21:33:57.781 [Thread-7] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+21:33:57.788 [Thread-7] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8088"]
+21:33:57.790 [Thread-7] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8088"]
+21:33:57.795 [Thread-7] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:33:57.795 [Thread-7] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+21:33:58.012 [Thread-7] WARN  o.s.b.f.s.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+21:33:58.014 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+21:33:58.018 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+21:41:18.591 [restartedMain] INFO  n.g.journalApp.JournalApplication - Starting JournalApplication using Java 21.0.4 on DESKTOP-EN00QNP with PID 9656 (C:\Users\Legend\git\journalApplication\journalApp\target\classes started by Legend in C:\Users\Legend\git\journalApplication\journalApp)
+21:41:18.594 [restartedMain] INFO  n.g.journalApp.JournalApplication - No active profile set, falling back to 1 default profile: "default"
+21:41:18.643 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:41:18.644 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:41:19.256 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:41:19.315 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 50 ms. Found 3 JPA repository interfaces.
+21:41:19.871 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+21:41:19.878 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+21:41:19.880 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+21:41:19.880 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+21:41:19.960 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+21:41:19.960 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1316 ms
+21:41:19.986 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+21:41:20.153 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+21:41:20.164 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:e8bcb90e-60c1-4611-bbef-6ce2d6ef6493'
+21:41:20.314 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+21:41:20.359 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+21:41:20.497 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+21:41:20.610 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+21:41:21.209 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21:41:21.219 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:41:21.266 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+21:41:21.717 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@12ec6ee6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7cb5c424, org.springframework.security.web.context.SecurityContextPersistenceFilter@5f08b495, org.springframework.security.web.header.HeaderWriterFilter@170ff97, org.springframework.security.web.authentication.logout.LogoutFilter@966fa20, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@138b3595, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@25a29a66, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@199d852a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5d33ee61, org.springframework.security.web.session.SessionManagementFilter@6596944c, org.springframework.security.web.access.ExceptionTranslationFilter@2ce9fed6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2ce14ac7]
+21:41:22.019 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:41:22.035 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+21:41:22.053 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+21:41:22.062 [restartedMain] INFO  n.g.journalApp.JournalApplication - Started JournalApplication in 3.83 seconds (JVM running for 4.709)
+21:51:01.245 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+21:51:01.264 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8088"]
+21:51:01.265 [Thread-5] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+21:51:01.273 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8088"]
+21:51:01.275 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8088"]
+21:51:01.279 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:51:01.280 [Thread-5] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+21:51:01.493 [Thread-5] WARN  o.s.b.f.s.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+21:51:01.496 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+21:51:01.510 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+21:51:01.621 [restartedMain] INFO  n.g.journalApp.JournalApplication - Starting JournalApplication using Java 21.0.4 on DESKTOP-EN00QNP with PID 9656 (C:\Users\Legend\git\journalApplication\journalApp\target\classes started by Legend in C:\Users\Legend\git\journalApplication\journalApp)
+21:51:01.621 [restartedMain] INFO  n.g.journalApp.JournalApplication - No active profile set, falling back to 1 default profile: "default"
+21:51:01.792 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21:51:01.805 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 3 JPA repository interfaces.
+21:51:01.907 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+21:51:01.908 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+21:51:01.908 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+21:51:01.908 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+21:51:01.927 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+21:51:01.927 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 303 ms
+21:51:01.938 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+21:51:01.940 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+21:51:01.940 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:ca0fae76-c72b-4e1a-9a5b-10c2715ff19c'
+21:51:01.965 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+21:51:01.969 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+21:51:02.033 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21:51:02.033 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:51:02.057 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+21:51:02.199 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@34289f62, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@54087560, org.springframework.security.web.context.SecurityContextPersistenceFilter@7370ed1f, org.springframework.security.web.header.HeaderWriterFilter@3317bf3b, org.springframework.security.web.authentication.logout.LogoutFilter@575875fb, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5b0cfead, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@8a481a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@e6ad157, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@11dc21cf, org.springframework.security.web.session.SessionManagementFilter@7b908539, org.springframework.security.web.access.ExceptionTranslationFilter@c5feac9, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@13aad771]
+21:51:02.292 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:51:02.300 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+21:51:02.303 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+21:51:02.308 [restartedMain] INFO  n.g.journalApp.JournalApplication - Started JournalApplication in 0.721 seconds (JVM running for 584.955)
+21:51:02.315 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+22:46:08.243 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+22:46:08.247 [Thread-7] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8088"]
+22:46:08.247 [Thread-7] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+22:46:08.250 [Thread-7] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8088"]
+22:46:08.252 [Thread-7] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8088"]
+22:46:08.255 [Thread-7] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+22:46:08.256 [Thread-7] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+22:46:08.463 [Thread-7] WARN  o.s.b.f.s.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+22:46:08.464 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+22:46:08.470 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+22:46:08.557 [restartedMain] INFO  n.g.journalApp.JournalApplication - Starting JournalApplication using Java 21.0.4 on DESKTOP-EN00QNP with PID 9656 (C:\Users\Legend\git\journalApplication\journalApp\target\classes started by Legend in C:\Users\Legend\git\journalApplication\journalApp)
+22:46:08.558 [restartedMain] INFO  n.g.journalApp.JournalApplication - No active profile set, falling back to 1 default profile: "default"
+22:46:08.816 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+22:46:08.829 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12 ms. Found 3 JPA repository interfaces.
+22:46:08.930 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+22:46:08.931 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+22:46:08.931 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+22:46:08.931 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.80]
+22:46:08.945 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+22:46:08.946 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 385 ms
+22:46:08.957 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+22:46:08.960 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+22:46:08.961 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:c90e4fb5-b999-4a65-af00-ce785180e042'
+22:46:08.997 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+22:46:09.004 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+22:46:09.073 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+22:46:09.073 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+22:46:09.096 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+22:46:09.227 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@30fa7679, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38388d2a, org.springframework.security.web.context.SecurityContextPersistenceFilter@429ef9f8, org.springframework.security.web.header.HeaderWriterFilter@4d7516cb, org.springframework.security.web.authentication.logout.LogoutFilter@1193744, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7b2116c7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@63102e6c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6b6bf8b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3b6cd548, org.springframework.security.web.session.SessionManagementFilter@63566997, org.springframework.security.web.access.ExceptionTranslationFilter@536e4837, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2054606d]
+22:46:09.318 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+22:46:09.325 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+22:46:09.328 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+22:46:09.334 [restartedMain] INFO  n.g.journalApp.JournalApplication - Started JournalApplication in 0.823 seconds (JVM running for 3891.981)
+22:46:09.337 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
