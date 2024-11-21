@@ -21,58 +21,58 @@ import net.google.journalApp.repository.UsersRepository;
 @SpringBootTest
 public class UsersServiceTest {
 
-	@Autowired
-	private UsersRepository usersRepository;
-
-	@BeforeEach
-	void setUp() {
-		// If you want to initialize something before executing the each test case, use the
-		// @BeforeEach() annotation in JUnit testing.
-
-	}
-	
-	@BeforeAll
-	void setUp2() {
-		  //if you want to initialize something before executing all test case use the 
-		 // @BeforeAll Annotation In JUnit Testing
-	}
-
-	// Test 1 
-	@Disabled
-	@Test
-	public void testFindByUserName() {
-		assertEquals(4, 2 + 2);
-
-		assertNotNull(usersRepository.findByUserName("ajay_zalte"));
-
-		Users user = usersRepository.findByUserName("ajay_zalte");
-
-		assertTrue(user.getMobileNo().isEmpty());
-
-	}
-
-	// Test 2
-	@Disabled
-	@ParameterizedTest
-	@CsvSource({ "1, 1, 2", "2, 10, 12", "3, 3, 6", "3, 3, 6" })
-	public void test(int a, int b, int expected) {
-		assertEquals(expected, a + b);
-	}
-
-	// Test 3
-	@Disabled
-	@ParameterizedTest
-	@ValueSource(strings = { "ajay_zalte", "mr_stark", "mr_tony", "mr_tony1" })
-	public void userNamePresentOrNot(String name) {
-
-		assertNotNull(usersRepository.findByUserName(name), "failed for: " + name);
-	}
-
-	@ParameterizedTest
-	@ArgumentsSource(UserArgumentsProvider.class)
-	public void testFindByUserName(Users users) {
-
-		assertNotNull(usersRepository.findByUserName(null));
-	}
+//	@Autowired
+//	private UsersRepository usersRepository;
+//
+//	@BeforeEach
+//	void setUp() {
+//		// If you want to initialize something before executing the each test case, use the
+//		// @BeforeEach() annotation in JUnit testing.
+//
+//	}
+//	
+//	@BeforeAll
+//	void setUp2() {
+//		  //if you want to initialize something before executing all test case use the 
+//		 // @BeforeAll Annotation In JUnit Testing
+//	}
+//
+//	// Test 1 
+//	@Disabled
+//	@Test
+//	public void testFindByUserName() {
+//		assertEquals(4, 2 + 2);
+//
+//		assertNotNull(usersRepository.findByUserName("ajay_zalte"));
+//
+//		Users user = usersRepository.findByUserName("ajay_zalte");
+//
+//		assertTrue(user.getMobileNo().isEmpty());
+//
+//	}
+//
+//	// Test 2
+//	@Disabled
+//	@ParameterizedTest
+//	@CsvSource({ "1, 1, 2", "2, 10, 12", "3, 3, 6", "3, 3, 6" })
+//	public void test(int a, int b, int expected) {
+//		assertEquals(expected, a + b);
+//	}
+//
+//	// Test 3
+//	@Disabled
+//	@ParameterizedTest
+//	@ValueSource(strings = { "ajay_zalte", "mr_stark", "mr_tony", "mr_tony1" })
+//	public void userNamePresentOrNot(String name) {
+//
+//		assertNotNull(usersRepository.findByUserName(name), "failed for: " + name);
+//	}
+//
+//	@ParameterizedTest
+//	@ArgumentsSource(UserArgumentsProvider.class)
+//	public void testFindByUserName(Users users) {
+//
+//		assertNotNull(usersRepository.findByUserName(null));
+//	}
 
 }

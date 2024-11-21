@@ -32,7 +32,7 @@ public class JournalEntryService {
 	private static final Logger logger = LoggerFactory.getLogger(JournalEntryService.class);
 
 	public JournalEntry saveJournalEntry(JournalEntry journalEntry) {
-		// Save Journal Entry
+		// Save Journal Entry 
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
@@ -49,7 +49,7 @@ public class JournalEntryService {
 		// Get All Journal Entry By User
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String userName = authentication.getName();
+		String userName = authentication.getName(); 
 		Users findUserName = userRepository.findByUserName(userName);
 
 		return dTOJournalEntryRepository.journalEntryByUserId(findUserName.getId());
