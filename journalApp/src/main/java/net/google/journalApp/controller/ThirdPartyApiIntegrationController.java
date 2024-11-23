@@ -17,9 +17,9 @@ public class ThirdPartyApiIntegrationController {
 	@Autowired
 	private ThirdPartyApiIntegrationService thirdPartyApiIntegrationService;
 
-//	@GetMapping("/weather-api")
-//	public ServiceResponse weatherApiIntegration(@RequestParam("cityName") String cityName)
-//			throws ResourceNotFoundException {
-//		return ServiceResponse.asSuccess(thirdPartyApiIntegrationService.weatherApiIntegration(cityName));
-//	}
+	@GetMapping("/weather-api")
+	public ServiceResponse weatherApiIntegration(@RequestParam("cityName") String cityName)
+			throws ResourceNotFoundException {
+		return ServiceResponse.asSuccess(thirdPartyApiIntegrationService.weatherApiIntegration(cityName));
+	}
 }
