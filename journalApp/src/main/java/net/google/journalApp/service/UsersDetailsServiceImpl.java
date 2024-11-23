@@ -22,7 +22,7 @@ public class UsersDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String userName) {
 
-		System.err.println("userName");
+		System.err.println("userName " + userName);
 		Users users = usersRepository.findByUserName(userName);
 		
 		System.err.println("users " + users);
