@@ -16,7 +16,7 @@ public class ThirdPartyApiIntegrationService {
 
 		RestTemplate restTemplate = new RestTemplate();
 
-		String finalAPI = Constant.API.replace("CITY", cityName).replace("API_KEY", Constant.weatherApiKey);
+		  String finalAPI = Constant.API.replace("CITY", cityName).replace("API_KEY", Constant.weatherApiKey);
 
 		ResponseEntity<Weather> reponse = restTemplate.exchange(finalAPI, HttpMethod.GET, null, Weather.class);
 		Weather weatherRes = reponse.getBody();
