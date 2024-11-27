@@ -54,11 +54,11 @@ public class UsersService {
 			errorMessage.setUsers(saveUsers);
 		}
 		
-		log.error("error occurred");
-		log.info("hahahhahhahhahahahhahahahhah");
-		log.warn("hahahhahhahhahahahhahahahhah");
-		log.debug("hahahhahhahhahahahhahahahhah");
-		log.trace("hahahhahhahhahahahhahahahhah");
+//		log.error("error occurred");
+//		log.info("hahahhahhahhahahahhahahahhah");
+//		log.warn("hahahhahhahhahahahhahahahhah");
+//		log.debug("hahahhahhahhahahahhahahahhah");
+//		log.trace("hahahhahhahhahahahhahahahhah");
 		
 		return errorMessage;
 	}
