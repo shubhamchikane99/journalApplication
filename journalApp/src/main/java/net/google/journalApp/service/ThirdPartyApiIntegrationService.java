@@ -26,8 +26,6 @@ public class ThirdPartyApiIntegrationService {
 		ResponseEntity<Weather> reponse = restTemplate.exchange(finalAPI, HttpMethod.GET, null, Weather.class);
 		Weather weatherRes = reponse.getBody();
 
-		System.err.println("weatherRes " + weatherRes);
-
 		return weatherRes;
 	}
 
