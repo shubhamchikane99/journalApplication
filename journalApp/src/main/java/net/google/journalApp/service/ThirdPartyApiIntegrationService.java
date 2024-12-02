@@ -16,7 +16,7 @@ public class ThirdPartyApiIntegrationService {
 	private static final String API = "http://api.weatherstack.com/current?access_key=API_KEY&query=CITY";
 
 	@Autowired
-	private RestTemplate restTemplate;
+	private RestTemplate restTemplate; 
 
 	public Weather weatherApiIntegration(String cityName) {
 		// Weather API Integration
