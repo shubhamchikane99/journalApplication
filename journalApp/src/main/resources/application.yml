@@ -26,4 +26,5 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
         id.new_generator_mappings: false
-        format_sql: true
+        format_sql: true  
+weather_api_key: 7d7664073fb43abe8381fea1ff1b7a0e; 
