@@ -29,7 +29,7 @@ public class ThirdPartyApiIntegrationService {
 		ResponseEntity<Weather> reponse = restTemplate.exchange(finalAPI, HttpMethod.GET, null, Weather.class);
 		Weather weatherRes = reponse.getBody();
 
-		return weatherRes;
+		return weatherRes; 
 	}
 
 }
