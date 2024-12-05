@@ -34,7 +34,7 @@ public class ConfigJournalAppController {
 
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/{id}") 
 	public ServiceResponse deleteConfigJournalAppById(@PathVariable("id") String id) {
 
 		return ServiceResponse.asSuccess(configJournalAppService.deleteConfigJournalAppById(id));
