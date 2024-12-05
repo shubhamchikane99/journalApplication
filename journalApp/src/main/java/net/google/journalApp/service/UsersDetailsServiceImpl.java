@@ -25,8 +25,6 @@ public class UsersDetailsServiceImpl implements UserDetailsService {
 		System.err.println("userName " + userName);
 		Users users = usersRepository.findByUserName(userName);
 		
-		System.err.println("users " + users);
-
 		if (users != null) {
 			
 			List<AccessRole> accessRoles = users.getAccessRole(); // Ensure the return type is correct
