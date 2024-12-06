@@ -33,7 +33,7 @@ public class ConfigJournalAppService {
 	}
 
 	public ErrorMessage deleteConfigJournalAppById(String id) {
-		// Journal Entry Delete By Id
+		// Journal Entry Delete By Id 
 
 		ErrorMessage errorMessage = new ErrorMessage();
 
