@@ -7,28 +7,34 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import net.google.journalApp.cache.AppCache;
 import net.google.journalApp.entity.Weather;
 
 @Service
 public class ThirdPartyApiIntegrationService {
 
 	
-	@Value("${weather_api_key}")
-	private String weatherApiKey;
+	@Value("${weather_key}")
+	private String weatherKey;
+	
 
-	private static final String API = "http://api.weatherstack.com/current?access_key=API_KEY&query=CITY";
+	//private static  String API = "http://api.weatherstack.com/current?access_key=weatherKey&query=city";
 
 	@Autowired
 	private RestTemplate restTemplate; 
 
+	@Autowired
+	private AppCache appCache;
+	
 	public Weather weatherApiIntegration(String cityName) {
 		// Weather API Integration
 
-		String finalAPI = API.replace("CITY", cityName).replace("weatherApiKey", weatherApiKey);
+		String finalAPI = appCache.APP_CACHE.get("weather_api").replace("city", cityName).replace("weatherKey", weatherKey);
 
 		ResponseEntity<Weather> reponse = restTemplate.exchange(finalAPI, HttpMethod.GET, null, Weather.class);
 		Weather weatherRes = reponse.getBody();
 
+		System.err.println("weatherRes " + weatherRes);
 		return weatherRes; 
 	}
 
