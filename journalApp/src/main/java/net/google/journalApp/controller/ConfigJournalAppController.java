@@ -26,6 +26,13 @@ public class ConfigJournalAppController {
 		return ServiceResponse.asSuccess(configJournalAppService.saveConfigJournalApp(configJournalApp));
 
 	}
+	
+	@GetMapping
+	public ServiceResponse getAllJournalEntryByUser() {
+
+		return ServiceResponse.asSuccess(configJournalAppService.getAllConfigJournalApp());
+
+	}
 
 	@GetMapping("/{id}")
 	public ServiceResponse findConfigJournalAppById(@PathVariable("id") String id) {

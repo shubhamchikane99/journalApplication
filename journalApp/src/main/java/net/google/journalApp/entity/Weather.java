@@ -12,6 +12,23 @@ import lombok.Setter;
 public class Weather {
 
 	private Current current;
+	
+	private Location location;
+	
+	@Getter
+	@Setter
+	public static class Location {
+		  
+		@JsonProperty("name")
+		private String name;
+		
+		@JsonProperty("timezone_id")
+		private String timezoneId;
+		
+		@JsonProperty("localtime")
+		private String localtime;
+		
+	}
 
 	@Getter
 	@Setter

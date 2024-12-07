@@ -1,5 +1,6 @@
 package net.google.journalApp.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,12 @@ public class ConfigJournalAppService {
 		return configJournalAppRepository.save(configJournalApp);
 	}
 
+	public List<ConfigJournalApp> getAllConfigJournalApp() {
+		// Get All Journal Entry By User
+
+		return configJournalAppRepository.getAllConfigJournalApp();
+	}
+
 	public ConfigJournalApp configJournalAppById(String id) {
 		// Journal Entry By Id
 
@@ -33,7 +40,7 @@ public class ConfigJournalAppService {
 	}
 
 	public ErrorMessage deleteConfigJournalAppById(String id) {
-		// Journal Entry Delete By Id 
+		// Journal Entry Delete By Id
 
 		ErrorMessage errorMessage = new ErrorMessage();
 
