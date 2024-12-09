@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import net.google.journalApp.cache.AppCache;
 import net.google.journalApp.entity.Users;
 import net.google.journalApp.exception.ServiceResponse;
 import net.google.journalApp.service.UsersService;
@@ -18,6 +19,9 @@ public class PublicController {
 	@Autowired
 	private UsersService usersService;
 
+	@Autowired
+	private AppCache appCache;
+
 	@PostMapping("/create-user")
 	public ServiceResponse saveUsers(@RequestBody Users users) {
 
@@ -25,10 +29,17 @@ public class PublicController {
 	}
 
 	@GetMapping("/health-check")
-	
+
 	public String healthCheck() {
 
 		return "OK";
+	}
+
+	@GetMapping("/clear-app-cache")
+
+	public void clearAppCache() {
+
+		appCache.init();
 	}
 
 }

@@ -18,10 +18,12 @@ public class AppCache {
 	@Autowired
 	private ConfigJournalAppRepository configJournalAppRepository;
 
-	public Map<String, String> APP_CACHE = new HashMap<>();;
+	public Map<String, String> APP_CACHE;
 
 	@PostConstruct
 	public void init() {
+
+		APP_CACHE = new HashMap<>();
 
 		List<ConfigJournalApp> all = configJournalAppRepository.getAllConfigJournalApp();
 
