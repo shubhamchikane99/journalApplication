@@ -29,7 +29,7 @@ public class ThirdPartyApiIntegrationService {
 	public Weather weatherApiIntegration(String cityName) {
 		// Weather API Integration
 
-		String finalAPI = appCache.APP_CACHE.get("weather_api").replace("city", cityName).replace("weatherKey", weatherKey);
+		String finalAPI = appCache.APP_CACHE.get("weather_api").replace("<city>", cityName).replace("<weatherKey>", weatherKey);
 
 		ResponseEntity<Weather> reponse = restTemplate.exchange(finalAPI, HttpMethod.GET, null, Weather.class);
 		Weather weatherRes = reponse.getBody();
