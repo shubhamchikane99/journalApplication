@@ -9,6 +9,7 @@ import net.google.journalApp.entity.ErrorMessage;
 import net.google.journalApp.entity.ErrorMessageForUser;
 import net.google.journalApp.entity.JournalEntry;
 import net.google.journalApp.entity.Users;
+import net.google.journalApp.repository.UsersRepository;
 
 @Service
 public class AdminService {
@@ -18,6 +19,9 @@ public class AdminService {
 
 	@Autowired
 	private JournalEntryService journalEntryService;
+
+	@Autowired
+	private UsersRepository usersRepository;
 
 	public ErrorMessageForUser createAdminUser(Users users) {
 
@@ -42,5 +46,11 @@ public class AdminService {
 		// Save Journal Entry
 
 		return journalEntryService.saveJournalEntry(journalEntry);
+	}
+
+	public List<Users> sendSentimate() {
+		// Send Sentiment
+
+		return usersRepository.sendSentimentAnalysis(); 
 	}
 }

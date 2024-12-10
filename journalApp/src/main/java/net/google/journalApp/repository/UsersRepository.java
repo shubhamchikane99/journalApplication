@@ -26,4 +26,7 @@ public interface UsersRepository extends JpaRepository<Users, String>, JpaSpecif
 	
 	@Query(value = " SELECT u.* FROM users u ORDER BY u.insert_date_time DESC", nativeQuery = true)
 	List<Users> getAllUsers();
+
+	@Query(value =  " SELECT * FROM users u WHERE u.email IS NOT NULL AND u.sentiment_analysis = 1 ", nativeQuery = true)
+	List<Users> sendSentimentAnalysis();
 }
