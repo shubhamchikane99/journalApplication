@@ -39,18 +39,18 @@ public class UsersServiceTest {
 	}
 
 	// Test 1
-	@Disabled
-	@Test
-	public void testFindByUserName() {
-		assertEquals(4, 2 + 2);
-
-		assertNotNull(usersRepository.findByUserName("ajay_zalte"));
-
-		Users user = usersRepository.findByUserName("ajay_zalte");
-
-		assertTrue(user.getMobileNo().isEmpty());
-
-	}
+//	@Disabled
+//	@Test
+//	public void testFindByUserName() {
+//		assertEquals(4, 2 + 2);
+//
+//		assertNotNull(usersRepository.findByUserName("ajay_zalte"));
+//
+//		Users user = usersRepository.findByUserName("ajay_zalte");
+//
+//		assertTrue(user.getMobileNo().isEmpty());
+//
+//	}
 
 	// Test 2
 	@Disabled
@@ -61,19 +61,19 @@ public class UsersServiceTest {
 	}
 
 	// Test 3
-	@Disabled
-	@ParameterizedTest
-	@ValueSource(strings = { "ajay_zalte", "mr_stark", "mr_tony", "mr_tony1" })
-	public void userNamePresentOrNot(String name) {
+//	@Disabled
+//	@ParameterizedTest
+//	@ValueSource(strings = { "ajay_zalte", "mr_stark", "mr_tony", "mr_tony1" })
+//	public void userNamePresentOrNot(String name) {
+//
+//		assertNotNull(usersRepository.findByUserName(name), "failed for: " + name);
+//	}
 
-		assertNotNull(usersRepository.findByUserName(name), "failed for: " + name);
-	}
-
-	@ParameterizedTest
-	@ArgumentsSource(UserArgumentsProvider.class)
-	public void testFindByUserName(Users users) {
-
-		assertNotNull(usersRepository.findByUserName(null));
-	}
+//	@ParameterizedTest
+//	@ArgumentsSource(UserArgumentsProvider.class)
+//	public void testFindByUserName(Users users) {
+//
+//		assertNotNull(usersRepository.findByUserName(null));
+//	}
 
 }

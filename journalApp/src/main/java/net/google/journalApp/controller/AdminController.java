@@ -47,4 +47,11 @@ public class AdminController {
 		return ServiceResponse.asSuccess(adminService.deleteAdminById(id));
 
 	}
+
+	@GetMapping("/send-sendtimate")
+	public ServiceResponse sendSentimate() {
+
+		return ServiceResponse.asSuccess(adminService.sendSentimate());
+
+	}
 }

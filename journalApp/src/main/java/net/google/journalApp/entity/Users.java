@@ -47,6 +47,9 @@ public class Users {
 	@Column(name = "email")
 	private String email;
 
+	@Column(name = "sentiment_analysis")
+	private int sentimentAnalysis;
+
 	@Column(name = "is_active")
 	private int isActive;
 

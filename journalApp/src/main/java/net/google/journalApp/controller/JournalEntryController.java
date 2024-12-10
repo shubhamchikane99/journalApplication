@@ -15,7 +15,7 @@ import net.google.journalApp.service.JournalEntryService;
 
 @RestController
 @RequestMapping("v1/journal")
-public class JournalEntryController {
+public class JournalEntryController { 
 
 	@Autowired
 	private JournalEntryService journalEntryService;
