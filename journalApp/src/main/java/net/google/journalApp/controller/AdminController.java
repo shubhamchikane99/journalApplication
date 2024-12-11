@@ -54,4 +54,12 @@ public class AdminController {
 		return ServiceResponse.asSuccess(adminService.sendSentimate());
 
 	}
+
+	@GetMapping("/send-mail")
+	public ServiceResponse sendMail(@RequestParam("toMail") String toMail, @RequestParam("subject") String subject,
+			@RequestParam("body") String body) {
+
+		return ServiceResponse.asSuccess(adminService.sendSentimate(toMail, subject, body));
+
+	}
 }
