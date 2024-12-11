@@ -23,6 +23,9 @@ public class AdminService {
 	@Autowired
 	private UsersRepository usersRepository;
 
+	@Autowired
+	private EmailService emailService;
+
 	public ErrorMessageForUser createAdminUser(Users users) {
 
 		return userService.saveUsers(users);
@@ -51,6 +54,14 @@ public class AdminService {
 	public List<Users> sendSentimate() {
 		// Send Sentiment
 
-		return usersRepository.sendSentimentAnalysis(); 
+		return usersRepository.sendSentimentAnalysis();
+	}
+
+	public String sendSentimate(String toMail, String subject, String body) {
+		// Send Mail To User
+
+		emailService.sendEmail(toMail, subject, body);
+
+		return "Send Mail Successfully ! ";
 	}
 }
