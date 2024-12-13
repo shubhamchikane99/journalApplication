@@ -40,6 +40,14 @@ public class AdminController {
 		return ServiceResponse.asSuccess(adminService.getAllUsers());
 
 	}
+	
+//
+//	@GetMapping("/all-users")
+//	public ServiceResponse getAllUsers() {
+//
+//		return ServiceResponse.asSuccess(adminService.getAllUsers());
+//
+//	}
 
 	@GetMapping("/delete")
 	public ServiceResponse deleteAdminById(@RequestParam("id") String id) {
