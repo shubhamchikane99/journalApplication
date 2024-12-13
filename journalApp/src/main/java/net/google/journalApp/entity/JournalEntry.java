@@ -3,9 +3,11 @@ package net.google.journalApp.entity;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -13,6 +15,7 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
+import net.google.journalApp.enums.Sentiment;
 
 @Entity
 @Table(name = "journal_entry")
@@ -31,6 +34,9 @@ public class JournalEntry {
 
 	@Column(name = "user_id")
 	private String userId;
+
+	@Column(name = "sentiment")
+	private String sentiment ;
 
 	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy hh:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
