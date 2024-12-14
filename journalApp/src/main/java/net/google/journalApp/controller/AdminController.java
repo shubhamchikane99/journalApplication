@@ -41,13 +41,13 @@ public class AdminController {
 
 	}
 	
-//
-//	@GetMapping("/all-users")
-//	public ServiceResponse getAllUsers() {
-//
-//		return ServiceResponse.asSuccess(adminService.getAllUsers());
-//
-//	}
+
+	@GetMapping("/all-journal-entry")
+	public ServiceResponse getAllJournalEntry() {
+
+		return ServiceResponse.asSuccess(adminService.getAllUsers());
+
+	}
 
 	@GetMapping("/delete")
 	public ServiceResponse deleteAdminById(@RequestParam("id") String id) {
