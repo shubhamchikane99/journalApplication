@@ -45,7 +45,7 @@ public class AdminController {
 	@GetMapping("/all-journal-entry")
 	public ServiceResponse getAllJournalEntry() {
 
-		return ServiceResponse.asSuccess(adminService.getAllUsers());
+		return ServiceResponse.asSuccess(adminService.getAgetAllJournalEntryllUsers());
 
 	}
 
