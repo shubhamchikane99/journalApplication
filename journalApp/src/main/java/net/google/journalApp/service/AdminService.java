@@ -64,4 +64,9 @@ public class AdminService {
 
 		return "Send Mail Successfully ! ";
 	}
+
+	public Object getAgetAllJournalEntryllUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
