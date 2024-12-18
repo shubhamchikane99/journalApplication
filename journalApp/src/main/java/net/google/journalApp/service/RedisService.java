@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 public class RedisService {
 
 	@Autowired
-	private RedisTemplate<String, String> redisTemplate;
+	private RedisTemplate redisTemplate;
 
 	public String redis() {
 		// This API For Test Redis DB
 
 		redisTemplate.opsForValue().set("email", "shubhamchikane41216@gmail.com");
 
-		String email = redisTemplate.opsForValue().get("company");
+		Object email = redisTemplate.opsForValue().get("salary"); 
 
 		System.err.println("email " + email);
 
