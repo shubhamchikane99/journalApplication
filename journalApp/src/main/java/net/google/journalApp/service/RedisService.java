@@ -17,7 +17,7 @@ public class RedisService {
 
 		Object email = redisTemplate.opsForValue().get("salary"); 
 
-		System.err.println("email " + email);
+		//System.err.println("email " + email);
 
 		String eml = email.toString();
 
