@@ -13,6 +13,7 @@ public class RedisService {
 	public String redis() {
 		// This API For Test Redis DB
 
+		
 		redisTemplate.opsForValue().set("email", "shubhamchikane41216@gmail.com");
 
 		Object email = redisTemplate.opsForValue().get("salary"); 
