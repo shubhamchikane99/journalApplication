@@ -34,16 +34,20 @@ public class RedisService {
 		Object obj = redisTemplate.opsForValue().get(key);
 		ObjectMapper mapper = new ObjectMapper();
 		if (!Objects.isNull(obj)) {
-			return mapper.readValue(obj.toString(), entityClass);
-		} else {
-			return null;
+
+			String json = obj.toString(); // Ensure it's a JSON string
+			return mapper.readValue(json, entityClass); // Deserialize
 		}
+		return null;
 	}
 
 	public void set(String key, Object obj, Long ttl) throws JsonMappingException, JsonProcessingException {
 		// Get Key From Redis
 
-		redisTemplate.opsForValue().set(key, obj.toString(), ttl, TimeUnit.SECONDS);
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonString = mapper.writeValueAsString(obj); // Serialize to JSON
+
+		redisTemplate.opsForValue().set(key, jsonString, ttl, TimeUnit.SECONDS);
 	}
 
 }
