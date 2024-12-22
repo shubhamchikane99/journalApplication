@@ -37,28 +37,27 @@ public class ThirdPartyApiIntegrationService {
 		// Weather API Integration
 
 		Weather weatherRes = new Weather();
-		try {
-			Weather weather = redisService.get("weather_of_" + cityName, Weather.class);
+		Weather weather = redisService.get("weather_of_" + cityName, Weather.class);
 
-			if (!Objects.isNull(weather)) {
+		if (!Objects.isNull(weather)) {
+			
+			System.err.println("In If ");
 
-				return weather;
+			return weather;
 
-			} else {
+		} else {
 
-				String finalAPI = appCache.APP_CACHE.get("weather_api").replace("<city>", cityName)
-						.replace("<weatherKey>", weatherKey);
-				ResponseEntity<Weather> reponse = restTemplate.exchange(finalAPI, HttpMethod.GET, null, Weather.class);
-				weatherRes = reponse.getBody();
-				System.err.println("weatherRes " + weatherRes);
+			System.err.println("In else ");
+			String finalAPI = appCache.APP_CACHE.get("weather_api").replace("<city>", cityName).replace("<weatherKey>",
+					weatherKey);
+			ResponseEntity<Weather> reponse = restTemplate.exchange(finalAPI, HttpMethod.GET, null, Weather.class);
+			weatherRes = reponse.getBody();
+			System.err.println("weatherRes " + weatherRes);
 
-				if (!Objects.isNull(weatherRes)) {
+			if (!Objects.isNull(weatherRes)) {
 
-					redisService.set("weather_of_" + cityName, weatherRes, (long) 3001);
-				}
+				redisService.set("weather_of_" + cityName, weatherRes, (long) 3001);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 
 		return weatherRes;
