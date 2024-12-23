@@ -47,6 +47,7 @@ public class RedisService {
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonString = mapper.writeValueAsString(obj); // Serialize to JSON
 
+		
 		redisTemplate.opsForValue().set(key, jsonString, ttl, TimeUnit.SECONDS);
 	}
 
