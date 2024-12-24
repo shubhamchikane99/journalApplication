@@ -12,16 +12,23 @@ logging:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
+#spring:  # Redis database for local
+#  redis:
+#    host: localhost
+#    port: 6379
+
 spring:
   redis:
-    host: localhost
-    port: 6379
+    host: redis-17015.c305.ap-south-1-1.ec2.redns.redis-cloud.com
+    port: 17015
+    username: default
+    password: aVEwAkB7P378hrsvsfHIjP9KK8yVMOKB
 
   application:
     name: journalApp
 
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/journal_php_db
+    url: jdbc:mysql://127.0.0.1:3306/journal_db
     username: root
     password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
