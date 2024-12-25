@@ -38,7 +38,7 @@ public class RedisService {
 			String json = obj.toString(); // Ensure it's a JSON string
 			return mapper.readValue(json, entityClass); // Deserialize
 		}
-		return null;
+		return null; 
 	}
 
 	public void set(String key, Object obj, Long ttl) throws JsonMappingException, JsonProcessingException {
