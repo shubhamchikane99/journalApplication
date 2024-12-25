@@ -22,7 +22,7 @@ spring:
     host: redis-17015.c305.ap-south-1-1.ec2.redns.redis-cloud.com
     port: 17015
     username: default
-    password: aVEwAkB7P378hrsvsfHIjP9KK8yVMOKB
+    password: abcd*efghi
 
   application:
     name: journalApp
@@ -37,7 +37,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: shubhamchikane41216@gmail.com
-    password: dzdqfposudfvalcc
+    password: abcd*efghi
     properties:
       mail:
         smtp:
@@ -53,4 +53,4 @@ spring:
 #       id.new_generator_mappings: false
 #       format_sql: true  
 
-weather_key: 7d7664073fb43abe8381fea1ff1b7a0e
+weather_key: abcd*efghi
