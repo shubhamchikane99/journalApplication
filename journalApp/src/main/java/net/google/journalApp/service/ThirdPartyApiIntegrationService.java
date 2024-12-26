@@ -41,7 +41,6 @@ public class ThirdPartyApiIntegrationService {
 
 		if (!Objects.isNull(weather)) {
 			
-			System.err.println("In If ");
 
 			return weather;
 
