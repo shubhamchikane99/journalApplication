@@ -25,6 +25,7 @@ public class RedisService {
 		Object email = redisTemplate.opsForValue().get("salary");
 		String eml = email.toString();
 
+		
 		return eml;
 	}
 
