@@ -27,8 +27,9 @@ public class UsersService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	//Used When Not Configured in pom file
-	//private static final Logger logger = LoggerFactory.getLogger(JournalEntryService.class);
+	// Used When Not Configured in pom file
+	// private static final Logger logger =
+	// LoggerFactory.getLogger(JournalEntryService.class);
 
 	public ErrorMessageForUser saveUsers(Users users) {
 		// Save Journal Entry
@@ -53,13 +54,13 @@ public class UsersService {
 			errorMessage.setErrorMessage("User Register Successfully.");
 			errorMessage.setUsers(saveUsers);
 		}
-		
+
 //		log.error("error occurred");
 //		log.info("hahahhahhahhahahahhahahahhah");
 //		log.warn("hahahhahhahhahahahhahahahhah");
 //		log.debug("hahahhahhahhahahahhahahahhah");
 //		log.trace("hahahhahhahhahahahhahahahhah");
-		
+
 		return errorMessage;
 	}
 
@@ -117,8 +118,34 @@ public class UsersService {
 	public List<Users> getAllUsers() {
 		// Get All User For Admin
 
+		System.err.println("in API");
 		return userRepository.getAllUsers();
 	}
 
-	
+	public ErrorMessage logInUser(String userName, String password) {
+		// login API
+
+		ErrorMessage errorMessage = new ErrorMessage();
+		Users users = new Users();
+		errorMessage.setError(true);
+		errorMessage.setStatusCode(500);
+		errorMessage.setErrorMessage("Invalid User Name And Password");
+
+		users = userRepository.findByUserName(userName);
+
+		if (!Objects.isNull(users)) {
+
+			if (passwordEncoder.matches(password, users.getPassword())) {
+
+				errorMessage.setError(false);
+				errorMessage.setStatusCode(200);
+				errorMessage.setErrorMessage("Success");
+				errorMessage.setUsers(users);
+
+			}
+		}
+
+		return errorMessage;
+	}
+
 }

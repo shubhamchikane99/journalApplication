@@ -10,4 +10,6 @@ public class ErrorMessage {
 	private int statusCode;
 
 	private String errorMessage;
+	
+	private Users users;
 }
