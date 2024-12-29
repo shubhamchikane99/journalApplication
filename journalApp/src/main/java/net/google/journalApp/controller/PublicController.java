@@ -27,6 +27,12 @@ public class PublicController {
 
 		return ServiceResponse.asSuccess(usersService.saveUsers(users));
 	}
+	
+	@GetMapping("/get-all")
+	public ServiceResponse getAll() {
+
+		return ServiceResponse.asSuccess(usersService.getAllUsers());
+	}
 
 	@GetMapping("/health-check")
 
