@@ -1,18 +1,24 @@
 package net.google.journalApp.config;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class CorsConfig implements WebMvcConfigurer {
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // Apply to all routes
-            .allowedOrigins("http://localhost:3000") // Allow only React's origin
-            .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Allow all necessary HTTP methods
-            .allowedHeaders("*") // Allow all headers
-            .allowCredentials(true); // Ensure credentials are allowed
-    }
+	   @Bean
+	    public CorsFilter corsFilter() {
+	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	        CorsConfiguration config = new CorsConfiguration();
+	        config.setAllowCredentials(true); // Allow cookies and credentials
+	        config.addAllowedOriginPattern("*"); // Use specific origins in production
+	        config.addAllowedHeader("*"); // Allow all headers
+	        config.addAllowedMethod("*"); // Allow all HTTP methods
+	        source.registerCorsConfiguration("/**", config);
+	        return new CorsFilter(source);
+	}
 }
-

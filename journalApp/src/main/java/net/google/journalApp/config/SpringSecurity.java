@@ -24,13 +24,24 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests()
-		.antMatchers("/v1/**").authenticated()
-		.antMatchers("/admin/**").hasRole("ADMIN")
-		.anyRequest().permitAll()
-		.and()
-		.httpBasic();
-		 http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable();
+//		http.authorizeRequests()
+//		.antMatchers("/v1/**").authenticated()
+//		.antMatchers("/admin/**").hasRole("ADMIN")
+//		.anyRequest().permitAll()
+//		.and()
+//		.httpBasic();
+//		 http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable();
+		http.cors() // Enable CORS support
+	    .and()
+	    .authorizeRequests()
+	    .antMatchers("/v1/**").authenticated()
+	    .antMatchers("/admin/**").hasRole("ADMIN")
+	    .antMatchers("/**").permitAll() // Allow OPTIONS requests
+	    .and()
+	    .httpBasic()
+	    .and()
+	    .csrf().disable()
+	    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 
 	@Override
