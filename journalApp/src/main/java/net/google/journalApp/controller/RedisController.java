@@ -19,7 +19,6 @@ public class RedisController {
 	public ServiceResponse String() {
 
 		return ServiceResponse.asSuccess(redisService.redis());
-
 	}
 
 }
