@@ -24,7 +24,6 @@ public class AdminController {
 	public ServiceResponse createAdminUser(@RequestBody Users users) {
 
 		return ServiceResponse.asSuccess(adminService.createAdminUser(users));
-
 	}
 
 	@PostMapping("/journal-entry")
