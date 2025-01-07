@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.google.journalApp.cache.AppCache;
@@ -22,12 +23,19 @@ public class PublicController {
 	@Autowired
 	private AppCache appCache;
 
+	@GetMapping("/log-in")
+	public ServiceResponse logInUser(@RequestParam("userName") String userName,
+			@RequestParam("password") String password) {
+
+		return ServiceResponse.asSuccess(usersService.logInUser(userName, password));
+	}
+
 	@PostMapping("/create-user")
 	public ServiceResponse saveUsers(@RequestBody Users users) {
 
 		return ServiceResponse.asSuccess(usersService.saveUsers(users));
 	}
-	
+
 	@GetMapping("/get-all")
 	public ServiceResponse getAll() {
 

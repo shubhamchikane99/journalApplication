@@ -38,12 +38,4 @@ public class UsersController {
 
 		return ServiceResponse.asSuccess(usersService.deleteUsersById(id));
 	}
-
-	@GetMapping("/log-in")
-	public ServiceResponse logInUser(@RequestParam("userName") String userName,
-			@RequestParam("password") String password) {
-
-		return ServiceResponse.asSuccess(usersService.logInUser(userName, password));
-	}
-
 }
