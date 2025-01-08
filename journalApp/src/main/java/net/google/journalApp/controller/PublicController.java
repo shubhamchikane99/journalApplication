@@ -36,6 +36,12 @@ public class PublicController {
 		return ServiceResponse.asSuccess(usersService.saveUsers(users));
 	}
 
+	@GetMapping("/send-opt")
+	public ServiceResponse sendOtp(@RequestParam("emailId") String emailId) {
+
+		return ServiceResponse.asSuccess(usersService.sendOtp(emailId));
+	}
+
 	@GetMapping("/get-all")
 	public ServiceResponse getAll() {
 

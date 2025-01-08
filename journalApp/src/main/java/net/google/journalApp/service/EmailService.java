@@ -13,6 +13,8 @@ public class EmailService {
 
 	@Autowired
 	private JavaMailSender javaMailSender;
+	
+	
 
 	public void sendEmail(String to, String subject, String body) {
 
