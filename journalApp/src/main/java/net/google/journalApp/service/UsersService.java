@@ -1,5 +1,7 @@
 package net.google.journalApp.service;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,10 +13,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import net.google.journalApp.entity.EmailOtpErrorMessage;
 import net.google.journalApp.entity.ErrorMessage;
 import net.google.journalApp.entity.ErrorMessageForUser;
+import net.google.journalApp.entity.GenerateOtp;
 import net.google.journalApp.entity.Users;
 import net.google.journalApp.exception.ResourceNotFoundException;
+import net.google.journalApp.generatotp.GenerateOtpCode;
 import net.google.journalApp.repository.UsersRepository;
 
 @Service
@@ -26,6 +31,12 @@ public class UsersService {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	private EmailService emailService;
+
+	@Autowired
+	private GenerateOtpService generateOtpService;
 
 	// Used When Not Configured in pom file
 	// private static final Logger logger =
@@ -140,9 +151,55 @@ public class UsersService {
 				errorMessage.setError(false);
 				errorMessage.setStatusCode(200);
 				errorMessage.setErrorMessage("Success");
-				errorMessage.setUsers(users); 
+				errorMessage.setUsers(users);
 
 			}
+		}
+
+		return errorMessage;
+	}
+
+	public EmailOtpErrorMessage sendOtp(String emailId) {
+		// Send Otp By Email id
+
+		GenerateOtp generateOtp = new GenerateOtp();
+		EmailOtpErrorMessage errorMessage = new EmailOtpErrorMessage();
+		errorMessage.setError(true);
+		errorMessage.setStatusCode(500);
+		errorMessage.setErrorMessage("Failed For Send Otp");
+
+		Date currentDate = new Date();
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(currentDate); // Set the current date and time
+		calendar.add(Calendar.MINUTE, 2); // Add 2 minutes
+		Date updatedDate = calendar.getTime();
+
+		int otp = GenerateOtpCode.generateOtpCode();
+
+		generateOtp.setEmailId(emailId);
+		generateOtp.setOtp(String.valueOf(otp));
+		generateOtp.setSendDateTime(currentDate);
+		generateOtp.setExpiredDateTime(updatedDate);
+
+		GenerateOtp saveGenerateOtp = generateOtpService.saveGenerateOtp(generateOtp);
+
+		if (!Objects.isNull(saveGenerateOtp)) {
+
+			   // Construct the email body
+			String subject = "Your OTP Code for Verification";
+	        String body = "Dear User,\n\n"
+	                    + "Your One-Time Password (OTP) is: " + otp + "\n\n"
+	                    + "Please use this OTP to complete your verification.\n\n"
+	                    + "This OTP is valid for 5 minutes.\n\n"
+	                    + "Regards,\n"
+	                    + "Your Google";
+	        
+	        emailService.sendEmail(emailId, subject, body);
+	        
+	        errorMessage.setError(false);
+			errorMessage.setStatusCode(200); 
+			errorMessage.setErrorMessage("OTP Send Successfully");
 		}
 
 		return errorMessage;
