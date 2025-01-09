@@ -1,5 +1,6 @@
 package net.google.journalApp.service;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -186,20 +187,52 @@ public class UsersService {
 
 		if (!Objects.isNull(saveGenerateOtp)) {
 
-			   // Construct the email body
+			// Construct the email body
 			String subject = "Your OTP Code for Verification";
-	        String body = "Dear User,\n\n"
-	                    + "Your One-Time Password (OTP) is: " + otp + "\n\n"
-	                    + "Please use this OTP to complete your verification.\n\n"
-	                    + "This OTP is valid for 5 minutes.\n\n"
-	                    + "Regards,\n"
-	                    + "Your Google";
-	        
-	        emailService.sendEmail(emailId, subject, body);
-	        
-	        errorMessage.setError(false);
-			errorMessage.setStatusCode(200); 
+			String body = "Dear User,\n\n" + "Your One-Time Password (OTP) is: " + otp + "\n\n"
+					+ "Please use this OTP to complete your verification.\n\n" + "This OTP is valid for 5 minutes.\n\n"
+					+ "Regards,\n" + "Your Google";
+
+			emailService.sendEmail(emailId, subject, body);
+
+			errorMessage.setError(false);
+			errorMessage.setStatusCode(200);
 			errorMessage.setErrorMessage("OTP Send Successfully");
+		}
+
+		return errorMessage;
+	}
+
+	public Object validateOtp(String emailId, String otp) {
+		// Validate OTP
+
+		EmailOtpErrorMessage errorMessage = new EmailOtpErrorMessage();
+		errorMessage.setError(true);
+		errorMessage.setStatusCode(500);
+		errorMessage.setErrorMessage("Invalid Otp");
+
+		Date currentDate = new Date();
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+		String currentFormatDate = dateFormat.format(currentDate);
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(currentDate); // Set the current date and time
+		calendar.add(Calendar.MINUTE, 2); // Add 2 minutes
+		Date updatedDate = calendar.getTime();
+
+		String add2MinutesInDateTime = dateFormat.format(updatedDate);
+
+		GenerateOtp generateOtp = generateOtpService.getvalidateOtpByEmailId(emailId, otp, currentFormatDate,
+				add2MinutesInDateTime);
+
+		if (!Objects.isNull(generateOtp)) {
+
+			errorMessage.setError(false);
+			errorMessage.setStatusCode(200);
+			errorMessage.setErrorMessage("Validate OTP Successfully");
+
 		}
 
 		return errorMessage;

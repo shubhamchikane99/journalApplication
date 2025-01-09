@@ -16,4 +16,11 @@ public interface GenerateOtpRepository extends JpaRepository<GenerateOtp, String
 	@Transactional
 	@Query(value = " DELETE FROM generate_otp WHERE id =:id ", nativeQuery = true)
 	int deleteGenerateOtpById(@Param("id") String id);
+
+	
+	
+	@Query(value = " SELECT gt.* FROM generate_otp gt WHERE gt.email_id =:emailId AND gt.otp =:otp AND gt.send_date_time =:currentFormatDateTime AND gt.expired_date_time =:add2MinutesInDateTime ", nativeQuery = true)
+	GenerateOtp getvalidateOtpByEmailId(@Param("emailId") String emailId, @Param("otp") String otp,
+			@Param("currentFormatDateTime") String currentFormatDateTime,
+			@Param("add2MinutesInDateTime") String add2MinutesInDateTime);
 }
