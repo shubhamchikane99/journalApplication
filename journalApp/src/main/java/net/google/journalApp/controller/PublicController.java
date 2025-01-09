@@ -42,6 +42,12 @@ public class PublicController {
 		return ServiceResponse.asSuccess(usersService.sendOtp(emailId));
 	}
 
+	@GetMapping("/validate-otp")
+	public ServiceResponse validateOtp(@RequestParam("emailId") String emailId, @RequestParam("otp") String otp) {
+
+		return ServiceResponse.asSuccess(usersService.validateOtp(emailId, otp));
+	}
+
 	@GetMapping("/get-all")
 	public ServiceResponse getAll() {
 
