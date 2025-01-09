@@ -217,15 +217,7 @@ public class UsersService {
 
 		String currentFormatDate = dateFormat.format(currentDate);
 
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(currentDate); // Set the current date and time
-		calendar.add(Calendar.MINUTE, 2); // Add 2 minutes
-		Date updatedDate = calendar.getTime();
-
-		String add2MinutesInDateTime = dateFormat.format(updatedDate);
-
-		GenerateOtp generateOtp = generateOtpService.getvalidateOtpByEmailId(emailId, otp, currentFormatDate,
-				add2MinutesInDateTime);
+		GenerateOtp generateOtp = generateOtpService.getvalidateOtpByEmailId(emailId, otp, currentFormatDate);
 
 		if (!Objects.isNull(generateOtp)) {
 

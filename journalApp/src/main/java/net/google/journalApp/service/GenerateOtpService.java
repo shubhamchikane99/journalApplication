@@ -61,11 +61,9 @@ public class GenerateOtpService {
 		return errorMessage;
 	}
 
-	public GenerateOtp getvalidateOtpByEmailId(String emailId, String otp, String currentFormatDateTime,
-			String add2MinutesInDateTime) {
+	public GenerateOtp getvalidateOtpByEmailId(String emailId, String otp, String currentFormatDateTime) {
 		// Validate OTP By Email Id
 
-		return generateOtpRepository.getvalidateOtpByEmailId(emailId, otp, currentFormatDateTime,
-				add2MinutesInDateTime);
+		return generateOtpRepository.getvalidateOtpByEmailId(emailId, otp, currentFormatDateTime);
 	}
 }
