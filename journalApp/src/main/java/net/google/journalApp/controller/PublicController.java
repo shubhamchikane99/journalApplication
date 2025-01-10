@@ -49,7 +49,7 @@ public class PublicController {
 	}
 
 	@GetMapping("/get-all")
-	public ServiceResponse getAll() {
+	public ServiceResponse getAll() { 
 
 		return ServiceResponse.asSuccess(usersService.getAllUsers());
 	}
