@@ -30,7 +30,7 @@ public class PublicController {
 		return ServiceResponse.asSuccess(usersService.logInUser(userName, password));
 	}
 
-	@PostMapping("/create-user")
+	@PostMapping("/create-user") 
 	public ServiceResponse saveUsers(@RequestBody Users users) {
 
 		return ServiceResponse.asSuccess(usersService.saveUsers(users));
