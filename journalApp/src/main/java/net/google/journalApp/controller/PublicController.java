@@ -33,7 +33,7 @@ public class PublicController {
 	@PostMapping("/create-user") 
 	public ServiceResponse saveUsers(@RequestBody Users users) {
 
-		return ServiceResponse.asSuccess(usersService.saveUsers(users));
+		return ServiceResponse.asSuccess(usersService.saveUsers(users)); 
 	}
 
 	@GetMapping("/send-opt")
