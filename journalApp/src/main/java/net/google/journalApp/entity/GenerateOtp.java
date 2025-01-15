@@ -43,3 +43,4 @@ public class GenerateOtp {
 	private Date insertDateTime;
 	 
 }
+
