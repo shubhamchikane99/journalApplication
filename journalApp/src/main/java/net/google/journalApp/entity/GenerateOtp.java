@@ -41,4 +41,5 @@ public class GenerateOtp {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "insert_date_time", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date insertDateTime;
+	 
 }
