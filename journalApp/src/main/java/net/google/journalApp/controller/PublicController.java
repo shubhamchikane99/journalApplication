@@ -18,7 +18,7 @@ import net.google.journalApp.service.UsersService;
 public class PublicController {
 
 	@Autowired
-	private UsersService usersService;
+	private UsersService usersService; 
 
 	@Autowired
 	private AppCache appCache;
