@@ -63,7 +63,7 @@ public class PublicController {
 
 	@GetMapping("/clear-app-cache")
 	public void clearAppCache() {  
- 
+  
 		appCache.init();
 	}
 
