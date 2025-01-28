@@ -31,6 +31,10 @@ public class JournalEntry {
 
 	@Column(name = "content")
 	private String content;
+	
+	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy")
+	@Column(name = "date")
+	private Date date;
 
 	@Column(name = "user_id")
 	private String userId;
