@@ -21,7 +21,7 @@ public class PublicController {
 	private UsersService usersService; 
 
 	@Autowired
-	private AppCache appCache;
+	private AppCache appCache; 
 
 	@GetMapping("/log-in")
 	public ServiceResponse logInUser(@RequestParam("userName") String userName,
@@ -36,7 +36,7 @@ public class PublicController {
 		return ServiceResponse.asSuccess(usersService.saveUsers(users)); 
 	}
 
-	@GetMapping("/send-opt")
+	@GetMapping("/send-otp")
 	public ServiceResponse sendOtp(@RequestParam("emailId") String emailId) {
 
 		return ServiceResponse.asSuccess(usersService.sendOtp(emailId));

@@ -26,11 +26,15 @@ public class JournalEntry {
 	@Column(name = "id")
 	private String id = UUID.randomUUID().toString();
 
-	@Column(name = "title")
+	@Column(name = "title") 
 	private String title;
 
 	@Column(name = "content")
 	private String content;
+	
+	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy")
+	@Column(name = "date")
+	private Date date;
 
 	@Column(name = "user_id")
 	private String userId;
