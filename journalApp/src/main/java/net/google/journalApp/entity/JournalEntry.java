@@ -26,7 +26,7 @@ public class JournalEntry {
 	@Column(name = "id")
 	private String id = UUID.randomUUID().toString();
 
-	@Column(name = "title")
+	@Column(name = "title") 
 	private String title;
 
 	@Column(name = "content")
