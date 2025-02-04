@@ -1,20 +1,20 @@
 package net.google.journalApp.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import net.google.journalApp.entity.ChatMessage;
+import net.google.journalApp.exception.ServiceResponse;
 import net.google.journalApp.repository.ChatMessageRepository;
 
-@Controller
+@RestController
+@RequestMapping("v1/chat-message")
 public class ChatController {
 
 	private final SimpMessagingTemplate messagingTemplate;
@@ -40,11 +40,15 @@ public class ChatController {
 
 	// Fetch chat history between two users
 	@GetMapping("/messages/{senderId}/{receiverId}")
-	public ResponseEntity<List<ChatMessage>> getMessages(@PathVariable String senderId,
+	public ServiceResponse  getMessages(@PathVariable String senderId,
 			@PathVariable String receiverId) {
-		List<ChatMessage> messages = chatMessageRepository
-				.findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestamp(senderId, receiverId);
-		return ResponseEntity.ok(messages);
+//		List<ChatMessage> messages = chatMessageRepository
+//				.findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestamp(senderId, receiverId);
+	//	return ResponseEntity.ok(messages);
+		
+		return ServiceResponse.asSuccess(chatMessageRepository
+				.findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestamp(senderId, receiverId));
+		
 	}
 
 }
