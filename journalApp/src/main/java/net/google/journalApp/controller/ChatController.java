@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.google.journalApp.entity.ChatMessage;
+import net.google.journalApp.entity.TypingStatus;
 import net.google.journalApp.exception.ServiceResponse;
 import net.google.journalApp.repository.ChatMessageRepository;
 
@@ -50,5 +51,18 @@ public class ChatController {
 				.findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestamp(senderId, receiverId));
 		
 	}
+	
+	@MessageMapping("/typing-status")
+	public void sendTypingStatus(@Payload TypingStatus typingStatus) {
+		System.err.println("typingStatus " + typingStatus);
+	    System.out.println("✍️ Typing status received: " + typingStatus.getSenderId() + " is typing...");
+	    
+	    
+	    // Send typing status to receiver
+	    messagingTemplate.convertAndSendToUser(
+	        typingStatus.getReceiverId(), "/isTyping", typingStatus
+	    );
+	}
+
 
 }
