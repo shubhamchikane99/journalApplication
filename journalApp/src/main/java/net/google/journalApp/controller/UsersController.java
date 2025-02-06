@@ -38,4 +38,9 @@ public class UsersController {
 
 		return ServiceResponse.asSuccess(usersService.deleteUsersById(id));
 	}
+
+	@GetMapping("/get-all")
+	public ServiceResponse usersGetAll() throws ResourceNotFoundException {
+		return ServiceResponse.asSuccess(usersService.usersGetAll());
+	}
 }
