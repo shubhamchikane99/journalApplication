@@ -203,7 +203,7 @@ public class UsersService {
 		return errorMessage;
 	}
 
-	public Object validateOtp(String emailId, String otp) {
+	public EmailOtpErrorMessage validateOtp(String emailId, String otp) {
 		// Validate OTP
 
 		EmailOtpErrorMessage errorMessage = new EmailOtpErrorMessage();
@@ -228,6 +228,15 @@ public class UsersService {
 		}
 
 		return errorMessage;
+	}
+
+	public List<Users> usersGetAll() {
+		// get all for chat window
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String userName = authentication.getName();
+
+		return userRepository.getUserWithoutLogInPerson(userName);
 	}
 
 }

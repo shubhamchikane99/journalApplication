@@ -31,4 +31,8 @@ public interface UsersRepository extends JpaRepository<Users, String>, JpaSpecif
 
 	@Query(value = " SELECT u.* FROM users u WHERE u.user_name =:userName AND u.password =:encodePassword ", nativeQuery = true)
 	Users findUserByUserNameAndPassword(@Param("userName") String userName, @Param("encodePassword") String encodePassword);
+
+	
+	@Query(value = " SELECT u.* FROM users u WHERE u.user_name NOT IN (:userName) ORDER BY u.insert_date_time DESC  ", nativeQuery = true)
+	List<Users> getUserWithoutLogInPerson(@Param("userName")String userName);
 }
