@@ -1,6 +1,7 @@
 package net.google.journalApp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -13,26 +14,28 @@ import net.google.journalApp.entity.ChatMessage;
 import net.google.journalApp.entity.TypingStatus;
 import net.google.journalApp.exception.ServiceResponse;
 import net.google.journalApp.repository.ChatMessageRepository;
+import net.google.journalApp.service.ChatMessageService;
 
 @RestController
 @RequestMapping("v1/chat-message")
-public class ChatController {
+public class ChatMessageController {
 
 	private final SimpMessagingTemplate messagingTemplate;
 
 	@Autowired
 	private ChatMessageRepository chatMessageRepository;
 
-	public ChatController(SimpMessagingTemplate messagingTemplate) {
+	@Autowired
+	private ChatMessageService chatMessageService;
+
+	public ChatMessageController(SimpMessagingTemplate messagingTemplate) {
 		this.messagingTemplate = messagingTemplate;
 	}
 
 	@MessageMapping("/private-message")
 	public void sendPrivateMessage(@Payload ChatMessage chatMessage) {
-		System.out.println("📩 Message from: " + chatMessage.getSenderId());
-		System.out.println("📩 Message to: " + chatMessage.getReceiverId());
-		System.out.println("📩 Content: " + chatMessage.getContent());
 
+		// Save Chat's
 		chatMessageRepository.save(chatMessage);
 
 		// Ensure messages are sent to the correct user destination
@@ -41,28 +44,41 @@ public class ChatController {
 
 	// Fetch chat history between two users
 	@GetMapping("/messages/{senderId}/{receiverId}")
-	public ServiceResponse  getMessages(@PathVariable String senderId,
-			@PathVariable String receiverId) {
-//		List<ChatMessage> messages = chatMessageRepository
-//				.findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestamp(senderId, receiverId);
-	//	return ResponseEntity.ok(messages);
-		
+	public ServiceResponse getMessages(@PathVariable String senderId, @PathVariable String receiverId) {
+
 		return ServiceResponse.asSuccess(chatMessageRepository
 				.findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestamp(senderId, receiverId));
-		
-	}
-	
-	@MessageMapping("/typing-status")
-	public void sendTypingStatus(@Payload TypingStatus typingStatus) {
-		System.err.println("typingStatus " + typingStatus);
-	    System.out.println("✍️ Typing status received: " + typingStatus.getSenderId() + " is typing...");
-	    
-	    
-	    // Send typing status to receiver
-	    messagingTemplate.convertAndSendToUser(
-	        typingStatus.getReceiverId(), "/isTyping", typingStatus
-	    );
+
 	}
 
+	@MessageMapping("/typing-status")
+	public void sendTypingStatus(@Payload TypingStatus typingStatus) {
+
+		// Send typing status to receiver
+		messagingTemplate.convertAndSendToUser(typingStatus.getReceiverId(), "/isTyping", typingStatus);
+	}
+
+	@GetMapping("/user-status/{userId}")
+	public ServiceResponse getUserStatus(@PathVariable String userId) {
+		System.err.println("IN  User status");
+
+		return ServiceResponse.asSuccess(chatMessageService.getUserStatus(userId));
+	}
+
+	// ✅ Mark user as ONLINE
+	@GetMapping("/{userId}/online")
+	public ResponseEntity<String> setUserOnline(@PathVariable String userId) {
+		System.err.println("IN Online User");
+		chatMessageService.updateUserStatus(userId, 1);
+		return ResponseEntity.ok("User is now online");
+	}
+
+	// 🔴 Mark user as OFFLINE
+	@GetMapping("/{userId}/offline")
+	public ResponseEntity<String> setUserOffline(@PathVariable String userId) {
+		System.err.println("IN Offline User");
+		chatMessageService.updateUserStatus(userId, 0);
+		return ResponseEntity.ok("User is now offline");
+	}
 
 }

@@ -30,9 +30,17 @@ public interface UsersRepository extends JpaRepository<Users, String>, JpaSpecif
 	List<Users> sendSentimentAnalysis();
 
 	@Query(value = " SELECT u.* FROM users u WHERE u.user_name =:userName AND u.password =:encodePassword ", nativeQuery = true)
-	Users findUserByUserNameAndPassword(@Param("userName") String userName, @Param("encodePassword") String encodePassword);
+	Users findUserByUserNameAndPassword(@Param("userName") String userName,
+			@Param("encodePassword") String encodePassword);
 
-	
 	@Query(value = " SELECT u.* FROM users u WHERE u.user_name NOT IN (:userName) ORDER BY u.insert_date_time DESC  ", nativeQuery = true)
-	List<Users> getUserWithoutLogInPerson(@Param("userName")String userName);
+	List<Users> getUserWithoutLogInPerson(@Param("userName") String userName);
+
+	@Modifying
+	@Transactional
+	@Query(value = "UPDATE users u SET u.is_active =:status WHERE u.id =:userId ", nativeQuery = true)
+	int getUpdateActiveStatus(@Param("userId") String userId, @Param("status") int status);
+
+	@Query(value = " SELECT u.is_active FROM users u WHERE u.id =:userId ", nativeQuery = true)
+	int getCurrentUserStatus(@Param("userId") String userId);
 }
