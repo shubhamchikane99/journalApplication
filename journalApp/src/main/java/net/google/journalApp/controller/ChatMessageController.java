@@ -1,5 +1,8 @@
 package net.google.journalApp.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -36,7 +39,7 @@ public class ChatMessageController {
 	public void sendPrivateMessage(@Payload ChatMessage chatMessage) {
 
 		// Save Chat's
-		chatMessageRepository.save(chatMessage);
+		chatMessageService.saveChatMessage(chatMessage);
 
 		// Ensure messages are sent to the correct user destination
 		messagingTemplate.convertAndSendToUser(chatMessage.getReceiverId(), "/private", chatMessage);
@@ -81,4 +84,21 @@ public class ChatMessageController {
 		return ResponseEntity.ok("User is now offline");
 	}
 
+	// Delivered messages
+	@GetMapping("/update-delivered-status/{userId}")
+	public ServiceResponse getDeliveredMessages(@PathVariable String userId) {
+
+		List<ChatMessage> getDeliveredMessages = new ArrayList<ChatMessage>();
+
+		getDeliveredMessages = chatMessageService.getDeliveredMessages(userId);
+
+		// Notify sender for each delivered message
+		getDeliveredMessages.forEach(deliveredMessage -> {
+			String senderDestination = "/user/" + deliveredMessage.getSenderId() + "/message-delivery";
+			messagingTemplate.convertAndSend(senderDestination, deliveredMessage);
+		});
+
+		return ServiceResponse.asSuccess(getDeliveredMessages);
+
+	}
 }
