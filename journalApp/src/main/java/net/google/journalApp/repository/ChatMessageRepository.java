@@ -30,7 +30,7 @@ public interface ChatMessageRepository
 			+ "    AND cm.receiver_id =:senderId \r\n"
 			+ ") a ORDER BY a.insert_date_time ASC ", nativeQuery = true)
 	 List<ChatMessage> findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestamp(
-	           @Param("senderId") String senderId, @Param("receiverId") String receiverId);
+	           @Param("senderId") String senderId, @Param("receiverId") String receiverId); 
 
 	
 	@Query(value = " SELECT cm.* FROM chat_messages cm WHERE cm.sender_id =:senderId AND cm.receiver_id =:receiverId AND cm.status =:status ORDER BY cm.insert_date_time ASC  ", nativeQuery =  true)
