@@ -55,4 +55,10 @@ public class ChatMessageService {
 
 		return chatMessageRepository.getDeliveredMessages(userId);
 	}
+
+	public void updateTheSeenStatus(String senderId, String receiverId) {
+		// Update The Msg Seen Status
+
+		int result = chatMessageRepository.getUpdateMessagesStatus(senderId, receiverId);
+	}
 }

@@ -46,4 +46,10 @@ public interface ChatMessageRepository
 	@Query(value = " SELECT cm.* FROM chat_messages cm WHERE cm.receiver_id =:userId AND cm.status = 'DELIVERED' ORDER BY cm.insert_date_time ASC ", nativeQuery =  true)
 	List<ChatMessage> getDeliveredMessages(@Param("userId")String userId);
 
+
+	@Modifying
+	@Transactional
+	@Query(value = "  UPDATE chat_messages cm SET cm.status = 'SEEN' WHERE cm.sender_id =:senderId AND cm.receiver_id =:receiverId  AND cm.status !='SEEN'  ", nativeQuery =  true)
+	int getUpdateMessagesStatus(@Param("senderId")String senderId, @Param("receiverId") String receiverId);
+
 }
