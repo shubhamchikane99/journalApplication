@@ -99,6 +99,17 @@ public class ChatMessageController {
 		});
 
 		return ServiceResponse.asSuccess(getDeliveredMessages);
+	}
 
+	// Mark messages as SEEN
+	@GetMapping("/mark-seen/{senderId}/{receiverId}")
+	public void markMessagesAsSeen(@PathVariable String senderId, @PathVariable String receiverId) {
+
+		System.err.println("When message seen");
+
+		chatMessageService.updateTheSeenStatus(senderId, receiverId);
+
+		// Notify sender that messages are SEEN
+		messagingTemplate.convertAndSendToUser(senderId, "/message-delivery", "SEEN");
 	}
 }
