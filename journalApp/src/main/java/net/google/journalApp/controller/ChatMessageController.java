@@ -106,10 +106,14 @@ public class ChatMessageController {
 	public void markMessagesAsSeen(@PathVariable String senderId, @PathVariable String receiverId) {
 
 		System.err.println("When message seen");
-
 		chatMessageService.updateTheSeenStatus(senderId, receiverId);
 
-		// Notify sender that messages are SEEN
-		messagingTemplate.convertAndSendToUser(senderId, "/message-delivery", "SEEN");
+		List<ChatMessage> chatMessages = chatMessageRepository
+				.findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestamp(senderId, receiverId);
+
+		chatMessages.forEach(seenMessage -> {
+			String senderDestination = "/user/" + seenMessage.getSenderId() + "/message-seen";
+			messagingTemplate.convertAndSend(senderDestination, seenMessage);
+		});
 	}
 }
