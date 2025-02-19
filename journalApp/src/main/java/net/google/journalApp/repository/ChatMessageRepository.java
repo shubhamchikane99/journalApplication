@@ -38,7 +38,7 @@ public interface ChatMessageRepository
 
 
 	@Modifying
-	@Transactional
+	@Transactional 
 	@Query(value = " UPDATE chat_messages cm SET cm.status = 'DELIVERED' WHERE cm.receiver_id =:userId AND cm.status = 'SENT' ", nativeQuery =  true)
 	int getDeliveredAllSentMsges(@Param("userId")String userId);
 
