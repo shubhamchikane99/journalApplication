@@ -63,7 +63,7 @@ public class ChatMessageController {
 
 	@GetMapping("/user-status/{userId}")
 	public ServiceResponse getUserStatus(@PathVariable String userId) {
-		System.err.println("IN  User status");
+		System.err.println("IN  User status"); 
 
 		return ServiceResponse.asSuccess(chatMessageService.getUserStatus(userId));
 	}
