@@ -73,6 +73,18 @@ public class ChatMessageController {
 	public ResponseEntity<String> setUserOnline(@PathVariable String userId) {
 		System.err.println("IN Online User");
 		chatMessageService.updateUserStatus(userId, 1);
+		
+		
+		List<ChatMessage> getDeliveredMessages = new ArrayList<ChatMessage>();
+		getDeliveredMessages = chatMessageService.getDeliveredMessages(userId);
+
+		// Notify sender for each delivered message
+		getDeliveredMessages.forEach(deliveredMessage -> {
+			String senderDestination = "/user/" + deliveredMessage.getSenderId() + "/message-delivery";
+			messagingTemplate.convertAndSend(senderDestination, deliveredMessage);
+		});
+
+		
 		return ResponseEntity.ok("User is now online");
 	}
 
