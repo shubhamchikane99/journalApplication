@@ -17,18 +17,23 @@ public interface ChatMessageRepository
 		extends JpaRepository<ChatMessage, String>, JpaSpecificationExecutor<ChatMessage> {
 	
 	
-	@Query(value = " SELECT \r\n"
-			+ "a.* \r\n"
-			+ "FROM \r\n"
-			+ "(\r\n"
-			+ "SELECT cm.* FROM chat_messages cm \r\n"
-			+ "    WHERE cm.sender_id =:senderId \r\n"
-			+ "    AND cm.receiver_id =:receiverId \r\n"
-			+ "UNION\r\n"
-			+ "SELECT cm.* FROM chat_messages cm \r\n"
-			+ "    WHERE cm.sender_id =:receiverId \r\n"
-			+ "    AND cm.receiver_id =:senderId \r\n"
-			+ ") a ORDER BY a.insert_date_time ASC ", nativeQuery = true)
+	@Query(value = "SELECT\r\n"
+			+ "    a.*\r\n"
+			+ "FROM\r\n"
+			+ "    (\r\n"
+			+ "    SELECT\r\n"
+			+ "    cm.*\r\n"
+			+ "    FROM\r\n"
+			+ "    chat_messages cm\r\n"
+			+ "    WHERE\r\n"
+			+ "    (cm.sender_id =:senderId \r\n"
+			+ "    AND cm.receiver_id =:receiverId )\r\n"
+			+ "OR \r\n"
+			+ "    (cm.sender_id =:receiverId \r\n"
+			+ "    AND cm.receiver_id =:senderId )\r\n"
+			+ "    ORDER BY cm.insert_date_time DESC LIMIT 25    \r\n"
+			+ ") a\r\n"
+			+ "ORDER BY a.insert_date_time ASC; ", nativeQuery = true)
 	 List<ChatMessage> findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestamp(
 	           @Param("senderId") String senderId, @Param("receiverId") String receiverId);  
 
@@ -49,7 +54,7 @@ public interface ChatMessageRepository
 
 	@Modifying
 	@Transactional
-	@Query(value = "  UPDATE chat_messages cm SET cm.status = 'SEEN' WHERE cm.sender_id =:senderId AND cm.receiver_id =:receiverId  AND cm.status !='SEEN'  ", nativeQuery =  true)
+	@Query(value = "  UPDATE chat_messages cm SET cm.status = 'SEEN' WHERE cm.sender_id =:receiverId AND cm.receiver_id =:senderId  AND cm.status !='SEEN'  ", nativeQuery =  true)
 	int getUpdateMessagesStatus(@Param("senderId")String senderId, @Param("receiverId") String receiverId);
 
 }
