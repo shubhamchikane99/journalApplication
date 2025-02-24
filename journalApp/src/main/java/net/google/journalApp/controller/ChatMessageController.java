@@ -63,7 +63,6 @@ public class ChatMessageController {
 
 	@GetMapping("/user-status/{userId}")
 	public ServiceResponse getUserStatus(@PathVariable String userId) {
-		System.err.println("IN  User status"); 
 
 		return ServiceResponse.asSuccess(chatMessageService.getUserStatus(userId));
 	}
@@ -71,10 +70,8 @@ public class ChatMessageController {
 	// ✅ Mark user as ONLINE
 	@GetMapping("/{userId}/online")
 	public ResponseEntity<String> setUserOnline(@PathVariable String userId) {
-		System.err.println("IN Online User");
 		chatMessageService.updateUserStatus(userId, 1);
-		
-		
+
 		List<ChatMessage> getDeliveredMessages = new ArrayList<ChatMessage>();
 		getDeliveredMessages = chatMessageService.getDeliveredMessages(userId);
 
@@ -84,14 +81,12 @@ public class ChatMessageController {
 			messagingTemplate.convertAndSend(senderDestination, deliveredMessage);
 		});
 
-		
 		return ResponseEntity.ok("User is now online");
 	}
 
 	// 🔴 Mark user as OFFLINE
 	@GetMapping("/{userId}/offline")
 	public ResponseEntity<String> setUserOffline(@PathVariable String userId) {
-		System.err.println("IN Offline User");
 		chatMessageService.updateUserStatus(userId, 0);
 		return ResponseEntity.ok("User is now offline");
 	}
@@ -117,15 +112,16 @@ public class ChatMessageController {
 	@GetMapping("/mark-seen/{senderId}/{receiverId}")
 	public void markMessagesAsSeen(@PathVariable String senderId, @PathVariable String receiverId) {
 
-		System.err.println("When message seen");
 		chatMessageService.updateTheSeenStatus(senderId, receiverId);
+		
 
 		List<ChatMessage> chatMessages = chatMessageRepository
 				.findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestamp(senderId, receiverId);
 
-		chatMessages.forEach(seenMessage -> {
-			String senderDestination = "/user/" + seenMessage.getSenderId() + "/message-seen";
-			messagingTemplate.convertAndSend(senderDestination, seenMessage);
+		// Notify sender for each delivered message
+		chatMessages.forEach(deliveredMessage -> {
+			String senderDestination = "/user/" + deliveredMessage.getSenderId() + "/message-delivery";
+			messagingTemplate.convertAndSend(senderDestination, deliveredMessage);
 		});
 	}
 }
