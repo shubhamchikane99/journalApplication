@@ -1,10 +1,17 @@
-FROM maven:3.9.6-eclipse-temurin-17 AS build
-WORKDIR /app
-COPY . .
-RUN mvn clean package -DskipTests
+FROM openjdk:17-jdk-alpine
 
-FROM openjdk:17-jdk-slim
+# Set the working directory
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+
+# Copy your pom.xml file and source code
+COPY ./pom.xml /app/
+COPY ./src /app/src/
+
+# Install Maven and build the project
+RUN mvn -f /app/pom.xml clean package -DskipTests
+
+# Expose port (if your application runs on 8090)
+EXPOSE 8090
+
+# Run the application
+CMD ["java", "-jar", "/app/target/journalApp-0.0.1-SNAPSHOT.jar"]
