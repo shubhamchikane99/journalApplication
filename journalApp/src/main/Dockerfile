@@ -1,17 +1,8 @@
-FROM openjdk:17-jdk-alpine
+FROM maven:3.8.5-openjdk-17 AS build
+COPY . . 
+RUN mvn clean package -DskipTests
 
-# Set the working directory
-WORKDIR /app
-
-# Copy your pom.xml file and source code
-COPY ./pom.xml /app/
-COPY ./src /app/src/
-
-# Install Maven and build the project
-RUN mvn -f /app/pom.xml clean package -DskipTests
-
-# Expose port (if your application runs on 8090)
-EXPOSE 8090
-
-# Run the application
-CMD ["java", "-jar", "/app/target/journalApp-0.0.1-SNAPSHOT.jar"]
+FROM openjdk:17.0.1-jdk-slim
+COPY --from=build /target/journalApp-0.0.1-SNAPSHOT.jar journalApp.jar
+EXPOSE 8080
+ENTRYPOINT [ "java","-jar","journalApp.jar" ]
