@@ -3,14 +3,13 @@ FROM maven:3.8.5-openjdk-17 AS build
 
 WORKDIR /app
 
-# Copy only the necessary files first
-COPY pom.xml ./
-COPY src ./src
+# Copy everything from the project folder (including src & pom.xml)
+COPY . .
 
-# Build the application (this will create the target folder)
+# Build the application
 RUN mvn clean install -DskipTests
 
-# Stage 2: Create a small image for deployment
+# Stage 2: Run the application
 FROM openjdk:17.0.1-jdk-slim
 
 WORKDIR /app
