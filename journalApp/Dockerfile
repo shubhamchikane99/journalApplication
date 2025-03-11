@@ -2,10 +2,12 @@
 FROM maven:3.8.5-openjdk-17 AS build
 WORKDIR /app
 
-# Copy all files to app directory
-COPY . .
+# Copy pom.xml and download dependencies
+COPY pom.xml ./
+RUN mvn dependency:go-offline
 
-# Build the application
+# Copy entire project and build it
+COPY . .
 RUN mvn clean install -DskipTests
 
 # Stage 2: Run Stage
