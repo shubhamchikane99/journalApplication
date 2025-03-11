@@ -136,14 +136,23 @@ public class UsersService {
 
 	public ErrorMessage logInUser(String userName, String password) {
 		// login API
+		
+		
 
 		ErrorMessage errorMessage = new ErrorMessage();
+		
+		try {
 		Users users = new Users();
 		errorMessage.setError(true);
 		errorMessage.setStatusCode(500);
 		errorMessage.setErrorMessage("Invalid User Name And Password");
 
 		users = userRepository.findByUserName(userName);
+		
+		System.err.println("users " + users);
+		
+		System.err.println("userName " + userName);
+		System.err.println("password " + password);
 
 		if (!Objects.isNull(users)) {
 
@@ -157,6 +166,9 @@ public class UsersService {
 			}
 		}
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return errorMessage;
 	}
 
