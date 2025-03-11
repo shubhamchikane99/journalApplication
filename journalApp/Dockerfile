@@ -1,24 +1,8 @@
-# Stage 1: Build Stage
-FROM maven:3.8.5-openjdk-17 AS build
-WORKDIR /app
+FROM maven:3-eclipse-temurin-17 AS build
+COPY . . 
+RUN commandan package -DskipTests
 
-# Copy pom.xml and download dependencies
-COPY pom.xml ./
-RUN mvn dependency:go-offline
-
-# Copy entire project and build it
-COPY . .
-RUN mvn clean install -DskipTests
-
-# Stage 2: Run Stage
-FROM openjdk:17-jdk-slim
-WORKDIR /app
-
-# Copy JAR file from build stage to run stage
-COPY --from=build /app/target/journalApp-0.0.1-SNAPSHOT.jar journalApp.jar
-
-# Expose port 8080 for Spring Boot
+FROM eclipse-temurin:17-alpine
+COPY --from=build /target/*.jar journalApp.jar
 EXPOSE 8080
-
-# Run the application
-ENTRYPOINT ["java", "-jar", "journalApp.jar"]
+ENTRYPOINT ["java","-jar","journalApp.jar"]
