@@ -1,22 +1,9 @@
-# Use a lightweight Java 17 image
-FROM eclipse-temurin:17-jdk-alpine
+FROM openjdk:17-jdk-slim
 
-# Set the working directory
 WORKDIR /app
 
-# Copy the Maven Wrapper files
-COPY mvnw ./
-COPY .mvn .mvn
+COPY target/*.jar journalApp-0.0.1-SNAPSHOT.jar
 
-# Copy the project files
-COPY pom.xml .
-COPY src ./src
+EXPOSE 8080
 
-# Install Maven dependencies and build the project
-RUN ./mvnw clean package -DskipTests
-
-# Expose the port (Render automatically maps ports)
-EXPOSE 8090
-
-# Run the application
-CMD ["java", "-jar", "target/journalApp-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT  ["java", "-jar", "target/journalApp-0.0.1-SNAPSHOT.jar"]
