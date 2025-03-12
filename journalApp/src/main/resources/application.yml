@@ -28,9 +28,9 @@ spring:
     name: journalApp
 
   datasource:
-    url: jdbc:mysql://roundhouse.proxy.rlwy.net:25012/railway
+    url: jdbc:mysql://maglev.proxy.rlwy.net:24672/railway
     username: root
-    password: AAJzcWviTvgtifHPApBLCIjWBawibcaI
+    password: fKkiTgXgZxfdzXWxgPLOQSdlemoGcRaS
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   mail:
