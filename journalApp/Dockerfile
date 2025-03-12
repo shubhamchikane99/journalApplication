@@ -1,7 +1,7 @@
-# Use an official OpenJDK runtime as a parent image
-FROM maven:3.8.7-openjdk-17 AS build
+# Use Maven with OpenJDK 17 to build the project
+FROM maven:3.8.7-eclipse-temurin-17 AS build
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
 # Copy the project files
@@ -10,17 +10,17 @@ COPY . .
 # Build the application
 RUN mvn clean package -DskipTests
 
-# Use a lightweight JDK image to run the app
-FROM openjdk:17-jdk-slim
+# Use a lightweight JDK image for running the app
+FROM eclipse-temurin:17-jdk-alpine
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy only the generated JAR from the build stage
+# Copy only the built JAR from the build stage
 COPY --from=build /app/target/journalApp-0.0.1-SNAPSHOT.jar app.jar
 
-# Expose the port
+# Expose port (same as in your Spring Boot app)
 EXPOSE 8090
 
-# Run the application
+# Command to run the application
 CMD ["java", "-jar", "app.jar"]
