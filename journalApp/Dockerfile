@@ -1,16 +1,19 @@
 # Use Maven with OpenJDK 17 to build the project
 FROM maven:3.8.7-eclipse-temurin-17 AS build
 
-# Set working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the pom.xml first to leverage Docker caching
-COPY pom.xml .
+# Copy the pom.xml first (important for caching dependencies)
+COPY ./pom.xml .
 
-# Download dependencies to cache layers (faster builds)
+# Verify that pom.xml exists
+RUN ls -l /app/pom.xml
+
+# Download dependencies
 RUN mvn dependency:go-offline
 
-# Copy the entire project source
+# Copy the rest of the project source code
 COPY . .
 
 # Build the application
@@ -23,9 +26,9 @@ FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 
 # Copy only the built JAR from the build stage
-COPY --from=build /app/target/journalApp-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/*.jar app.jar
 
-# Expose port (same as in your Spring Boot app)
+# Expose port (adjust if needed)
 EXPOSE 8090
 
 # Command to run the application
