@@ -1,20 +1,20 @@
 # Use Maven with OpenJDK 17 to build the project
 FROM maven:3.8.7-eclipse-temurin-17 AS build
 
-# Set the working directory inside the container
-WORKDIR /app
+# Set working directory inside the container
+WORKDIR /journalApp
 
-# Copy the pom.xml first (important for caching dependencies)
-COPY ./pom.xml .
+# Copy only pom.xml first (for caching dependencies)
+COPY pom.xml /journalApp/
 
-# Verify that pom.xml exists
-RUN ls -l /app/pom.xml
+# Verify if pom.xml is copied
+RUN ls -l /journalApp/pom.xml
 
-# Download dependencies
+# Download dependencies (to cache them separately)
 RUN mvn dependency:go-offline
 
 # Copy the rest of the project source code
-COPY . .
+COPY . /journalApp/
 
 # Build the application
 RUN mvn clean package -DskipTests
@@ -23,13 +23,13 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jdk-alpine
 
 # Set working directory
-WORKDIR /app
+WORKDIR /journalApp
 
 # Copy only the built JAR from the build stage
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=build /app/target/*.jar journalApp.jar
 
 # Expose port (adjust if needed)
 EXPOSE 8090
 
 # Command to run the application
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "journalApp.jar"]
