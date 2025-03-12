@@ -1,19 +1,26 @@
-FROM maven:3-eclipse-temurin-17 AS build
+# Use Maven to build the app
+FROM maven:3.8.6-eclipse-temurin-17 AS build
 
-# Copy all files to container
-COPY . . 
+# Set working directory
+WORKDIR /app
+
+# Copy all files to the container
+COPY . .
 
 # Build the application
-RUN mvn clean install -DskipTests
+RUN mvn clean package -DskipTests
 
-# Use JDK for runtime
-FROM eclipse-temurin:17-alpine
+# Use Java for runtime
+FROM eclipse-temurin:17-jdk
 
-# Copy the JAR file from the target folder
-COPY --from=build /target/*.jar journalApp.jar
+# Set working directory
+WORKDIR /app
 
-# Expose port 8080
+# Copy the built JAR file from the previous stage
+COPY --from=build /app/target/*.jar app.jar
+
+# Expose the required port
 EXPOSE 8080
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "journalApp.jar"]
+CMD ["java", "-jar", "app.jar"]
