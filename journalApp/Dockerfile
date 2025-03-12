@@ -4,7 +4,13 @@ FROM maven:3.8.7-eclipse-temurin-17 AS build
 # Set working directory
 WORKDIR /app
 
-# Copy the project files
+# Copy the pom.xml first to leverage Docker caching
+COPY pom.xml .
+
+# Download dependencies to cache layers (faster builds)
+RUN mvn dependency:go-offline
+
+# Copy the entire project source
 COPY . .
 
 # Build the application
