@@ -12,6 +12,7 @@
 	<groupId>net.engineeringdigest</groupId>
 	<artifactId>journalApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>Journal App</name>
 	<description>E2EE Journal App</description>
 	<properties>
