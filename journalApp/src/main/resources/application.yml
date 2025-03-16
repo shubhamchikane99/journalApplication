@@ -53,4 +53,9 @@ spring:
 #       id.new_generator_mappings: false
 #       format_sql: true  
 
+cloudinary:
+  cloud-name: 1
+  api-key: 1
+  api-secret: 1
+
 weather_key: abcd*efghi
