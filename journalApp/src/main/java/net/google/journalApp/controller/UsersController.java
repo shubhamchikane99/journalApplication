@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.google.journalApp.entity.Users;
@@ -41,5 +42,10 @@ public class UsersController {
 	@GetMapping("/get-all")
 	public ServiceResponse usersGetAll() throws ResourceNotFoundException {
 		return ServiceResponse.asSuccess(usersService.usersGetAll());
+	}
+
+	@GetMapping("/active-status-update")
+	public ServiceResponse getUsersActiveStatusUpdate(@RequestParam("id") String id) throws ResourceNotFoundException {
+		return ServiceResponse.asSuccess(usersService.getUsersActiveStatusUpdate(id));
 	}
 }

@@ -136,35 +136,35 @@ public class UsersService {
 
 	public ErrorMessage logInUser(String userName, String password) {
 		// login API
-		
-		
 
 		ErrorMessage errorMessage = new ErrorMessage();
-		
+
 		try {
-		Users users = new Users();
-		errorMessage.setError(true);
-		errorMessage.setStatusCode(500);
-		errorMessage.setErrorMessage("Invalid User Name And Password");
+			Users users = new Users();
+			errorMessage.setError(true);
+			errorMessage.setStatusCode(500);
+			errorMessage.setErrorMessage("Invalid User Name And Password");
 
-		users = userRepository.findByUserName(userName);
-		
-		System.err.println("users " + users);
-		
-		System.err.println("userName " + userName);
-		System.err.println("password " + password);
+			users = userRepository.findByUserName(userName);
 
-		if (!Objects.isNull(users)) {
+			System.err.println("users " + users);
 
-			if (passwordEncoder.matches(password, users.getPassword())) {
+			System.err.println("userName " + userName);
+			System.err.println("password " + password);
 
-				errorMessage.setError(false);
-				errorMessage.setStatusCode(200);
-				errorMessage.setErrorMessage("Success");
-				errorMessage.setUsers(users);
+			if (!Objects.isNull(users)) {
 
+				if (passwordEncoder.matches(password, users.getPassword())) {
+
+					userRepository.getUpdateActiveStatus(users.getId(), 1);
+
+					errorMessage.setError(false);
+					errorMessage.setStatusCode(200);
+					errorMessage.setErrorMessage("Success");
+					errorMessage.setUsers(users);
+
+				}
 			}
-		}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -249,6 +249,26 @@ public class UsersService {
 		String userName = authentication.getName();
 
 		return userRepository.getUserWithoutLogInPerson(userName);
+	}
+
+	public ErrorMessage getUsersActiveStatusUpdate(String id) {
+		// get Update Users Active Status
+
+		ErrorMessage errorMessage = new ErrorMessage();
+		errorMessage.setError(true);
+		errorMessage.setStatusCode(500);
+		errorMessage.setErrorMessage("Filed to Update ");
+
+		int result = userRepository.getUpdateActiveStatus(id, 0);
+
+		if (result > 0) {
+
+			errorMessage.setError(false);
+			errorMessage.setStatusCode(200);
+			errorMessage.setErrorMessage("Update Sucessfully");
+		}
+
+		return errorMessage;
 	}
 
 }
