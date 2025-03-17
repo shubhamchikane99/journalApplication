@@ -38,6 +38,8 @@ public class ChatMessageController {
 	@MessageMapping("/private-message")
 	public void sendPrivateMessage(@Payload ChatMessage chatMessage) {
 
+		System.err.println("chatMessage " + chatMessage);
+		
 		// Save Chat's
 		chatMessageService.saveChatMessage(chatMessage);
 
