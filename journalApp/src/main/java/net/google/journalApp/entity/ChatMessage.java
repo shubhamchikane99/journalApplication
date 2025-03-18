@@ -32,6 +32,9 @@ public class ChatMessage {
 	@Column(name = "content")
 	private String content;
 
+	@Column(name = "type")
+	private String type;
+
 	@Column(name = "status")
 	private String status; // Default is SENT
 
