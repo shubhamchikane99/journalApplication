@@ -22,22 +22,22 @@ spring:
     host: redis-17015.c305.ap-south-1-1.ec2.redns.redis-cloud.com
     port: 17015
     username: default
-    password: ${REDIS_PASS}
+    password: abcd*efghi
 
   application:
     name: journalApp
 
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:mysql://127.0.0.1:3306/journal_db
+    username: root
+    password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   mail:
     host: smtp.gmail.com
     port: 587
     username: shubhamchikane41216@gmail.com
-    password: ${GMAIL_OTP_PASS}
+    password: abcd*efghi
     properties:
       mail:
         smtp:
@@ -53,4 +53,9 @@ spring:
 #       id.new_generator_mappings: false
 #       format_sql: true  
 
-weather_key: ${WEATHER_KEY}
+cloudinary:
+  cloud-name: 1
+  api-key: 1
+  api-secret: 1
+
+weather_key: abcd*efghi
