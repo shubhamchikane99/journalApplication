@@ -17,8 +17,21 @@ public class CloudinaryService {
 	private Cloudinary cloudinary;
 
 	public String uploadFile(MultipartFile file) throws IOException {
-		Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
-		return uploadResult.get("secure_url").toString(); // Return the uploaded file URL
+		// Upload file as video explicitly
+		String contentType = file.getContentType();
+		String resourceType = "auto"; // Auto-detect image/video
+
+		if (contentType != null && contentType.startsWith("image/")) {
+			resourceType = "image";
+		} else if (contentType != null && contentType.startsWith("video/")) {
+			resourceType = "video";
+		}
+
+		Map<String, Object> uploadResult = cloudinary.uploader().upload(file.getBytes(),
+				ObjectUtils.asMap("resource_type", resourceType));
+
+		return uploadResult.getOrDefault("secure_url", "").toString();
+
 	}
 
 }
