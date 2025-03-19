@@ -1,11 +1,15 @@
 package net.google.journalApp.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import net.google.journalApp.entity.ChatMessage;
+import net.google.journalApp.entity.OnlineOfflineStatus;
 import net.google.journalApp.repository.ChatMessageRepository;
 import net.google.journalApp.repository.UsersRepository;
 
@@ -17,6 +21,8 @@ public class ChatMessageService {
 
 	@Autowired
 	private UsersRepository usersRepository;
+
+	private static Set<String> onlineUsers = ConcurrentHashMap.newKeySet(); // Store online users
 
 	public void saveChatMessage(ChatMessage chatMessage) {
 		// Save ChatMessage
@@ -60,5 +66,17 @@ public class ChatMessageService {
 		// Update The Msg Seen Status
 
 		int result = chatMessageRepository.getUpdateMessagesStatus(senderId, receiverId);
+	}
+
+	public List<String> getOnlineUsersStatus(OnlineOfflineStatus onlineOfflineStatus) {
+		// online offline user
+
+		if (onlineOfflineStatus.getActiveInActive()) {
+			onlineUsers.add(onlineOfflineStatus.getUserId()); // Add user to online set
+		} else {
+			onlineUsers.remove(onlineOfflineStatus.getUserId()); // Remove user if offline
+		}
+
+		return new ArrayList<>(onlineUsers);
 	}
 }
