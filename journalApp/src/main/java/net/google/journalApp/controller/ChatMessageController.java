@@ -10,10 +10,13 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.google.journalApp.entity.ChatMessage;
+import net.google.journalApp.entity.OnlineOfflineStatus;
 import net.google.journalApp.entity.TypingStatus;
 import net.google.journalApp.exception.ServiceResponse;
 import net.google.journalApp.repository.ChatMessageRepository;
@@ -38,8 +41,6 @@ public class ChatMessageController {
 	@MessageMapping("/private-message")
 	public void sendPrivateMessage(@Payload ChatMessage chatMessage) {
 
-		System.err.println("chatMessage " + chatMessage);
-		
 		// Save Chat's
 		chatMessageService.saveChatMessage(chatMessage);
 
@@ -115,7 +116,6 @@ public class ChatMessageController {
 	public void markMessagesAsSeen(@PathVariable String senderId, @PathVariable String receiverId) {
 
 		chatMessageService.updateTheSeenStatus(senderId, receiverId);
-		
 
 		List<ChatMessage> chatMessages = chatMessageRepository
 				.findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestamp(senderId, receiverId);
@@ -126,4 +126,18 @@ public class ChatMessageController {
 			messagingTemplate.convertAndSend(senderDestination, deliveredMessage);
 		});
 	}
+
+	@PostMapping("/online-offline-status")
+	public void userOnlineOfflineStatus(@RequestBody OnlineOfflineStatus onlineOfflineStatus) {
+		System.err.println("Received OnlineOfflineStatus: " + onlineOfflineStatus);
+
+		List<String> onlineUsersStatus = chatMessageService.getOnlineUsersStatus(onlineOfflineStatus);
+
+		System.err.println("Updated Online Users List: " + onlineUsersStatus);
+
+		// ✅ Send the entire list at once, NOT one-by-one
+		String destination = "/topic/online-offline-user";
+		messagingTemplate.convertAndSend(destination, onlineUsersStatus);
+	}
+
 }
