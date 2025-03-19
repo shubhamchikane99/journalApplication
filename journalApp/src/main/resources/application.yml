@@ -12,39 +12,43 @@ logging:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
-# Redis Configuration
+#spring:  # Redis database for local
+#  redis:
+#    host: localhost
+#    port: 6379
+
 spring:
   redis:
     host: redis-17015.c305.ap-south-1-1.ec2.redns.redis-cloud.com
     port: 17015
     username: default
-    password: abcd*efghi
+    password: ${REDIS_PASS}
 
   application:
     name: journalApp
 
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/journal_db
-    username: root
-    password: 
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   mail:
     host: smtp.gmail.com
     port: 587
     username: shubhamchikane41216@gmail.com
-    password: abcd*efghi
+    password: ${GMAIL_OTP_PASS}
     properties:
       mail:
         smtp:
           auth: true
-          starttls.enable: true
+  starttls.enable: true
 
-  # File Upload Configuration
-  servlet:
-    multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB  
+ # File Upload Configuration
+servlet:
+  multipart:
+   max-file-size: 100MB
+   max-request-size: 100MB  
 
 # Uncomment the following section if needed
 # jpa:
@@ -56,8 +60,8 @@ spring:
 #       format_sql: true  
 
 cloudinary:
-  cloud-name: 1
-  api-key: 1
-  api-secret: 1
+  cloud-name: ${CLOUD_NAME} 
+  api-key: ${API_KEY} 
+  api-secret: ${API_SECRET} 
 
-weather_key: abcd*efghi
+weather_key: ${WEATHER_KEY}
