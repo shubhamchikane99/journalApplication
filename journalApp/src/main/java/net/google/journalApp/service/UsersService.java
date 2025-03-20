@@ -159,8 +159,6 @@ public class UsersService {
 
 			if (passwordEncoder.matches(password, users.getPassword())) {
 
-				userRepository.getUpdateActiveStatus(users.getId(), 1);
-
 				RestTemplate restTemplate = new RestTemplate();
 				HttpHeaders headers = new HttpHeaders();
 				String auth = userName + ":" + password; // Replace with actual username and password
