@@ -73,16 +73,20 @@ public class ChatMessageController {
 	// ✅ Mark user as ONLINE
 	@GetMapping("/{userId}/online")
 	public ResponseEntity<String> setUserOnline(@PathVariable String userId) {
+
 		chatMessageService.updateUserStatus(userId, 1);
 
 		List<ChatMessage> getDeliveredMessages = new ArrayList<ChatMessage>();
 		getDeliveredMessages = chatMessageService.getDeliveredMessages(userId);
 
 		// Notify sender for each delivered message
-		getDeliveredMessages.forEach(deliveredMessage -> {
-			String senderDestination = "/user/" + deliveredMessage.getSenderId() + "/message-delivery";
-			messagingTemplate.convertAndSend(senderDestination, deliveredMessage);
-		});
+		if (!getDeliveredMessages.isEmpty()) {
+
+			getDeliveredMessages.forEach(deliveredMessage -> {
+				String senderDestination = "/user/" + deliveredMessage.getSenderId() + "/message-delivery";
+				messagingTemplate.convertAndSend(senderDestination, deliveredMessage);
+			});
+		}
 
 		return ResponseEntity.ok("User is now online");
 	}
@@ -129,13 +133,9 @@ public class ChatMessageController {
 
 	@PostMapping("/online-offline-status")
 	public void userOnlineOfflineStatus(@RequestBody OnlineOfflineStatus onlineOfflineStatus) {
-		System.err.println("Received OnlineOfflineStatus: " + onlineOfflineStatus);
 
 		List<String> onlineUsersStatus = chatMessageService.getOnlineUsersStatus(onlineOfflineStatus);
 
-		System.err.println("Updated Online Users List: " + onlineUsersStatus);
-
-		// ✅ Send the entire list at once, NOT one-by-one
 		String destination = "/topic/online-offline-user";
 		messagingTemplate.convertAndSend(destination, onlineUsersStatus);
 	}
