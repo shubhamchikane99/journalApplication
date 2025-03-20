@@ -8,20 +8,27 @@ import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import lombok.extern.slf4j.Slf4j;
+import net.google.journalApp.constant.Constant;
 import net.google.journalApp.entity.EmailOtpErrorMessage;
 import net.google.journalApp.entity.ErrorMessage;
 import net.google.journalApp.entity.ErrorMessageForUser;
 import net.google.journalApp.entity.GenerateOtp;
+import net.google.journalApp.entity.OnlineOfflineStatus;
 import net.google.journalApp.entity.Users;
 import net.google.journalApp.exception.ResourceNotFoundException;
 import net.google.journalApp.generatotp.GenerateOtpCode;
 import net.google.journalApp.repository.UsersRepository;
+import org.springframework.http.*;
+import org.springframework.web.client.RestTemplate;
+import java.util.Base64;
 
 @Service
 @Slf4j
@@ -139,36 +146,52 @@ public class UsersService {
 
 		ErrorMessage errorMessage = new ErrorMessage();
 
-		try {
-			Users users = new Users();
-			errorMessage.setError(true);
-			errorMessage.setStatusCode(500);
-			errorMessage.setErrorMessage("Invalid User Name And Password");
+		Users users = new Users();
+		errorMessage.setError(true);
+		errorMessage.setStatusCode(500);
+		errorMessage.setErrorMessage("Invalid User Name And Password");
 
-			users = userRepository.findByUserName(userName);
+		System.err.println("userName " + userName);
 
-			System.err.println("users " + users);
+		users = userRepository.findByUserName(userName);
 
-			System.err.println("userName " + userName);
-			System.err.println("password " + password);
+		if (!Objects.isNull(users)) {
 
-			if (!Objects.isNull(users)) {
+			if (passwordEncoder.matches(password, users.getPassword())) {
 
-				if (passwordEncoder.matches(password, users.getPassword())) {
+				userRepository.getUpdateActiveStatus(users.getId(), 1);
 
-					userRepository.getUpdateActiveStatus(users.getId(), 1);
+				RestTemplate restTemplate = new RestTemplate();
+				HttpHeaders headers = new HttpHeaders();
+				String auth = userName + ":" + password; // Replace with actual username and password
+				String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes());
+				headers.set("Authorization", "Basic " + encodedAuth);
+				headers.setContentType(MediaType.APPLICATION_JSON);
 
-					errorMessage.setError(false);
-					errorMessage.setStatusCode(200);
-					errorMessage.setErrorMessage("Success");
-					errorMessage.setUsers(users);
+				HttpEntity<String> entity = new HttpEntity<>(null, headers);
 
-				}
+				ResponseEntity<String> response = restTemplate.exchange(
+						Constant.backendUrl + "v1/chat-message/" + users.getId() + "/online", HttpMethod.GET, entity,
+						String.class);
+
+				OnlineOfflineStatus onlineOfflineStatus = new OnlineOfflineStatus();
+
+				onlineOfflineStatus.setUserId(users.getId());
+				onlineOfflineStatus.setActiveInActive(true);
+
+				HttpEntity<OnlineOfflineStatus> entity2 = new HttpEntity<>(onlineOfflineStatus, headers);
+
+				ResponseEntity<String> response2 = restTemplate.postForEntity(
+						Constant.backendUrl + "v1/chat-message/online-offline-status", entity2, String.class);
+
+				errorMessage.setError(false);
+				errorMessage.setStatusCode(200);
+				errorMessage.setErrorMessage("Success");
+				errorMessage.setUsers(users);
+
 			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
+
 		return errorMessage;
 	}
 
