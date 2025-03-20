@@ -7,8 +7,8 @@ public class Constant {
 	private static final String API = "Requesthttp://api.weatherstack.com/current? access_key=weatherApiKey&query=CITY";
 
 	// localhost
-	public static final String backendUrl = "http://localhost:8088/";
+//	public static final String backendUrl = "http://localhost:8088/";
 
-//	private static final String backendUrl = "https://journalapplication-production-8570.up.railway.app";
+	public static final String backendUrl = "https://journalapplication-production-8570.up.railway.app/";
 
 }
