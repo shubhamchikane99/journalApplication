@@ -79,4 +79,10 @@ public class ChatMessageService {
 
 		return new ArrayList<>(onlineUsers);
 	}
+
+	public int getUnreadMsgOfUser(String userId) {
+		// get User Unread messages
+
+		return chatMessageRepository.getUnreadMsgOfUserByUserId(userId);
+	}
 }
