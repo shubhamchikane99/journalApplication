@@ -42,7 +42,6 @@ public class ChatMessageService {
 
 		if (status == 1) {
 			int deliveredAllSentMsg = chatMessageRepository.getDeliveredAllSentMsges(userId);
-			System.err.println("deliveredAllSentMsg " + deliveredAllSentMsg);
 		}
 
 		int result = usersRepository.getUpdateActiveStatus(userId, status);
@@ -72,11 +71,19 @@ public class ChatMessageService {
 		// online offline user
 
 		if (onlineOfflineStatus.getActiveInActive()) {
-			onlineUsers.add(onlineOfflineStatus.getUserId()); // Add user to online set
+			// Add user to online set
+
 		} else {
+
 			onlineUsers.remove(onlineOfflineStatus.getUserId()); // Remove user if offline
 		}
 
 		return new ArrayList<>(onlineUsers);
+	}
+
+	public int getUnreadMsgOfUser(String userId) {
+		// get User Unread messages
+
+		return chatMessageRepository.getUnreadMsgOfUserByUserId(userId);
 	}
 }

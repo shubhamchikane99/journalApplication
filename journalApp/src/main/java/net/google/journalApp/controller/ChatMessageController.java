@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.google.journalApp.entity.ChatMessage;
@@ -38,6 +39,7 @@ public class ChatMessageController {
 		this.messagingTemplate = messagingTemplate;
 	}
 
+	// Send Private Message to user
 	@MessageMapping("/private-message")
 	public void sendPrivateMessage(@Payload ChatMessage chatMessage) {
 
@@ -46,6 +48,15 @@ public class ChatMessageController {
 
 		// Ensure messages are sent to the correct user destination
 		messagingTemplate.convertAndSendToUser(chatMessage.getReceiverId(), "/private", chatMessage);
+
+		// unread message notification
+		String destination = "/topic/unread-msg/" + chatMessage.getReceiverId();
+		messagingTemplate.convertAndSend(destination, chatMessage.getReceiverId());
+
+		// unread message for private message
+		String destination1 = "/topic/private-unread-msg/" + chatMessage.getReceiverId();
+		messagingTemplate.convertAndSend(destination1, chatMessage.getSenderId());
+
 	}
 
 	// Fetch chat history between two users
@@ -57,6 +68,7 @@ public class ChatMessageController {
 
 	}
 
+	// Typing Status API SHowing another user current used is typing
 	@MessageMapping("/typing-status")
 	public void sendTypingStatus(@Payload TypingStatus typingStatus) {
 
@@ -64,13 +76,14 @@ public class ChatMessageController {
 		messagingTemplate.convertAndSendToUser(typingStatus.getReceiverId(), "/isTyping", typingStatus);
 	}
 
+	// user Active Status
 	@GetMapping("/user-status/{userId}")
 	public ServiceResponse getUserStatus(@PathVariable String userId) {
 
 		return ServiceResponse.asSuccess(chatMessageService.getUserStatus(userId));
 	}
 
-	// ✅ Mark user as ONLINE
+	// Mark user as ONLINE
 	@GetMapping("/{userId}/online")
 	public ResponseEntity<String> setUserOnline(@PathVariable String userId) {
 
@@ -91,7 +104,7 @@ public class ChatMessageController {
 		return ResponseEntity.ok("User is now online");
 	}
 
-	// 🔴 Mark user as OFFLINE
+	// Mark user as OFFLINE
 	@GetMapping("/{userId}/offline")
 	public ResponseEntity<String> setUserOffline(@PathVariable String userId) {
 		chatMessageService.updateUserStatus(userId, 0);
@@ -131,6 +144,7 @@ public class ChatMessageController {
 		});
 	}
 
+	// Online Offline Status
 	@PostMapping("/online-offline-status")
 	public void userOnlineOfflineStatus(@RequestBody OnlineOfflineStatus onlineOfflineStatus) {
 
@@ -138,6 +152,13 @@ public class ChatMessageController {
 
 		String destination = "/topic/online-offline-user";
 		messagingTemplate.convertAndSend(destination, onlineUsersStatus);
+	}
+
+	@GetMapping("/unread-msg")
+	public ServiceResponse getUnreadMsgOfUser(@RequestParam("userId") String userId) {
+
+		return ServiceResponse.asSuccess(chatMessageService.getUnreadMsgOfUser(userId));
+
 	}
 
 }
