@@ -48,6 +48,15 @@ public class ChatMessageController {
 
 		// Ensure messages are sent to the correct user destination
 		messagingTemplate.convertAndSendToUser(chatMessage.getReceiverId(), "/private", chatMessage);
+
+		// unread message notification
+		String destination = "/topic/unread-msg/" + chatMessage.getReceiverId();
+		messagingTemplate.convertAndSend(destination, chatMessage.getReceiverId());
+
+		// unread message for private message
+		String destination1 = "/topic/private-unread-msg/" + chatMessage.getReceiverId();
+		messagingTemplate.convertAndSend(destination1, chatMessage.getSenderId());
+
 	}
 
 	// Fetch chat history between two users

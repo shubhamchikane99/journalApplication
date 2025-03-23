@@ -1,6 +1,7 @@
 package net.google.journalApp.service;
 
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -8,6 +9,10 @@ import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +22,7 @@ import org.springframework.web.client.RestTemplate;
 
 import lombok.extern.slf4j.Slf4j;
 import net.google.journalApp.constant.Constant;
+import net.google.journalApp.entity.DTOUsers;
 import net.google.journalApp.entity.EmailOtpErrorMessage;
 import net.google.journalApp.entity.ErrorMessage;
 import net.google.journalApp.entity.ErrorMessageForUser;
@@ -25,10 +31,8 @@ import net.google.journalApp.entity.OnlineOfflineStatus;
 import net.google.journalApp.entity.Users;
 import net.google.journalApp.exception.ResourceNotFoundException;
 import net.google.journalApp.generatotp.GenerateOtpCode;
+import net.google.journalApp.repository.DTOUsersRepository;
 import net.google.journalApp.repository.UsersRepository;
-import org.springframework.http.*;
-import org.springframework.web.client.RestTemplate;
-import java.util.Base64;
 
 @Service
 @Slf4j
@@ -45,6 +49,9 @@ public class UsersService {
 
 	@Autowired
 	private GenerateOtpService generateOtpService;
+
+	@Autowired
+	private DTOUsersRepository dtoUsersRepository;
 
 	// Used When Not Configured in pom file
 	// private static final Logger logger =
@@ -137,7 +144,6 @@ public class UsersService {
 	public List<Users> getAllUsers() {
 		// Get All User For Admin
 
-		System.err.println("in API");
 		return userRepository.getAllUsers();
 	}
 
@@ -263,13 +269,13 @@ public class UsersService {
 		return errorMessage;
 	}
 
-	public List<Users> usersGetAll() {
+	public List<DTOUsers> usersGetAllWithUnreadMsg() {
 		// get all for chat window
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
 
-		return userRepository.getUserWithoutLogInPerson(userName);
+		return dtoUsersRepository.getAllUserWithoutLogInPersonAndUnreadMsg(userName);
 	}
 
 	public ErrorMessage getUsersActiveStatusUpdate(String id) {

@@ -40,8 +40,8 @@ public class UsersController {
 	}
 
 	@GetMapping("/get-all")
-	public ServiceResponse usersGetAll() throws ResourceNotFoundException {
-		return ServiceResponse.asSuccess(usersService.usersGetAll());
+	public ServiceResponse usersGetAllWithUnreadMsg() throws ResourceNotFoundException {
+		return ServiceResponse.asSuccess(usersService.usersGetAllWithUnreadMsg());
 	}
 
 	@GetMapping("/active-status-update")
