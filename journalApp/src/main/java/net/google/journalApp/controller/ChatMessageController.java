@@ -56,7 +56,7 @@ public class ChatMessageController {
 		// unread message for private message
 		String destination1 = "/topic/private-unread-msg/" + chatMessage.getReceiverId();
 		messagingTemplate.convertAndSend(destination1, chatMessage.getSenderId());  
-
+ 
 	}
 
 	// Fetch chat history between two users
