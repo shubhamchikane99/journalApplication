@@ -20,7 +20,7 @@ public class FileUploadController {
 	private CloudinaryService cloudinaryService;
 
 	@PostMapping("/upload")
-	public ServiceResponse uploadFile(@RequestParam("file") MultipartFile file) {
+	public ServiceResponse uploadFile(@RequestParam("file") MultipartFile file) { 
 		try {
 			return ServiceResponse.asSuccess(cloudinaryService.uploadFile(file));
 		} catch (IOException e) {
