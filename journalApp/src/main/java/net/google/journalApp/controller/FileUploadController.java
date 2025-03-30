@@ -24,7 +24,7 @@ public class FileUploadController {
 		try {
 			return ServiceResponse.asSuccess(cloudinaryService.uploadFile(file));
 		} catch (IOException e) {
-			return ServiceResponse.asSuccess("File upload failed"); 
+			return ServiceResponse.asSuccess("File upload failed");  
 		}
 	}
 }
