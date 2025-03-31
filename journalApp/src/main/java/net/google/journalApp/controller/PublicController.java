@@ -39,7 +39,7 @@ public class PublicController {
 	@GetMapping("/send-otp")
 	public ServiceResponse sendOtp(@RequestParam("emailId") String emailId) {
 
-		return ServiceResponse.asSuccess(usersService.sendOtp(emailId));
+		return ServiceResponse.asSuccess(usersService.sendOtp(emailId)); 
 	}
 
 	@GetMapping("/validate-otp")
