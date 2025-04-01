@@ -298,4 +298,46 @@ public class UsersService {
 		return errorMessage;
 	}
 
+	public EmailOtpErrorMessage getCheckUserName(String userName) {
+		// get check username
+
+		EmailOtpErrorMessage errorMessage = new EmailOtpErrorMessage();
+		errorMessage.setError(true);
+		errorMessage.setStatusCode(409);
+		errorMessage.setErrorMessage("Username is already taken. Please choose another one.");
+
+		Users user = userRepository.findByUserName(userName);
+
+		if (Objects.isNull(user)) {
+
+			errorMessage.setError(true);
+			errorMessage.setStatusCode(200); // 200 OK
+			errorMessage.setErrorMessage("Username is available.");
+
+		}
+
+		return errorMessage;
+	}
+
+	public Object getCheckEmailId(String emailId) {
+		// get check emailId
+
+		EmailOtpErrorMessage errorMessage = new EmailOtpErrorMessage();
+		errorMessage.setError(true);
+		errorMessage.setStatusCode(409);
+		errorMessage.setErrorMessage("Email is already taken. Please choose another one.");
+
+		Users user = userRepository.findByEmailId(emailId);
+
+		if (Objects.isNull(user)) {
+
+			errorMessage.setError(true);
+			errorMessage.setStatusCode(200); // 200 OK
+			errorMessage.setErrorMessage("Email is available.");
+
+		}
+
+		return errorMessage;
+	}
+
 }
