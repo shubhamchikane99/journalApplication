@@ -30,6 +30,6 @@ public class AppCache {
 		for (ConfigJournalApp obj : all) {
 
 			APP_CACHE.put(obj.getJournalKey(), obj.getJournalValue());
-		}
+		} 
 	}
 }
