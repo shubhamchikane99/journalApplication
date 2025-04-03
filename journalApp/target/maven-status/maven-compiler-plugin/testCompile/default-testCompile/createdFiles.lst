@@ -1,0 +1,5 @@
+net\google\journalApp\service\UserArgumentsProvider.class
+net\google\journalApp\service\UsersDetailsServiceImplTest.class
+net\google\journalApp\service\UsersServiceTest.class
+net\google\journalApp\JournalAppApplicationTests.class
+net\google\journalApp\service\AdminServiceTests.class

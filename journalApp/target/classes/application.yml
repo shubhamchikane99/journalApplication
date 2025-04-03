@@ -1,0 +1,63 @@
+server:
+  port: 8088
+
+# Uncomment and update if you want to set a specific context path
+# servlet:
+#   context-path: /v1
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.jdbc.core: TRACE
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+# Redis Configuration
+spring:
+  redis:
+    host: redis-17015.c305.ap-south-1-1.ec2.redns.redis-cloud.com
+    port: 17015
+    username: default
+    password: abcd*efghi
+
+  application:
+    name: journalApp
+
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/journal_db
+    username: root
+    password: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: shubhamchikane41216@gmail.com
+    password: dzdqfposudfvalcc
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls.enable: true
+
+  # File Upload Configuration
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB  
+
+# Uncomment the following section if needed
+# jpa:
+#   show-sql: true
+#   properties:
+#     hibernate:
+#       dialect: org.hibernate.dialect.MySQLDialect
+#       id.new_generator_mappings: false
+#       format_sql: true  
+
+cloudinary:
+  cloud-name: dlttny8or
+  api-key: 316495775999264
+  api-secret: ewojKrowJkViOhz2z_LHDUHzJdE
+
+weather_key: abcd*efghi
