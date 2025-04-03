@@ -21,7 +21,7 @@ public interface UsersRepository extends JpaRepository<Users, String>, JpaSpecif
 	int deleteByIdUsers(@Param("id") String id);
 
 	@Query(value = "SELECT u.* FROM users u WHERE u.user_name =:userName", nativeQuery = true)
-	Users findByUserName(@Param("userName") String userName); 
+	Users findByUserName(@Param("userName") String userName);
 
 	@Query(value = " SELECT u.* FROM users u ORDER BY u.insert_date_time DESC", nativeQuery = true)
 	List<Users> getAllUsers();
@@ -43,4 +43,7 @@ public interface UsersRepository extends JpaRepository<Users, String>, JpaSpecif
 
 	@Query(value = " SELECT u.is_active FROM users u WHERE u.id =:userId ", nativeQuery = true)
 	int getCurrentUserStatus(@Param("userId") String userId);
+
+	@Query(value = "SELECT u.* FROM users u WHERE u.email =:emailId LIMIT 1", nativeQuery = true)
+	Users findByEmailId(@Param("emailId") String emailId);
 }

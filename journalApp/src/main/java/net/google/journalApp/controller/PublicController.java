@@ -18,10 +18,10 @@ import net.google.journalApp.service.UsersService;
 public class PublicController {
 
 	@Autowired
-	private UsersService usersService; 
+	private UsersService usersService;
 
 	@Autowired
-	private AppCache appCache; 
+	private AppCache appCache;
 
 	@GetMapping("/log-in")
 	public ServiceResponse logInUser(@RequestParam("userName") String userName,
@@ -30,10 +30,10 @@ public class PublicController {
 		return ServiceResponse.asSuccess(usersService.logInUser(userName, password));
 	}
 
-	@PostMapping("/create-user") 
+	@PostMapping("/create-user")
 	public ServiceResponse saveUsers(@RequestBody Users users) {
 
-		return ServiceResponse.asSuccess(usersService.saveUsers(users)); 
+		return ServiceResponse.asSuccess(usersService.saveUsers(users));
 	}
 
 	@GetMapping("/send-otp")
@@ -45,11 +45,11 @@ public class PublicController {
 	@GetMapping("/validate-otp")
 	public ServiceResponse validateOtp(@RequestParam("emailId") String emailId, @RequestParam("otp") String otp) {
 
-		return ServiceResponse.asSuccess(usersService.validateOtp(emailId, otp)); 
+		return ServiceResponse.asSuccess(usersService.validateOtp(emailId, otp));
 	}
 
 	@GetMapping("/get-all")
-	public ServiceResponse getAll() {  
+	public ServiceResponse getAll() {
 
 		return ServiceResponse.asSuccess(usersService.getAllUsers());
 	}
@@ -62,9 +62,21 @@ public class PublicController {
 	}
 
 	@GetMapping("/clear-app-cache")
-	public void clearAppCache() {  
-     
+	public void clearAppCache() {
+
 		appCache.init();
+	}
+
+	@GetMapping("/check-username")
+	public ServiceResponse getCheckUserName(@RequestParam("userName") String userName) {
+
+		return ServiceResponse.asSuccess(usersService.getCheckUserName(userName));
+	}
+
+	@GetMapping("/check-email")
+	public ServiceResponse getCheckEmailId(@RequestParam("emailId") String emailId) {
+
+		return ServiceResponse.asSuccess(usersService.getCheckEmailId(emailId));
 	}
 
 }
