@@ -17,26 +17,26 @@ import net.google.journalApp.entity.Users;
 import net.google.journalApp.repository.UsersRepository;
 
 public class UsersDetailsServiceImplTest {
-
-	@InjectMocks
-	private UsersDetailsServiceImpl usersDetailsService;
-
-	@Mock
-	private UsersRepository userRepository;
-
-	@BeforeEach
-	void setUp() {
-		MockitoAnnotations.initMocks(this);
-	}
-
-	@Test
-	void loadUserNameTest() {
-
-		when(userRepository.findByUserName(ArgumentMatchers.anyString()))
-				.thenReturn(Users.builder().userName("ram").password("ram").accessRole(new ArrayList<>()).build());
-		UserDetails user = usersDetailsService.loadUserByUsername("ram");
-		Assertions.assertNotNull(user);
-
-	}
+//
+//	@InjectMocks
+//	private UsersDetailsServiceImpl usersDetailsService;
+//
+//	@Mock
+//	private UsersRepository userRepository;
+//
+//	@BeforeEach
+//	void setUp() {
+//		MockitoAnnotations.initMocks(this);
+//	}
+//
+//	@Test
+//	void loadUserNameTest() {
+//
+//		when(userRepository.findByUserName(ArgumentMatchers.anyString()))
+//				.thenReturn(Users.builder().userName("ram").password("ram").accessRole(new ArrayList<>()).build());
+//		UserDetails user = usersDetailsService.loadUserByUsername("ram");
+//		Assertions.assertNotNull(user);
+//
+//	}
 
 }

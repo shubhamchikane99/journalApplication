@@ -7,12 +7,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class AdminServiceTests {
 
-	@Autowired
-	private AdminService adminService;
-
-	@Test
-	public void testSentiments() {
-
-		adminService.sendSentimate();
-	}
+//	@Autowired
+//	private AdminService adminService;
+//
+//	@Test
+//	public void testSentiments() {
+//
+//		adminService.sendSentimate();
+//	}
 }

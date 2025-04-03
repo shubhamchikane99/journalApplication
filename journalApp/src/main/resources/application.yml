@@ -1,5 +1,9 @@
 server:
-  port: ${PORT:8080}
+  port: 8088
+
+# Uncomment and update if you want to set a specific context path
+# servlet:
+#   context-path: /v1
 
 logging:
   level:
@@ -8,42 +12,52 @@ logging:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
+# Redis Configuration
 spring:
   redis:
     host: redis-17015.c305.ap-south-1-1.ec2.redns.redis-cloud.com
     port: 17015
     username: default
-    password: ${REDIS_PASS}
+    password: abcd*efghi
 
   application:
     name: journalApp
 
   datasource:
-    url: jdbc:mysql://yamabiko.proxy.rlwy.net:31545/railway
+    url: jdbc:mysql://127.0.0.1:3306/journal_db
     username: root
-    password: pLThMDiiqlQNfDzgWKXlrVpRAQpPyqDA
+    password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   mail:
     host: smtp.gmail.com
     port: 587
     username: shubhamchikane41216@gmail.com
-    password: ${GMAIL_OTP}
+    password: dzdqfposudfvalcc
     properties:
       mail:
         smtp:
           auth: true
           starttls.enable: true
-    debug: true
 
-servlet:
-  multipart:
-    max-file-size: 100MB
-    max-request-size: 100MB  
+  # File Upload Configuration
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB  
+
+# Uncomment the following section if needed
+# jpa:
+#   show-sql: true
+#   properties:
+#     hibernate:
+#       dialect: org.hibernate.dialect.MySQLDialect
+#       id.new_generator_mappings: false
+#       format_sql: true  
 
 cloudinary:
-  cloud-name: dlttny8or 
+  cloud-name: dlttny8or
   api-key: 316495775999264
   api-secret: ewojKrowJkViOhz2z_LHDUHzJdE
 
-weather_key: 7d7664073fb43abe8381fea1ff1b7a0e
+weather_key: abcd*efghi
