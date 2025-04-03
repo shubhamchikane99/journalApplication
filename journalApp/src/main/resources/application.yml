@@ -19,9 +19,9 @@ spring:
     name: journalApp
 
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:mysql://yamabiko.proxy.rlwy.net:31545/railway
+    username: root
+    password: pLThMDiiqlQNfDzgWKXlrVpRAQpPyqDA
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   mail:
@@ -42,8 +42,8 @@ servlet:
     max-request-size: 100MB  
 
 cloudinary:
-  cloud-name: ${CLOUD_NAME} 
-  api-key: ${API_KEY} 
-  api-secret: ${API_SECRET} 
+  cloud-name: dlttny8or 
+  api-key: 316495775999264
+  api-secret: ewojKrowJkViOhz2z_LHDUHzJdE
 
-weather_key: ${WEATHER_KEY}
+weather_key: 7d7664073fb43abe8381fea1ff1b7a0e
