@@ -27,5 +27,5 @@ public class CloudinaryConfig {
 						"api_key", apiKey,
 						"api_secret", apiSecret,
 						"secure", true));
-	}
+	 }
 }
