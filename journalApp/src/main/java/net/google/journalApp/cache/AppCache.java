@@ -15,21 +15,21 @@ import net.google.journalApp.repository.ConfigJournalAppRepository;
 @Component
 public class AppCache {
 
-	@Autowired
-	private ConfigJournalAppRepository configJournalAppRepository;
+//	@Autowired
+//	private ConfigJournalAppRepository configJournalAppRepository;
 
-	public Map<String, String> APP_CACHE;
+//	public Map<String, String> APP_CACHE;
 
-	@PostConstruct
-	public void init() {
+//	@PostConstruct
+//	public void init() {
 
-		APP_CACHE = new HashMap<>();
+//		APP_CACHE = new HashMap<>();
 
-		List<ConfigJournalApp> all = configJournalAppRepository.getAllConfigJournalApp();
+//		List<ConfigJournalApp> all = configJournalAppRepository.getAllConfigJournalApp();
 
-		for (ConfigJournalApp obj : all) {
+//		for (ConfigJournalApp obj : all) {
 
-			APP_CACHE.put(obj.getJournalKey(), obj.getJournalValue());
-		}
-	}
+//			APP_CACHE.put(obj.getJournalKey(), obj.getJournalValue());
+//		}
+//	}
 }
