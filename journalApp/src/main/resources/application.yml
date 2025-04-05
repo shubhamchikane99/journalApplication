@@ -13,22 +13,22 @@ spring:
     host: redis-17015.c305.ap-south-1-1.ec2.redns.redis-cloud.com
     port: 17015
     username: default
-    password: ${REDIS_PASS}
+    password: aVEwAkB7P378hrsvsfHIjP9KK8yVMOKB
 
   application:
     name: journalApp
 
   datasource:
-    url: jdbc:mysql://yamabiko.proxy.rlwy.net:31545/railway
+    url: jdbc:mysql://trolley.proxy.rlwy.net:12337/railway
     username: root
-    password: pLThMDiiqlQNfDzgWKXlrVpRAQpPyqDA
+    password: qQNjjaFanohWEjkoBTDXwoPflHXgZhmr
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   mail:
     host: smtp.gmail.com
     port: 587
     username: shubhamchikane41216@gmail.com
-    password: ${GMAIL_OTP}
+    password: dzdqfposudfvalcc
     properties:
       mail:
         smtp:
