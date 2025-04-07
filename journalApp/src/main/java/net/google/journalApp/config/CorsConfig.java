@@ -19,6 +19,6 @@ public class CorsConfig implements WebMvcConfigurer {
 	        config.addAllowedHeader("*"); // Allow all headers
 	        config.addAllowedMethod("*"); // Allow all HTTP methods
 	        source.registerCorsConfiguration("/**", config); 
-	        return new CorsFilter(source);  
+	        return new CorsFilter(source);   
 	}
 }
