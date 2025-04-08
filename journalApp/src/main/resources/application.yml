@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 logging:
   level:
@@ -42,8 +42,8 @@ servlet:
     max-request-size: 100MB  
 
 cloudinary:
-  cloud-name: dlttny8or
-  api-key:  316495775999264
+  cloud-name: dlttny8or 
+  api-key: 316495775999264
   api-secret: ewojKrowJkViOhz2z_LHDUHzJdE
 
 weather_key: 7d7664073fb43abe8381fea1ff1b7a0e
