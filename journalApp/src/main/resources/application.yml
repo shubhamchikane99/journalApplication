@@ -33,7 +33,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: shubhamchikane41216@gmail.com
-    password: dzdqfposudfvalcc
+    password: dzdqfpccjsjsjjs
     properties:
       mail:
         smtp:
@@ -56,8 +56,8 @@ spring:
 #       format_sql: true  
 
 cloudinary:
-  cloud-name: dlttny8or
-  api-key: 316495775999264
-  api-secret: ewojKrowJkViOhz2z_LHDUHzJdE
+  cloud-name orghjj
+  api-key: jju67999494949
+  api-secret: ewojsjsjsnsnsnsn
 
 weather_key: abcd*efghi
