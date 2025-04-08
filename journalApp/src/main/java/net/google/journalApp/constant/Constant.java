@@ -9,6 +9,6 @@ public class Constant {
 	// localhost
 //	public static final String backendUrl = "http://localhost:8088/";
 
-	public static final String backendUrl = "https://journalapplication-production-986f.up.railway.app/";
+	public static final String backendUrl = "https://journalapplication-production-eefo.up.railway.app/";
 
 }
