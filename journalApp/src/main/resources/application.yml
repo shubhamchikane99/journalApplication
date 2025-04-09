@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:8080}
+  port: ${PORT:8088}
 
 logging:
   level:
@@ -8,42 +8,45 @@ logging:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
-spring:
-  redis:
-    host: redis-17015.c305.ap-south-1-1.ec2.redns.redis-cloud.com
-    port: 17015
-    username: default
-    password: ${REDIS_PASS}
+# Redis Configuration (commented out)
+# spring:
+#   redis:
+#     host: redis-17015.c305.ap-south-1-1.ec2.redns.redis-cloud.com
+#     port: 17015
+#     username: default
+#     password: aVEwAkB7P378hrsvsfHIjP9KK8yVMOKB
 
+spring:
   application:
     name: journalApp
 
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:mysql://trolley.proxy.rlwy.net:12337/railway
+    username: root
+    password: qQNjjaFanohWEjkoBTDXwoPflHXgZhmr
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   mail:
     host: smtp.gmail.com
     port: 587
     username: shubhamchikane41216@gmail.com
-    password: ${GMAIL_OTP}
+    password: dzdqfposudfvalcc
     properties:
       mail:
         smtp:
           auth: true
-          starttls.enable: true
+          starttls:
+            enable: true
     debug: true
 
 servlet:
   multipart:
     max-file-size: 100MB
-    max-request-size: 100MB  
+    max-request-size: 100MB
 
 cloudinary:
-  cloud-name: ${CLOUD_NAME} 
-  api-key: ${API_KEY} 
-  api-secret: ${API_SECRET} 
+  cloud-name: dlttny8or
+  api-key: 316495775999264
+  api-secret: ewojKrowJkViOhz2z_LHDUHzJdE
 
-weather_key: ${WEATHER_KEY}
+weather_key: 7d7664073fb43abe8381fea1ff1b7a0e
