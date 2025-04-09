@@ -8,13 +8,15 @@ logging:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
-spring:
-  redis:
-    host: redis-17015.c305.ap-south-1-1.ec2.redns.redis-cloud.com
-    port: 17015
-    username: default
-    password: aVEwAkB7P378hrsvsfHIjP9KK8yVMOKB
+# Redis Configuration (commented out)
+# spring:
+#   redis:
+#     host: redis-17015.c305.ap-south-1-1.ec2.redns.redis-cloud.com
+#     port: 17015
+#     username: default
+#     password: aVEwAkB7P378hrsvsfHIjP9KK8yVMOKB
 
+spring:
   application:
     name: journalApp
 
@@ -33,16 +35,17 @@ spring:
       mail:
         smtp:
           auth: true
-          starttls.enable: true
+          starttls:
+            enable: true
     debug: true
 
 servlet:
   multipart:
     max-file-size: 100MB
-    max-request-size: 100MB  
+    max-request-size: 100MB
 
 cloudinary:
-  cloud-name: dlttny8or 
+  cloud-name: dlttny8or
   api-key: 316495775999264
   api-secret: ewojKrowJkViOhz2z_LHDUHzJdE
 
