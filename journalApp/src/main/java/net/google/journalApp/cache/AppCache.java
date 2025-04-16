@@ -25,11 +25,11 @@ public class AppCache {
 
 		APP_CACHE = new HashMap<>();
 
-		List<ConfigJournalApp> all = configJournalAppRepository.getAllConfigJournalApp();
+		//List<ConfigJournalApp> all = new ArrayList<ConfigJournalApp>();
+			//configJournalAppRepository.getAllConfigJournalApp();
 
-		for (ConfigJournalApp obj : all) {
-
-			APP_CACHE.put(obj.getJournalKey(), obj.getJournalValue());
-		} 
+		//for (ConfigJournalApp obj : all) {
+		//APP_CACHE.put(obj.getJournalKey(), obj.getJournalValue());
+		//}
 	}
 }
