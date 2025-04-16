@@ -13,7 +13,7 @@ spring:
     host: redis-17015.c305.ap-south-1-1.ec2.redns.redis-cloud.com
     port: 17015
     username: default
-    password: ${REDIS_PASS}
+    password: ${RED_PASSWORD}
 
   application:
     name: journalApp
