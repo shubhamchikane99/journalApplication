@@ -165,6 +165,8 @@ public class UsersService {
 
 			if (passwordEncoder.matches(password, users.getPassword())) {
 
+				int result = userRepository.getUpdateActiveStatus(users.getId(), 1);
+
 				RestTemplate restTemplate = new RestTemplate();
 				HttpHeaders headers = new HttpHeaders();
 				String auth = userName + ":" + password; // Replace with actual username and password
@@ -206,39 +208,43 @@ public class UsersService {
 		EmailOtpErrorMessage errorMessage = new EmailOtpErrorMessage();
 		errorMessage.setError(true);
 		errorMessage.setStatusCode(500);
-		errorMessage.setErrorMessage("Failed For Send Otp");
+		errorMessage.setErrorMessage("Email is already taken. Please choose another one.");
 
-		Date currentDate = new Date();
+		Users user = userRepository.getUserByEmailId(emailId);
 
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(currentDate); // Set the current date and time
-		calendar.add(Calendar.MINUTE, 2); // Add 2 minutes
-		Date updatedDate = calendar.getTime();
+		if (Objects.isNull(user)) {
 
-		int otp = GenerateOtpCode.generateOtpCode();
+			Date currentDate = new Date();
 
-		generateOtp.setEmailId(emailId);
-		generateOtp.setOtp(String.valueOf(otp));
-		generateOtp.setSendDateTime(currentDate);
-		generateOtp.setExpiredDateTime(updatedDate);
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(currentDate); // Set the current date and time
+			calendar.add(Calendar.MINUTE, 2); // Add 2 minutes
+			Date updatedDate = calendar.getTime();
 
-		GenerateOtp saveGenerateOtp = generateOtpService.saveGenerateOtp(generateOtp);
+			int otp = GenerateOtpCode.generateOtpCode();
 
-		if (!Objects.isNull(saveGenerateOtp)) {
+			generateOtp.setEmailId(emailId);
+			generateOtp.setOtp(String.valueOf(otp));
+			generateOtp.setSendDateTime(currentDate);
+			generateOtp.setExpiredDateTime(updatedDate);
 
-			// Construct the email body
-			String subject = "Your OTP Code for Verification";
-			String body = "Dear User,\n\n" + "Your One-Time Password (OTP) is: " + otp + "\n\n"
-					+ "Please use this OTP to complete your verification.\n\n" + "This OTP is valid for 5 minutes.\n\n"
-					+ "Regards,\n" + "Your Google";
+			GenerateOtp saveGenerateOtp = generateOtpService.saveGenerateOtp(generateOtp);
 
-			emailService.sendEmail(emailId, subject, body);
+			if (!Objects.isNull(saveGenerateOtp)) {
 
-			errorMessage.setError(false);
-			errorMessage.setStatusCode(200);
-			errorMessage.setErrorMessage("OTP Send Successfully");
+				// Construct the email body
+				String subject = "Your OTP Code for Verification";
+				String body = "Dear User,\n\n" + "Your One-Time Password (OTP) is: " + otp + "\n\n"
+						+ "Please use this OTP to complete your verification.\n\n"
+						+ "This OTP is valid for 5 minutes.\n\n" + "Regards,\n" + "Your Google";
+
+				emailService.sendEmail(emailId, subject, body);
+
+				errorMessage.setError(false);
+				errorMessage.setStatusCode(200);
+				errorMessage.setErrorMessage("OTP Send Successfully");
+			}
 		}
-
 		return errorMessage;
 	}
 
