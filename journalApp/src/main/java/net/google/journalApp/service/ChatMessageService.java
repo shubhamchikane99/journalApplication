@@ -73,6 +73,8 @@ public class ChatMessageService {
 		if (onlineOfflineStatus.getActiveInActive()) {
 			// Add user to online set
 
+			onlineUsers.add(onlineOfflineStatus.getUserId());
+
 		} else {
 
 			onlineUsers.remove(onlineOfflineStatus.getUserId()); // Remove user if offline
