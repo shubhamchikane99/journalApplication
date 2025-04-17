@@ -46,4 +46,8 @@ public interface UsersRepository extends JpaRepository<Users, String>, JpaSpecif
 
 	@Query(value = "SELECT u.* FROM users u WHERE u.email =:emailId LIMIT 1", nativeQuery = true)
 	Users findByEmailId(@Param("emailId") String emailId);
+
+	
+	@Query(value = " SELECT u.* FROM users u WHERE u.email =:emailId LIMIT 1 ", nativeQuery =  true)
+	Users getUserByEmailId(@Param("emailId") String emailId);
 }
