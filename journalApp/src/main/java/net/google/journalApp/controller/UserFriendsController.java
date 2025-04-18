@@ -1,0 +1,25 @@
+package net.google.journalApp.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import net.google.journalApp.entity.UserFriends;
+import net.google.journalApp.exception.ServiceResponse;
+import net.google.journalApp.service.UserFriendsService;
+
+@RestController
+@RequestMapping("v1/user-friends")
+public class UserFriendsController {
+
+	@Autowired
+	private UserFriendsService userFriendsService;
+
+	@PostMapping
+	public ServiceResponse saveUserFriends(@RequestBody UserFriends userFriends) {
+
+		return ServiceResponse.asSuccess(userFriendsService.saveUserFriends(userFriends));
+	}
+}
