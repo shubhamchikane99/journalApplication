@@ -48,4 +48,5 @@ public class UsersController {
 	public ServiceResponse getUsersActiveStatusUpdate(@RequestParam("id") String id) throws ResourceNotFoundException {
 		return ServiceResponse.asSuccess(usersService.getUsersActiveStatusUpdate(id));
 	}
+
 }

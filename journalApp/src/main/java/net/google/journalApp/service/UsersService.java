@@ -1,6 +1,7 @@
 package net.google.journalApp.service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,6 +23,7 @@ import org.springframework.web.client.RestTemplate;
 
 import lombok.extern.slf4j.Slf4j;
 import net.google.journalApp.constant.Constant;
+import net.google.journalApp.entity.DTOForUserList;
 import net.google.journalApp.entity.DTOUsers;
 import net.google.journalApp.entity.EmailOtpErrorMessage;
 import net.google.journalApp.entity.ErrorMessage;
@@ -275,13 +277,31 @@ public class UsersService {
 		return errorMessage;
 	}
 
-	public List<DTOUsers> usersGetAllWithUnreadMsg() {
+	public DTOForUserList usersGetAllWithUnreadMsg() {
 		// get all for chat window
+
+		DTOForUserList userList = new DTOForUserList();
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
+		Users users = userRepository.findByUserName(userName);
+		System.err.println("users " + users);
 
-		return dtoUsersRepository.getAllUserWithoutLogInPersonAndUnreadMsg(userName);
+		List<DTOUsers> acceptRequestUsersList = new ArrayList<DTOUsers>();
+		List<DTOUsers> request = new ArrayList<DTOUsers>();
+		List<DTOUsers> allUserAndFlag = new ArrayList<DTOUsers>();
+
+		acceptRequestUsersList = dtoUsersRepository.getAcceptRequestUsersList(users.getId());
+		request = dtoUsersRepository.getRequestUserListByUserId(users.getId());
+		allUserAndFlag = dtoUsersRepository.allUserAndSendRequesFlag(users.getId());
+
+		System.err.println("allUsers " + allUserAndFlag);
+
+		userList.setChat(acceptRequestUsersList);
+		userList.setRequest(request);
+		userList.setAllUsers(allUserAndFlag);
+
+		return userList;
 	}
 
 	public ErrorMessage getUsersActiveStatusUpdate(String id) {
@@ -325,7 +345,7 @@ public class UsersService {
 		return errorMessage;
 	}
 
-	public Object getCheckEmailId(String emailId) {
+	public EmailOtpErrorMessage getCheckEmailId(String emailId) {
 		// get check emailId
 
 		EmailOtpErrorMessage errorMessage = new EmailOtpErrorMessage();
@@ -344,6 +364,24 @@ public class UsersService {
 		}
 
 		return errorMessage;
+	}
+
+	public List<DTOUsers> getRequestUserList(String userId) {
+		// request of user
+
+		return dtoUsersRepository.getRequestUserListByUserId(userId);
+	}
+
+	public List<DTOUsers> getUsersListWithSendRequestFlag(String userId) {
+		// Users List With Send Request Flag
+
+		return dtoUsersRepository.allUserAndSendRequesFlag(userId);
+	}
+
+	public List<DTOUsers> getAcceptRequestUsersList(String userId) {
+		// Users List With Send Request Flag
+
+		return dtoUsersRepository.getAcceptRequestUsersList(userId);
 	}
 
 }
