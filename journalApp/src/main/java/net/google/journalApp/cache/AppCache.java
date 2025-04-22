@@ -18,7 +18,7 @@ public class AppCache {
 	@Autowired
 	private ConfigJournalAppRepository configJournalAppRepository;
 
-	public Map<String, String> APP_CACHE;
+	public Map<String, String> APP_CACHE; 
 
 	@PostConstruct
 	public void init() {
