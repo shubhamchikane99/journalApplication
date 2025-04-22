@@ -20,6 +20,9 @@ public class DTOUsers {
 	@Column(name = "id")
 	private String id;
 
+	@Column(name = "user_id")
+	private String userId;
+
 	@Column(name = "first_name")
 	private String firstName;
 
@@ -51,5 +54,11 @@ public class DTOUsers {
 
 	@Column(name = "unread_msg_count")
 	private int unreadMsgCount;
+
+	@Column(name = "send_request_flag")
+	private int sendRequestFlag;
+
+	@Column(name = "user_friends_id")
+	private String userFriendsId;
 
 }
