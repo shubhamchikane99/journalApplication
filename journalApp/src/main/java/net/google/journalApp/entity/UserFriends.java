@@ -37,8 +37,12 @@ public class UserFriends {
 	private Date requestDate;
 
 	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy")
-	@Column(name = "friend_date")
-	private Date friendDate;
+	@Column(name = "accept_date")
+	private Date acceptDate;
+
+	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy")
+	@Column(name = "reject_date")
+	private Date rejectDate;
 
 	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy hh:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
