@@ -285,8 +285,7 @@ public class UsersService {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
 		Users users = userRepository.findByUserName(userName);
-		System.err.println("users " + users);
-
+		
 		List<DTOUsers> acceptRequestUsersList = new ArrayList<DTOUsers>();
 		List<DTOUsers> request = new ArrayList<DTOUsers>();
 		List<DTOUsers> allUserAndFlag = new ArrayList<DTOUsers>();
@@ -294,8 +293,6 @@ public class UsersService {
 		acceptRequestUsersList = dtoUsersRepository.getAcceptRequestUsersList(users.getId());
 		request = dtoUsersRepository.getRequestUserListByUserId(users.getId());
 		allUserAndFlag = dtoUsersRepository.allUserAndSendRequesFlag(users.getId());
-
-		System.err.println("allUsers " + allUserAndFlag);
 
 		userList.setChat(acceptRequestUsersList);
 		userList.setRequest(request);
