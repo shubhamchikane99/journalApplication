@@ -56,7 +56,7 @@ public class DTOUsers {
 	private int unreadMsgCount;
 
 	@Column(name = "send_request_flag")
-	private int sendRequestFlag;
+	private int sendRequestFlag; 
 
 	@Column(name = "user_friends_id")
 	private String userFriendsId;
