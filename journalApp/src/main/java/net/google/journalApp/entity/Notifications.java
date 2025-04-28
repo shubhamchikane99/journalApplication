@@ -38,6 +38,13 @@ public class Notifications {
 	@Column(name = "is_read")
 	private int isRead;
 
+	@Column(name = "message_count")
+	private int messageCount;
+
+	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy hh:mm:ss")
+	@Column(name = "date")
+	private Date date;
+
 	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy hh:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "insert_date_time", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
