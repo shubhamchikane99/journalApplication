@@ -30,4 +30,16 @@ public class NotificationsController {
 
 		return ServiceResponse.asSuccess(notificationsService.getNotificationOfUsers(userId));
 	}
+
+	@GetMapping("/is-read")
+	public ServiceResponse getNotificationRead(@RequestParam("userId") String userId) {
+
+		return ServiceResponse.asSuccess(notificationsService.getNotificationRead(userId));
+	}
+
+	@GetMapping("/unread-count")
+	public ServiceResponse notificationUnreadCount(@RequestParam("userId") String userId) {
+
+		return ServiceResponse.asSuccess(notificationsService.notificationUnreadCount(userId));
+	}
 }

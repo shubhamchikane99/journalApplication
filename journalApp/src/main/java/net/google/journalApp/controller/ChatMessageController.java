@@ -49,7 +49,6 @@ public class ChatMessageController {
 	public void sendPrivateMessage(@Payload ChatMessage chatMessage) {
 
 		// Save Chat's
-		System.err.println("chatMessage " + chatMessage);
 		chatMessageService.saveChatMessage(chatMessage);
 
 		Notifications notifications = new Notifications();
@@ -57,8 +56,10 @@ public class ChatMessageController {
 		notifications.setReceiverId(chatMessage.getReceiverId());
 		notifications.setType(1);
 
-		System.err.println("notifications " + notifications);
 		notificationsService.saveNotifications(notifications);
+
+		// unread notification count
+		int unreadNotification = notificationsService.notificationUnreadCount(chatMessage.getReceiverId());
 
 		// Ensure messages are sent to the correct user destination
 		messagingTemplate.convertAndSendToUser(chatMessage.getReceiverId(), "/private", chatMessage);
@@ -70,6 +71,10 @@ public class ChatMessageController {
 		// unread message for private message
 		String destination1 = "/topic/private-unread-msg/" + chatMessage.getReceiverId();
 		messagingTemplate.convertAndSend(destination1, chatMessage.getSenderId());
+
+		// unread message notification
+		String notidestination = "/topic/unread-notification/" + chatMessage.getReceiverId();
+		messagingTemplate.convertAndSend(notidestination, unreadNotification);
 
 	}
 
