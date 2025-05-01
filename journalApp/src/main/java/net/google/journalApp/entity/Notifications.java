@@ -9,16 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
 @Entity
-@Table(name = "chat_messages")
+@Table(name = "notifications")
 @Data
-public class ChatMessage {
+public class Notifications {
 
 	@Id
 	@Column(name = "id")
@@ -30,23 +29,25 @@ public class ChatMessage {
 	@Column(name = "receiver_id")
 	private String receiverId;
 
+	@Column(name = "type")
+	private int type;
+
 	@Column(name = "content")
 	private String content;
-
-	@Column(name = "type")
-	private String type;
-
-	@Column(name = "status")
-	private String status; // Default is SENT
 
 	@Column(name = "is_read")
 	private int isRead;
 
-	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy HH:mm:ss")
+	@Column(name = "message_count")
+	private int messageCount;
+
+	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy hh:mm:ss")
+	@Column(name = "date")
+	private Date date;
+
+	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy hh:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "insert_date_time", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date insertDateTime;
 
-	@Transient
-	private int flag;
 }
