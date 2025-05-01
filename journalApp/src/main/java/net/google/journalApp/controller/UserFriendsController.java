@@ -58,6 +58,9 @@ public class UserFriendsController {
 		List<DTOUsers> getUsersListWithSendRequestFlag1 = usersService
 				.getUsersListWithSendRequestFlag(userFriends.getUserId());
 
+		// unread notification count
+		int unreadNotification = notificationsService.notificationUnreadCount(userFriends.getUserId());
+
 		// update user Request list real time
 		String destination1 = "/topic/user-request-list/" + userFriends.getUserId();
 		messagingTemplate.convertAndSend(destination1, userRequestList);
@@ -69,6 +72,10 @@ public class UserFriendsController {
 		// update used list who send request user not showing in userList
 		String destination3 = "/topic/user-list-with-request-flag/" + userFriends.getUserId();
 		messagingTemplate.convertAndSend(destination3, getUsersListWithSendRequestFlag1);
+
+		// unread message notification
+		String notidestination = "/topic/unread-notification/" + userFriends.getUserId();
+		messagingTemplate.convertAndSend(notidestination, unreadNotification);
 
 	}
 
@@ -95,6 +102,9 @@ public class UserFriendsController {
 		List<DTOUsers> getUsersListWithSendRequestFlag = usersService
 				.getUsersListWithSendRequestFlag(userFriends.getRequestUserId());
 
+		// unread notification count
+		int unreadNotification = notificationsService.notificationUnreadCount(userFriends.getRequestUserId());
+
 		// update user Request list real time
 		String destination1 = "/topic/user-request-list-update/" + userFriends.getUserId();
 		messagingTemplate.convertAndSend(destination1, userRequestList);
@@ -114,6 +124,10 @@ public class UserFriendsController {
 		// update all friend list for self
 		String destination5 = "/topic/user-list-with-request-flag/" + userFriends.getUserId();
 		messagingTemplate.convertAndSend(destination5, getUsersListWithSendRequestFlag1);
+
+		// unread message notification
+		String notidestination = "/topic/unread-notification/" + userFriends.getRequestUserId();
+		messagingTemplate.convertAndSend(notidestination, unreadNotification);
 
 	}
 
@@ -135,6 +149,9 @@ public class UserFriendsController {
 		List<DTOUsers> getUsersListWithSendRequestFlag = usersService
 				.getUsersListWithSendRequestFlag(userFriends.getRequestUserId());
 
+		// unread notification count
+		int unreadNotification = notificationsService.notificationUnreadCount(userFriends.getRequestUserId());
+
 		List<DTOUsers> userRequestList = usersService.getRequestUserList(userFriends.getUserId());
 
 		String destination2 = "/topic/user-list-with-request-flag/" + userFriends.getRequestUserId();
@@ -145,6 +162,10 @@ public class UserFriendsController {
 
 		String destination1 = "/topic/user-request-list-update/" + userFriends.getUserId();
 		messagingTemplate.convertAndSend(destination1, userRequestList);
+
+		// unread message notification
+		String notidestination = "/topic/unread-notification/" + userFriends.getRequestUserId();
+		messagingTemplate.convertAndSend(notidestination, unreadNotification);
 
 	}
 }

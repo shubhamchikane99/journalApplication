@@ -285,7 +285,7 @@ public class UsersService {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
 		Users users = userRepository.findByUserName(userName);
-		
+
 		List<DTOUsers> acceptRequestUsersList = new ArrayList<DTOUsers>();
 		List<DTOUsers> request = new ArrayList<DTOUsers>();
 		List<DTOUsers> allUserAndFlag = new ArrayList<DTOUsers>();

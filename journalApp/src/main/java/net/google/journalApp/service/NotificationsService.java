@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import net.google.journalApp.entity.DTONotifications;
+import net.google.journalApp.entity.ErrorMessage;
 import net.google.journalApp.entity.Notifications;
 import net.google.journalApp.repository.DTONotificationsRepository;
 import net.google.journalApp.repository.NotificationsRepository;
@@ -57,5 +58,31 @@ public class NotificationsService {
 		// get user notifications
 
 		return dtoNotificationsRepository.getNotificationOfUsers(userId);
+	}
+
+	public ErrorMessage getNotificationRead(String userId) {
+		// Update is Read Notification Status
+
+		ErrorMessage errorMessage = new ErrorMessage();
+		errorMessage.setError(true);
+		errorMessage.setStatusCode(500);
+		errorMessage.setErrorMessage("Filed to Update ");
+
+		int result = notificationsRepository.getUpdateIsReadStatusByUserId(userId, 1);
+
+		if (result > 0) {
+
+			errorMessage.setError(false);
+			errorMessage.setStatusCode(200);
+			errorMessage.setErrorMessage("Update Sucessfully");
+		}
+
+		return errorMessage;
+	}
+
+	public int notificationUnreadCount(String userId) {
+		// get Notification Unread Count By UserId
+
+		return notificationsRepository.notificationUnreadCountByUserId(userId);
 	}
 }
