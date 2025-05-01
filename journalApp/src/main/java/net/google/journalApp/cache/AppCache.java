@@ -13,7 +13,7 @@ import net.google.journalApp.entity.ConfigJournalApp;
 import net.google.journalApp.repository.ConfigJournalAppRepository;
 
 @Component
-public class AppCache { 
+public class AppCache {  
 
 	@Autowired
 	private ConfigJournalAppRepository configJournalAppRepository;
