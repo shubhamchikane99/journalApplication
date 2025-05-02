@@ -19,7 +19,7 @@ public class AppCache {
 	private ConfigJournalAppRepository configJournalAppRepository;
 
 	public Map<String, String> APP_CACHE; 
-
+ 
 	@PostConstruct
 	public void init() {
 
