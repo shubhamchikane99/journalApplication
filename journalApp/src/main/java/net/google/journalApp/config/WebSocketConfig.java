@@ -16,7 +16,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	    registry.setApplicationDestinationPrefixes("/app"); // Prefix for sending messages
 	    registry.setUserDestinationPrefix("/user"); // Prefix for private messages
 	}
-
+ 
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
 		registry.addEndpoint("/ws").setAllowedOriginPatterns("*") // Allows all origins (CORS support)
