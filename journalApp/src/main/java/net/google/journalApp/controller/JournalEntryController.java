@@ -18,7 +18,7 @@ import net.google.journalApp.service.JournalEntryService;
 public class JournalEntryController { 
 
 	@Autowired
-	private JournalEntryService journalEntryService;
+	private JournalEntryService journalEntryService; 
 
 	@PostMapping
 	public ServiceResponse saveJournalEntry(@RequestBody JournalEntry journalEntry) {
