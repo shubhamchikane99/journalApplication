@@ -40,7 +40,7 @@ public class DTOChatMessage {
 	private int isRead;
 
 	@Column(name = "reply_to_message_id")
-	private String replyToMessageId;
+	private String replyToMessageId; 
 
 	@Column(name = "is_edited")
 	private int isEdited;
