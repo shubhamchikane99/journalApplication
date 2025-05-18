@@ -13,13 +13,13 @@ import net.google.journalApp.entity.ConfigJournalApp;
 import net.google.journalApp.repository.ConfigJournalAppRepository;
 
 @Component
-public class AppCache { 
+public class AppCache {  
 
 	@Autowired
 	private ConfigJournalAppRepository configJournalAppRepository;
 
-	public Map<String, String> APP_CACHE; 
-
+	public Map<String, String>  APP_CACHE; 
+ 
 	@PostConstruct
 	public void init() {
 
