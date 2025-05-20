@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.google.journalApp.entity.ChatMessage;
+import net.google.journalApp.entity.DTOChatMessage;
+import net.google.journalApp.entity.ErrorMessage;
 import net.google.journalApp.entity.Notifications;
 import net.google.journalApp.entity.OnlineOfflineStatus;
 import net.google.journalApp.entity.TypingStatus;
@@ -48,8 +50,9 @@ public class ChatMessageController {
 	@MessageMapping("/private-message")
 	public void sendPrivateMessage(@Payload ChatMessage chatMessage) {
 
+		ChatMessage saveChatMessage = new ChatMessage();
 		// Save Chat's
-		chatMessageService.saveChatMessage(chatMessage);
+		saveChatMessage = chatMessageService.saveChatMessage(chatMessage);
 
 		Notifications notifications = new Notifications();
 		notifications.setSenderId(chatMessage.getSenderId());
@@ -61,8 +64,11 @@ public class ChatMessageController {
 		// unread notification count
 		int unreadNotification = notificationsService.notificationUnreadCount(chatMessage.getReceiverId());
 
+		DTOChatMessage message = new DTOChatMessage();
+
+		message = chatMessageService.getMessageById(saveChatMessage.getId());
 		// Ensure messages are sent to the correct user destination
-		messagingTemplate.convertAndSendToUser(chatMessage.getReceiverId(), "/private", chatMessage);
+		messagingTemplate.convertAndSendToUser(chatMessage.getReceiverId(), "/private", message);
 
 		// unread message notification
 		String destination = "/topic/unread-msg/" + chatMessage.getReceiverId();
@@ -82,7 +88,7 @@ public class ChatMessageController {
 	@GetMapping("/messages/{senderId}/{receiverId}")
 	public ServiceResponse getMessages(@PathVariable String senderId, @PathVariable String receiverId) {
 
-		return ServiceResponse.asSuccess(chatMessageRepository
+		return ServiceResponse.asSuccess(chatMessageService
 				.findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestamp(senderId, receiverId));
 
 	}
@@ -178,6 +184,23 @@ public class ChatMessageController {
 
 		return ServiceResponse.asSuccess(chatMessageService.getUnreadMsgOfUser(userId));
 
+	}
+
+	@GetMapping("/delete-message/{messageId}")
+	public ServiceResponse deleteMessageById(@PathVariable String messageId, @RequestParam("flag") int flag) {
+
+		ErrorMessage errMessage = chatMessageService.deleteMessageById(messageId, flag);
+
+		DTOChatMessage message = new DTOChatMessage();
+
+		message = chatMessageService.getMessageById(messageId);
+
+		String destination = "/topic/" + message.getReceiverId() + "/update-delete-message";
+
+		// Sends the full message as JSON to the frontend
+		messagingTemplate.convertAndSend(destination, message);
+
+		return ServiceResponse.asSuccess(errMessage);
 	}
 
 }
