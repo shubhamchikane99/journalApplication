@@ -61,4 +61,9 @@ public interface ChatMessageRepository
 	@Query(value = " SELECT IFNULL ((SELECT COUNT(cm.id) AS msg_count FROM chat_messages cm WHERE cm.receiver_id =:userId AND cm.status NOT IN ('SEEN')),0) AS msg_count ", nativeQuery =  true)
 	int getUnreadMsgOfUserByUserId(@Param("userId") String userId);
 
+	@Modifying
+	@Transactional
+	@Query(value = "  UPDATE chat_messages cm SET cm.is_delete =:flag WHERE cm.id =:messageId ", nativeQuery = true)
+	int deleteMessageById(@Param("messageId")String messageId, @Param("flag") int flag);
+
 }

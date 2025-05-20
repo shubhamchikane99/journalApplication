@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import net.google.journalApp.entity.ChatMessage;
+import net.google.journalApp.entity.DTOChatMessage;
+import net.google.journalApp.entity.ErrorMessage;
 import net.google.journalApp.entity.OnlineOfflineStatus;
 import net.google.journalApp.repository.ChatMessageRepository;
+import net.google.journalApp.repository.DTOChatMessageRepository;
 import net.google.journalApp.repository.UsersRepository;
 
 @Service
@@ -22,9 +25,12 @@ public class ChatMessageService {
 	@Autowired
 	private UsersRepository usersRepository;
 
+	@Autowired
+	private DTOChatMessageRepository dtoChatMessageRepository;
+
 	private static Set<String> onlineUsers = ConcurrentHashMap.newKeySet(); // Store online users
 
-	public void saveChatMessage(ChatMessage chatMessage) {
+	public ChatMessage saveChatMessage(ChatMessage chatMessage) {
 		// Save ChatMessage
 
 		int userStatus = getUserStatus(chatMessage.getReceiverId());
@@ -34,7 +40,7 @@ public class ChatMessageService {
 			chatMessage.setStatus("DELIVERED");
 		}
 
-		chatMessageRepository.save(chatMessage);
+		return chatMessageRepository.save(chatMessage);
 	}
 
 	public void updateUserStatus(String userId, int status) {
@@ -87,5 +93,40 @@ public class ChatMessageService {
 		// get User Unread messages
 
 		return chatMessageRepository.getUnreadMsgOfUserByUserId(userId);
+	}
+
+	public List<DTOChatMessage> findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestamp(String senderId,
+			String receiverId) {
+		// get Message Between two users
+
+		return dtoChatMessageRepository.findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestamp(senderId,
+				receiverId);
+	}
+
+	public DTOChatMessage getMessageById(String messageId) {
+		// get Message By Id
+
+		return dtoChatMessageRepository.getMessageById(messageId);
+	}
+
+	public ErrorMessage deleteMessageById(String messageId, int flag) {
+		// get delete the message
+
+		ErrorMessage errorMessage = new ErrorMessage();
+
+		errorMessage.setError(true);
+		errorMessage.setStatusCode(500);
+		errorMessage.setErrorMessage("failed to delete.");
+
+		int result = chatMessageRepository.deleteMessageById(messageId, flag);
+
+		if (result > 0) {
+
+			errorMessage.setError(false);
+			errorMessage.setStatusCode(200);
+			errorMessage.setErrorMessage("Delete Successfully.");
+		}
+
+		return errorMessage;
 	}
 }

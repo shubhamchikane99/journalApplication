@@ -42,6 +42,15 @@ public class ChatMessage {
 	@Column(name = "is_read")
 	private int isRead;
 
+	@Column(name = "reply_to_message_id")
+	private String replyToMessageId;
+
+	@Column(name = "is_edited")
+	private int isEdited;
+
+	@Column(name = "is_delete")
+	private int isDelete;
+
 	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "insert_date_time", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
