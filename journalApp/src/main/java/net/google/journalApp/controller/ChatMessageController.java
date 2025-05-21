@@ -186,7 +186,7 @@ public class ChatMessageController {
 
 	}
 
-	@GetMapping("/delete-message/{messageId}")
+	@GetMapping("/delete-message/{messageId}") 
 	public ServiceResponse deleteMessageById(@PathVariable String messageId, @RequestParam("flag") int flag) {
 
 		ErrorMessage errMessage = chatMessageService.deleteMessageById(messageId, flag);
