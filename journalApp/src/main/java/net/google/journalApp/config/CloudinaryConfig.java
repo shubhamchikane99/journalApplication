@@ -2,7 +2,7 @@ package net.google.journalApp.config;
 
 import org.springframework.beans.factory.annotation.Value; 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Configuration; 
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
