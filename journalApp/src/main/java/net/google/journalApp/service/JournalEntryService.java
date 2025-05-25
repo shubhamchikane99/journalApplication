@@ -28,18 +28,18 @@ public class JournalEntryService {
 
 	@Autowired
 	private DTOJournalEntryRepository dTOJournalEntryRepository;
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(JournalEntryService.class);
 
 	public JournalEntry saveJournalEntry(JournalEntry journalEntry) {
-		// Save Journal Entry 
+		// Save Journal Entry
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
 		Users findUserName = userRepository.findByUserName(userName);
 
 		journalEntry.setUserId(findUserName.getId());
-		
+
 		logger.info("hahahhahhahhahahahhahahahhah");
 
 		return journalEntryRepository.save(journalEntry);
@@ -49,7 +49,7 @@ public class JournalEntryService {
 		// Get All Journal Entry By User
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String userName = authentication.getName(); 
+		String userName = authentication.getName();
 		Users findUserName = userRepository.findByUserName(userName);
 
 		return dTOJournalEntryRepository.journalEntryByUserId(findUserName.getId());
@@ -81,11 +81,17 @@ public class JournalEntryService {
 
 		return errorMessage;
 	}
-	
+
 	public List<JournalEntry> getAllJournalEntry() {
-		  //Get All Journal Entry
-	
+		// Get All Journal Entry
+
 		return journalEntryRepository.getAllJournalEntry();
+	}
+
+	public List<JournalEntry> journalEntryByUserId(String userId) {
+		// get Journal Entry By UserId
+
+		return journalEntryRepository.journalEntryByUserId(userId);
 	}
 
 }

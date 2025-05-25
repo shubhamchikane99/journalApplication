@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.google.journalApp.entity.JournalEntry;
@@ -15,10 +16,10 @@ import net.google.journalApp.service.JournalEntryService;
 
 @RestController
 @RequestMapping("v1/journal")
-public class JournalEntryController { 
+public class JournalEntryController {
 
 	@Autowired
-	private JournalEntryService journalEntryService; 
+	private JournalEntryService journalEntryService;
 
 	@PostMapping
 	public ServiceResponse saveJournalEntry(@RequestBody JournalEntry journalEntry) {
@@ -44,8 +45,15 @@ public class JournalEntryController {
 	@DeleteMapping("/{id}")
 	public ServiceResponse deleteJournalEntryById(@PathVariable("id") String id) {
 
-		return ServiceResponse.asSuccess(journalEntryService.deleteJournalEntryById(id)); 
+		return ServiceResponse.asSuccess(journalEntryService.deleteJournalEntryById(id));
 
 	}
- 
+
+	@GetMapping("/by-user")
+	public ServiceResponse journalEntryByUserId(@RequestParam("userId") String userId) {
+
+		return ServiceResponse.asSuccess(journalEntryService.journalEntryByUserId(userId));
+
+	}
+
 }

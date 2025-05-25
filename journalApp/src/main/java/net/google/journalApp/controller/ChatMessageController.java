@@ -82,6 +82,10 @@ public class ChatMessageController {
 		String notidestination = "/topic/unread-notification/" + chatMessage.getReceiverId();
 		messagingTemplate.convertAndSend(notidestination, unreadNotification);
 
+		// Update edit message
+		String editDestination = "/topic/" + message.getReceiverId() + "/update-edited-message";
+		messagingTemplate.convertAndSend(editDestination, message);
+
 	}
 
 	// Fetch chat history between two users
@@ -186,7 +190,7 @@ public class ChatMessageController {
 
 	}
 
-	@GetMapping("/delete-message/{messageId}") 
+	@GetMapping("/delete-message/{messageId}")
 	public ServiceResponse deleteMessageById(@PathVariable String messageId, @RequestParam("flag") int flag) {
 
 		ErrorMessage errMessage = chatMessageService.deleteMessageById(messageId, flag);
