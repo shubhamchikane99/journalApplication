@@ -19,13 +19,12 @@ public interface JournalEntryRepository extends JpaRepository<JournalEntry, Stri
 	@Query(value = " DELETE FROM journal_entry WHERE id =:id ", nativeQuery = true)
 	int deleteJournalEntryById(@Param("id") String id);
 
-	@Query(value = " SELECT je.* FROM journal_entry je WHERE je.user_id =:userId ", nativeQuery = true)
+	@Query(value = " SELECT je.* FROM journal_entry je WHERE je.user_id =:userId  ORDER BY je.insert_date_time DESC ", nativeQuery = true)
 	List<JournalEntry> journalEntryByUserId(@Param("userId") String userId);
 
 	@Query(value = " SELECT je.* FROM journal_entry je WHERE je.id =:id ", nativeQuery = true)
 	JournalEntry journalEntryById(@Param("id") String id);
 
-	
 	@Query(value = " SELECT je.* FROM journal_entry je ORDER BY je.insert_date_time DESC  ", nativeQuery = true)
 	List<JournalEntry> getAllJournalEntry();
 
