@@ -39,7 +39,7 @@ public class ChatMessage {
 	@Column(name = "status")
 	private String status; // Default is SENT
 
-	@Column(name = "is_read")
+	@Column(name = "is_read") 
 	private int isRead;
 
 	@Column(name = "reply_to_message_id")
