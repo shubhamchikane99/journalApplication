@@ -44,21 +44,21 @@ public interface ChatMessageRepository
 
 	@Modifying
 	@Transactional 
-	@Query(value = " UPDATE chat_messages cm SET cm.status = 'DELIVERED' WHERE cm.receiver_id =:userId AND cm.status = 'SENT' ", nativeQuery =  true)
+	@Query(value = " UPDATE chat_messages cm SET cm.status = 1 WHERE cm.receiver_id =:userId AND cm.status = 0 ", nativeQuery =  true)
 	int getDeliveredAllSentMsges(@Param("userId")String userId);
 
 
-	@Query(value = " SELECT cm.* FROM chat_messages cm WHERE cm.receiver_id =:userId AND cm.status = 'DELIVERED' ORDER BY cm.insert_date_time ASC ", nativeQuery =  true)
+	@Query(value = " SELECT cm.* FROM chat_messages cm WHERE cm.receiver_id =:userId AND cm.status = 1 ORDER BY cm.insert_date_time ASC ", nativeQuery =  true)
 	List<ChatMessage> getDeliveredMessages(@Param("userId")String userId);
 
 
 	@Modifying
 	@Transactional
-	@Query(value = "  UPDATE chat_messages cm SET cm.status = 'SEEN' WHERE cm.sender_id =:receiverId AND cm.receiver_id =:senderId  AND cm.status !='SEEN'  ", nativeQuery =  true)
+	@Query(value = "  UPDATE chat_messages cm SET cm.status = 2 WHERE cm.sender_id =:receiverId AND cm.receiver_id =:senderId  AND cm.status NOT IN (2)  ", nativeQuery =  true)
 	int getUpdateMessagesStatus(@Param("senderId")String senderId, @Param("receiverId") String receiverId);
 
 
-	@Query(value = " SELECT IFNULL ((SELECT COUNT(cm.id) AS msg_count FROM chat_messages cm WHERE cm.receiver_id =:userId AND cm.status NOT IN ('SEEN')),0) AS msg_count ", nativeQuery =  true)
+	@Query(value = " SELECT IFNULL ((SELECT COUNT(cm.id) AS msg_count FROM chat_messages cm WHERE cm.receiver_id =:userId AND cm.status NOT IN (2)),0) AS msg_count ", nativeQuery =  true)
 	int getUnreadMsgOfUserByUserId(@Param("userId") String userId);
 
 	@Modifying
