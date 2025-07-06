@@ -40,7 +40,7 @@ public interface DTOUsersRepository extends JpaRepository<DTOUsers, String> {
 			+ "    users u\r\n"
 			+ "    WHERE\r\n"
 			+ "    u.id = :userId \r\n"
-			+ "    AND cm.status != 'SEEN' \r\n"
+			+ "    AND cm.status NOT IN(2) \r\n"
 			+ "    AND u.id = cm.receiver_id\r\n"
 			+ "    GROUP BY cm.sender_id\r\n"
 			+ ") b ON a.id = b.sender_id", nativeQuery = true)

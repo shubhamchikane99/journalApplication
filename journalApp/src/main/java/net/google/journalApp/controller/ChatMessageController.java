@@ -166,6 +166,11 @@ public class ChatMessageController {
 		List<ChatMessage> chatMessages = chatMessageRepository
 				.findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestamp(senderId, receiverId);
 
+		int remainingUnreadMsgCount = chatMessageService.getUnreadMsgOfUser(senderId);
+
+		String destination = "/topic/read-msg/" + senderId;
+		messagingTemplate.convertAndSend(destination, remainingUnreadMsgCount);
+
 		// Notify sender for each delivered message
 		chatMessages.forEach(deliveredMessage -> {
 			String senderDestination = "/user/" + deliveredMessage.getSenderId() + "/message-delivery";

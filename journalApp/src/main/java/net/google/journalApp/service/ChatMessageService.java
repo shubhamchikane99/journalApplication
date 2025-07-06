@@ -37,7 +37,7 @@ public class ChatMessageService {
 
 		if (userStatus == 1) {
 
-			chatMessage.setStatus("DELIVERED");
+			chatMessage.setStatus("1");
 		}
 
 		return chatMessageRepository.save(chatMessage);

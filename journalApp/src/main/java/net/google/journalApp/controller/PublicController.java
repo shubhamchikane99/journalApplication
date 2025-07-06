@@ -62,7 +62,7 @@ public class PublicController {
 	}
 
 	@GetMapping("/clear-app-cache")
-	public void clearAppCache() {
+	public void clearAppCache() { 
 
 		appCache.init();
 	}
@@ -77,6 +77,12 @@ public class PublicController {
 	public ServiceResponse getCheckEmailId(@RequestParam("emailId") String emailId) {
 
 		return ServiceResponse.asSuccess(usersService.getCheckEmailId(emailId));
+	}
+
+	@GetMapping("/get-name")
+	public String getName(@RequestParam("name") String name) {
+
+		return "My Name Is " + name;
 	}
 
 }
