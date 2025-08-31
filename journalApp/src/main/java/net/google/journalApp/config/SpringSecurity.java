@@ -3,6 +3,7 @@ package net.google.journalApp.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -10,7 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import net.google.journalApp.filter.JwtFilter;
 import net.google.journalApp.service.UsersDetailsServiceImpl;
 
 @Configuration
@@ -20,28 +23,36 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UsersDetailsServiceImpl usersDetailsService;
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+	@Autowired
+    private JwtFilter jwtFilter;
 
-//		http.authorizeRequests()
-//		.antMatchers("/v1/**").authenticated()
-//		.antMatchers("/admin/**").hasRole("ADMIN")
-//		.anyRequest().permitAll()
-//		.and()
-//		.httpBasic();
-//		 http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable();
-		http.cors() // Enable CORS support
-	    .and()
-	    .authorizeRequests()
-	    .antMatchers("/v1/**").authenticated()
-	    .antMatchers("/admin/**").hasRole("ADMIN")
-	    .antMatchers("/**").permitAll() // Allow OPTIONS requests
-	    .and()
-	    .httpBasic()
-	    .and()
-	    .csrf().disable()
-	    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-	}
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/journal/**", "/user/**").authenticated()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().permitAll();
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable();
+        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+    }
+
+	
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
+//
+////		http.authorizeRequests()
+////		.antMatchers("/v1/**").authenticated()
+////		.antMatchers("/admin/**").hasRole("ADMIN")
+////		.anyRequest().permitAll()
+////		.and()
+////		.httpBasic();
+////		 http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable();
+//		http.cors()
+//				.and().authorizeRequests().antMatchers("/v1/**").authenticated().antMatchers("/admin/**")
+//				.hasRole("ADMIN").antMatchers("/**").permitAll() // Allow OPTIONS requests
+//				.and().httpBasic().and().csrf().disable().sessionManagement()
+//				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -52,5 +63,12 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+
+	// 🔧 This is what fixes the error
+	@Bean
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
 	}
 }

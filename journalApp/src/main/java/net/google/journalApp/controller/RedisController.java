@@ -12,13 +12,13 @@ import net.google.journalApp.service.RedisService;
 @RequestMapping("v1/redis")
 public class RedisController {
 
-	@Autowired
-	private RedisService redisService;
-
-	@GetMapping("/redis-test")
-	public ServiceResponse String() {
-
-		return ServiceResponse.asSuccess(redisService.redis());
-	}
+//	@Autowired
+//	private RedisService redisService;
+//
+//	@GetMapping("/redis-test")
+//	public ServiceResponse String() {
+//
+//		return ServiceResponse.asSuccess(redisService.redis());
+//	}
 
 }

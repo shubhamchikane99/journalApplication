@@ -17,12 +17,12 @@ import net.google.journalApp.service.ThirdPartyApiIntegrationService;
 @RequestMapping("v1/api-integration")
 public class ThirdPartyApiIntegrationController {
 
-	@Autowired
-	private ThirdPartyApiIntegrationService thirdPartyApiIntegrationService;
-
-	@GetMapping("/weather-api")
-	public ServiceResponse weatherApiIntegration(@RequestParam("cityName") String cityName)
-			throws ResourceNotFoundException, JsonMappingException, JsonProcessingException {
-		return ServiceResponse.asSuccess(thirdPartyApiIntegrationService.weatherApiIntegration(cityName));
-	}
+//	@Autowired
+//	private ThirdPartyApiIntegrationService thirdPartyApiIntegrationService;
+//
+//	@GetMapping("/weather-api")
+//	public ServiceResponse weatherApiIntegration(@RequestParam("cityName") String cityName)
+//			throws ResourceNotFoundException, JsonMappingException, JsonProcessingException {
+//		return ServiceResponse.asSuccess(thirdPartyApiIntegrationService.weatherApiIntegration(cityName));
+//	}
 }
