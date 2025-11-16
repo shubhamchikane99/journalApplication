@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Copy project files
 COPY pom.xml .
-COPY src journalApp/src
+COPY src ./src
 
 # Build the JAR
 RUN mvn clean package -DskipTests
