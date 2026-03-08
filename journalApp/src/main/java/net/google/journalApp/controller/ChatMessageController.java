@@ -22,10 +22,12 @@ import net.google.journalApp.entity.ErrorMessage;
 import net.google.journalApp.entity.Notifications;
 import net.google.journalApp.entity.OnlineOfflineStatus;
 import net.google.journalApp.entity.TypingStatus;
+import net.google.journalApp.entity.UserMessageUsage;
 import net.google.journalApp.exception.ServiceResponse;
 import net.google.journalApp.repository.ChatMessageRepository;
 import net.google.journalApp.service.ChatMessageService;
 import net.google.journalApp.service.NotificationsService;
+import net.google.journalApp.service.UserMessageUsageService;
 
 @RestController
 @RequestMapping("v1/chat-message")
@@ -41,6 +43,9 @@ public class ChatMessageController {
 
 	@Autowired
 	private NotificationsService notificationsService;
+
+	@Autowired
+	private UserMessageUsageService userMessageUsageService;
 
 	public ChatMessageController(SimpMessagingTemplate messagingTemplate) {
 		this.messagingTemplate = messagingTemplate;
@@ -65,6 +70,11 @@ public class ChatMessageController {
 		int unreadNotification = notificationsService.notificationUnreadCount(chatMessage.getReceiverId());
 
 		DTOChatMessage message = new DTOChatMessage();
+
+		UserMessageUsage userMessageUsage = new UserMessageUsage();
+		userMessageUsage.setSenderId(chatMessage.getSenderId());
+		userMessageUsage.setReceiverId(chatMessage.getReceiverId());
+		userMessageUsageService.saveUserMessageUsage(userMessageUsage);
 
 		message = chatMessageService.getMessageById(saveChatMessage.getId());
 		// Ensure messages are sent to the correct user destination

@@ -54,7 +54,7 @@ public class PublicController {
 		return ServiceResponse.asSuccess(usersService.getAllUsers());
 	}
 
-	@GetMapping("/health-check")
+	@GetMapping("/health-check") 
 
 	public String healthCheck() {
 

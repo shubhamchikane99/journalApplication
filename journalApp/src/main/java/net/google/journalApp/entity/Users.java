@@ -29,7 +29,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Users {  
+public class Users {
 
 	@Id
 	@Column(name = "id")
@@ -44,7 +44,7 @@ public class Users {
 	@Column(name = "user_name")
 	private String userName;
 
-	@Column(name = "password") 
+	@Column(name = "password")
 	private String password;
 
 	@Column(name = "mobile_no")
@@ -58,6 +58,9 @@ public class Users {
 
 	@Column(name = "is_active")
 	private int isActive;
+
+	@Column(name = "is_admin")
+	private int isAdmin;
 
 	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
