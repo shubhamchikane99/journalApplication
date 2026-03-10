@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import net.google.journalApp.entity.DTOPlan;
 import net.google.journalApp.entity.ErrorMessage;
 import net.google.journalApp.entity.Plan;
+import net.google.journalApp.repository.DTOPlanRepository;
 import net.google.journalApp.repository.PlanFeatureRepository;
 import net.google.journalApp.repository.PlanRepository;
 
@@ -18,6 +20,9 @@ public class PlanService {
 
 	@Autowired
 	private PlanFeatureRepository planFeatureRepository;
+
+	@Autowired
+	private DTOPlanRepository dtoPlanRepository;
 
 	public Plan savePlan(Plan plan) {
 		// save plan
@@ -58,5 +63,11 @@ public class PlanService {
 		}
 
 		return errorMessage;
+	}
+
+	public DTOPlan getUserActivePlanByUserId(String userId) {
+		// get user active plan
+
+		return dtoPlanRepository.getUserActivePlanByUserId(userId);
 	}
 }

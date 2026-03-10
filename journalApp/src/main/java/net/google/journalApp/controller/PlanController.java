@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.google.journalApp.entity.Plan;
@@ -44,7 +45,12 @@ public class PlanController {
 	public ServiceResponse deletePlanById(@PathVariable("id") String id) {
 
 		return ServiceResponse.asSuccess(planService.deletePlanById(id));
+	}
 
+	@GetMapping("/by-user")
+	public ServiceResponse getUserActivePlanByUserId(@RequestParam("userId") String userId) {
+
+		return ServiceResponse.asSuccess(planService.getUserActivePlanByUserId(userId));
 	}
 
 }

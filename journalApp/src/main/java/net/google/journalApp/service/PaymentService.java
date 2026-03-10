@@ -5,17 +5,37 @@ import java.util.Map;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.razorpay.Order;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
 
+import net.google.journalApp.entity.Payment;
+import net.google.journalApp.entity.Users;
+import net.google.journalApp.repository.PaymentRepository;
+import net.google.journalApp.repository.UsersRepository;
+
 @Service
 public class PaymentService {
 
 	@Autowired
 	private RazorpayClient razorpayClient;
+
+	@Autowired
+	private PaymentRepository paymentRepository;
+
+	@Autowired
+	private UsersRepository userRepository;
+
+	@Value("${razorpay.key.id}")
+	private String keyId;
+
+	@Value("${razorpay.key.secret}")
+	private String keySecret;
 
 	public Map<String, Object> createOrder(double amount) {
 		try {
@@ -35,6 +55,7 @@ public class PaymentService {
 			response.put("amount", order.get("amount"));
 			response.put("currency", order.get("currency"));
 			response.put("status", order.get("status")); // optional
+			response.put("key", keyId);
 
 			return response;
 
@@ -43,5 +64,16 @@ public class PaymentService {
 			System.err.println("Razorpay order creation failed: " + e.getMessage());
 			throw new RuntimeException("Failed to create Razorpay order: " + e.getMessage(), e);
 		}
+	}
+
+	public Payment verifyPayment(Payment payment) {
+		// verify payment
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String userName = authentication.getName();
+		Users findUserName = userRepository.findByUserName(userName);
+		payment.setUserId(findUserName.getId());
+
+		return paymentRepository.save(payment);
 	}
 }
