@@ -68,10 +68,10 @@ public class UserMessageUsageService {
 		return userMessageUsage;
 	}
 
-	public UserMessageUsage getUserMessageUsageByUserId(String senderId, String receiverId) {
+	public DTOUserMessageUsage getUserMessageUsageByUserId(String senderId, String receiverId) {
 		// UserMessageUsage by id
 
-		return userMessageUsageRepository.getUserMessageUsageByUserId(senderId, receiverId);
+		return dtoUserMessageUsageRepository.getUserMessageUsageByUserId(senderId, receiverId);
 	}
 
 }
