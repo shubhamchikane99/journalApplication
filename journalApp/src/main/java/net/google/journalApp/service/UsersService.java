@@ -381,4 +381,10 @@ public class UsersService {
 		return dtoUsersRepository.getAcceptRequestUsersList(userId);
 	}
 
+	public Users findUserByUserId(String userName) {
+		// Find User By User Name
+
+		return userRepository.findUserByUserId(userName);
+	}
+
 }

@@ -41,11 +41,13 @@ public class UsersController {
 
 	@GetMapping("/get-all")
 	public ServiceResponse usersGetAllWithUnreadMsg() throws ResourceNotFoundException {
+
 		return ServiceResponse.asSuccess(usersService.usersGetAllWithUnreadMsg());
 	}
 
 	@GetMapping("/active-status-update")
 	public ServiceResponse getUsersActiveStatusUpdate(@RequestParam("id") String id) throws ResourceNotFoundException {
+
 		return ServiceResponse.asSuccess(usersService.getUsersActiveStatusUpdate(id));
 	}
 

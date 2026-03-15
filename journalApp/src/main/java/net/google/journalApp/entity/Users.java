@@ -62,6 +62,9 @@ public class Users {
 	@Column(name = "is_admin")
 	private int isAdmin;
 
+	@Column(name = "is_ai")
+	private int isAi;
+
 	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "insert_date_time", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")

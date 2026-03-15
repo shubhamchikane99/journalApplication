@@ -23,11 +23,14 @@ import net.google.journalApp.entity.Notifications;
 import net.google.journalApp.entity.OnlineOfflineStatus;
 import net.google.journalApp.entity.TypingStatus;
 import net.google.journalApp.entity.UserMessageUsage;
+import net.google.journalApp.entity.Users;
 import net.google.journalApp.exception.ServiceResponse;
 import net.google.journalApp.repository.ChatMessageRepository;
 import net.google.journalApp.service.ChatMessageService;
+import net.google.journalApp.service.GroqAIService;
 import net.google.journalApp.service.NotificationsService;
 import net.google.journalApp.service.UserMessageUsageService;
+import net.google.journalApp.service.UsersService;
 
 @RestController
 @RequestMapping("v1/chat-message")
@@ -47,6 +50,12 @@ public class ChatMessageController {
 	@Autowired
 	private UserMessageUsageService userMessageUsageService;
 
+	@Autowired
+	private UsersService usersService;
+
+	@Autowired
+	private GroqAIService groqAIService;
+
 	public ChatMessageController(SimpMessagingTemplate messagingTemplate) {
 		this.messagingTemplate = messagingTemplate;
 	}
@@ -54,6 +63,31 @@ public class ChatMessageController {
 	// Send Private Message to user
 	@MessageMapping("/private-message")
 	public void sendPrivateMessage(@Payload ChatMessage chatMessage) {
+
+		// WHEN SEND MSG TO AI
+		Users user = usersService.findUserByUserId(chatMessage.getReceiverId());
+
+		if (user.getIsAi() == 1) {
+
+			chatMessage.setStatus("2");
+			chatMessageService.saveChatMessage(chatMessage);
+
+			// 1. Get AI reply
+			String aiReply = groqAIService.askAI(chatMessage.getContent());
+
+			// 2. Build and save the AI's response as a ChatMessage
+			ChatMessage aiResponse = new ChatMessage();
+			aiResponse.setSenderId(chatMessage.getReceiverId());
+			aiResponse.setReceiverId(chatMessage.getSenderId()); // reply goes back to sender
+			aiResponse.setType("text");
+			aiResponse.setContent(aiReply);
+			ChatMessage savedAiMessage = chatMessageService.saveChatMessage(aiResponse);
+
+			// 3. Push the reply to the original sender
+			DTOChatMessage dtoAiMessage = chatMessageService.getMessageById(savedAiMessage.getId());
+			messagingTemplate.convertAndSendToUser(chatMessage.getSenderId(), "/private", dtoAiMessage);
+			return; // ← skip all human-to-human logic below
+		}
 
 		ChatMessage saveChatMessage = new ChatMessage();
 		// Save Chat's
@@ -71,6 +105,7 @@ public class ChatMessageController {
 
 		DTOChatMessage message = new DTOChatMessage();
 
+		// chat message usesF
 		UserMessageUsage userMessageUsage = new UserMessageUsage();
 		userMessageUsage.setSenderId(chatMessage.getSenderId());
 		userMessageUsage.setReceiverId(chatMessage.getReceiverId());
