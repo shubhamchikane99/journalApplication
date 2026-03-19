@@ -21,7 +21,7 @@ public interface DTOPlanRepository extends JpaRepository<DTOPlan, String> {
 			+ "WHERE\r\n"
 			+ "       p.plan_id = pl.id\r\n"
 			+ "   AND p.user_id =:userId \r\n"
-			+ "ORDER BY p.insert_date_time DESC  ", nativeQuery   =true)
+			+ "ORDER BY p.insert_date_time DESC LIMIT 1 ", nativeQuery   =true)
 	DTOPlan getUserActivePlanByUserId(@Param("userId") String userId);
 
 }

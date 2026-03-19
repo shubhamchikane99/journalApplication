@@ -50,6 +50,9 @@ public class Plan {
 	@Column(name = "duration")
 	private int duration;
 
+	@Column(name = "access_features")
+	private String accessFeatures;
+
 	@JsonFormat(locale = "hi", timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "insert_date_time", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")

@@ -72,6 +72,12 @@ public class ChatMessageController {
 			chatMessage.setStatus("2");
 			chatMessageService.saveChatMessage(chatMessage);
 
+			// chat message usage
+			UserMessageUsage userMessageUsage = new UserMessageUsage();
+			userMessageUsage.setSenderId(chatMessage.getSenderId());
+			userMessageUsage.setReceiverId(chatMessage.getReceiverId());
+			userMessageUsageService.saveUserMessageUsage(userMessageUsage);
+
 			// 1. Get AI reply
 			String aiReply = groqAIService.askAI(chatMessage.getContent());
 
@@ -105,7 +111,7 @@ public class ChatMessageController {
 
 		DTOChatMessage message = new DTOChatMessage();
 
-		// chat message usesF
+		// chat message usage
 		UserMessageUsage userMessageUsage = new UserMessageUsage();
 		userMessageUsage.setSenderId(chatMessage.getSenderId());
 		userMessageUsage.setReceiverId(chatMessage.getReceiverId());

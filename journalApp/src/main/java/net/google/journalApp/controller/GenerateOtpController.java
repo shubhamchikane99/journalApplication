@@ -31,7 +31,7 @@ public class GenerateOtpController {
 	@GetMapping
 	public ServiceResponse getAllGenerateOtpByUser() {
 
-		return ServiceResponse.asSuccess(generateOtpService.getAllGenerateOtpByUser());
+		return ServiceResponse.asSuccess(generateOtpService.getAllGenerateOtpByUser()); 
 
 	}
 

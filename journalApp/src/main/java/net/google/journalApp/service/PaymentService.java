@@ -15,8 +15,10 @@ import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
 
 import net.google.journalApp.entity.Payment;
+import net.google.journalApp.entity.UserAccessRole;
 import net.google.journalApp.entity.Users;
 import net.google.journalApp.repository.PaymentRepository;
+import net.google.journalApp.repository.UserAccessRoleRepository;
 import net.google.journalApp.repository.UsersRepository;
 
 @Service
@@ -30,6 +32,9 @@ public class PaymentService {
 
 	@Autowired
 	private UsersRepository userRepository;
+
+	@Autowired
+	private UserAccessRoleRepository userAccessRoleRepository;
 
 	@Value("${razorpay.key.id}")
 	private String keyId;
@@ -73,6 +78,14 @@ public class PaymentService {
 		String userName = authentication.getName();
 		Users findUserName = userRepository.findByUserName(userName);
 		payment.setUserId(findUserName.getId());
+
+		UserAccessRole userAccessRole = new UserAccessRole();
+		userAccessRole.setPlanId(payment.getPlanId());
+		userAccessRole.setUserId(findUserName.getId());
+		userAccessRole.setJson(payment.getAccesJson());
+		userAccessRole.setName(payment.getPlanName());
+
+		userAccessRoleRepository.save(userAccessRole);
 
 		return paymentRepository.save(payment);
 	}
